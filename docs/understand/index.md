@@ -8,3 +8,7 @@ One of the fundamental pillars of republican democracies is the idea that citize
 ## Precincts
 
 In the real world, each square in the graphic is called a precinct. They do not necessarily have similar populations, nor do they necessarily have similar geographic sizes, nor does every state have equal numbers of precincts. How precinct boundaries are decided [varies from state to state](http://redistricting.lls.edu/who.php).
+
+## Redistricting
+
+A "redistricting" is defined as one way to draw district lines. The graphic above shows five redistrictings.
