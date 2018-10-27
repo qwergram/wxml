@@ -23,6 +23,7 @@ try:
     import fiona
     import geopandas
     import networkx
+    import shapely
 except ImportError:
     raise ImportError("Requires 3rd party library, did you do `pip install -r requirements.txt`?")
 
@@ -101,6 +102,21 @@ def min_max_collision_check(polygonACoordinates, polygonBCoordinates):
     """
 
 def connect_nodes(graph):
+    """
+    Create an adjacency matrix given a set of vertexes.
+    First, check if the polygons overlap when projected to the x and y axis.
+    In washington, this check eliminates 50%-96% of all paired polygons depending on granularity.
+    The smaller the granularity, the higher the elimnation rates.
+    
+    If their projections overlap, start to do the expensive C++ implemented Weiler-Atherton checks.
+
+    Notes:
+    How to do it in GIS: http://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/how-polygonneighbors-analysis-works.htm
+    
+    References:
+    https://en.wikipedia.org/wiki/Weiler–Atherton_clipping_algorithm
+    """
+    overlappings = 0
     potential_candidates = 0
     failures = 0
     for gid, geo_data in graph.nodes.data():
@@ -109,20 +125,26 @@ def connect_nodes(graph):
             log("Connecting Node #{} to others".format(gid))
         
         for gid2, geo_data2 in graph.nodes.data():
-            
             # check if they overlap when projected to 1d
             potential_candidate = (
                 (geo_data['min_lon'] <= geo_data2['max_lon'] and 
-                geo_data2['min_lon'] <= geo_data['max_lon']) or 
+                geo_data2['min_lon'] <= geo_data['max_lon']) or
                 (geo_data['min_lat'] <= geo_data2['max_lat'] and 
                 geo_data2['min_lat'] <= geo_data['max_lat'])
             )
 
+            if potential_candidate:
+                # Expensive.
+                polyA = shapely.geometry.Polygon(geo_data['vertexes'])
+                polyB = shapely.geometry.Polygon(geo_data2['vertexes'])
+                overlappings += polyA.touches(polyB)
+
             potential_candidates += potential_candidate
             failures += not potential_candidate
 
+    log("Found {} potential candidates ({:.2f}% of total)".format(potential_candidates, potential_candidates * 100 / (failures + potential_candidates)))
+    log("Found {} overlappings ({:.2f}% of potential candidates)".format(overlappings, overlappings * 100 / potential_candidates))
 
-    import pdb; pdb.set_trace()
     return graph
 
 
@@ -197,7 +219,8 @@ def load_into_graph(shape):
             max_lat=maximum_lat,
             # For determining which polygon is more north/west/east/south
             avg_lon=sum_long / total, 
-            avg_lat=sum_lat / total
+            avg_lat=sum_lat / total,
+            **properties
         )
 
     return graph
