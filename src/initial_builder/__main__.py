@@ -157,7 +157,7 @@ def connect_nodes(graph):
                     overlaps = False
                 
                 if overlaps:
-                    graph.add_edge((gid, gid2))
+                    graph.add_edge(gid, gid2)
 
             potential_candidates += potential_candidate
             failures += not potential_candidate
