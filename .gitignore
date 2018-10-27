@@ -2,3 +2,7 @@
 __pycache__/*
 .env/*
 *.swp
+*.zip
+53/
+export/
+*.svg
