@@ -24,6 +24,9 @@ try:
     import geopandas
     import networkx
     import shapely
+    import plotly
+    import plotly.plotly as plt
+    import plotly.graph_objs as go
 except ImportError:
     raise ImportError("Requires 3rd party library, did you do `pip install -r requirements.txt`?")
 
@@ -151,12 +154,14 @@ def connect_nodes(graph):
                 polyA = shapely.geometry.Polygon(geo_data['vertexes'])
                 polyB = shapely.geometry.Polygon(geo_data2['vertexes'])
                 try:
-                    overlaps = polyA.touches(polyB)
+                    overlaps = bool(polyA.touches(polyB))
+                    overlaps = overlaps or bool(polyA.intersects(polyB))
                 except shapely.errors.TopologicalError:
                     # Assume it just doesn't border.
                     overlaps = False
                 
                 if overlaps:
+                    overlappings += 1
                     graph.add_edge(gid, gid2)
 
             potential_candidates += potential_candidate
@@ -182,6 +187,7 @@ def load_into_graph(shape):
         fid= polygon['id']
         properties = polygon['properties']
         coordinates = polygon['geometry']['coordinates']
+        poly_type = polygon['geometry']['type']
 
         # Nice to have messages
         if i % 100 == 0:
@@ -189,13 +195,16 @@ def load_into_graph(shape):
 
         # Sometimes coordinates are nested inside another list.
         # Use generators to avoid killing the computer.
+
         def flatten_coordinates(iterable):
             for item in iterable:
                 if isinstance(item, Iterable) and len(item) != 2:
                     yield from flatten_coordinates(item)
+                    # To mark the end of a polygon
+                    yield [None, None]
                 else:
                     yield item
-        
+
         coordinates = flatten_coordinates(coordinates)
         
         # Set mins/maxes to first item in dataset
@@ -216,6 +225,8 @@ def load_into_graph(shape):
         
         # Find min/max
         for (longitude, lattitude) in coordinates:
+            if longitude == None or lattitude == None: continue
+            
             total += 1
             sum_long += longitude
             sum_lat += lattitude
@@ -245,6 +256,66 @@ def load_into_graph(shape):
 
     return graph
 
+def draw_graph(graph, name):
+    log("Building Node Trace")
+    
+    node_trace = go.Scattergeo(
+        lat=[graph.nodes.get(node)['avg_lat'] for node in graph.nodes],
+        lon=[graph.nodes.get(node)['avg_lon'] for node in graph.nodes],
+        mode="markers",
+        name="pieces",
+        marker={
+            "size": 10,
+            "line": {"width": 0.9},
+            "color": "#bada55"
+        },
+        hoverinfo="text",
+    )
+    
+    log("Building Edge Trace")
+
+    edge_trace = go.Scattergeo(
+        locationmode = 'USA-states',
+        lat=[],
+        lon=[],
+        name="Border",
+        mode="lines",
+        line={
+            "width": 2,
+            "color": "#888"
+        },
+        hoverinfo='none',
+    )
+    
+    for polyA, polyB in graph.edges:
+        polyA = graph.nodes.get(polyA)
+        polyB = graph.nodes.get(polyB)
+        ax, ay = polyA['avg_lat'], polyA['avg_lon']
+        bx, by = polyB['avg_lat'], polyB['avg_lon']
+        edge_trace['lat'] += (ax, bx, None)
+        edge_trace['lon'] += (ay, by, None)
+        # break
+    
+    figure = go.Figure(
+        data=[edge_trace, node_trace],
+        layout=go.Layout(
+            hovermode="closest",
+            xaxis={"showgrid": False, "zeroline": False},
+            yaxis={"showgrid": False, "zeroline": False},
+            geo={
+                "scope": 'usa',
+                "showland": True,
+                "landcolor": "rgb(250, 250, 250)",
+                "subunitcolor": "rgb(217, 217, 217)",
+                "countrycolor": "rgb(217, 217, 217)",
+                "countrywidth": 0.5,
+                "subunitwidth": 0.5
+            }
+        )
+    )
+    
+    log("Created plot with name {}".format(name))
+    return plt.plot(figure, filename=name)
 
 def main(args):
     """
@@ -260,13 +331,18 @@ def main(args):
     if args.granularity == "block":
         seed_map = seed_blocks(args.state)
     elif args.granularity == "county":
-        log("Seeding Counties...")
         seed_map = seed_counties(args.state)
     # elif args.granularity == "precinct":
     #     log("Seeding Precincts...")
 
+    # Generate a map given seed
     graph = connect_nodes(load_into_graph(seed_map))
-    
+
+    # Start dropping random nodes until graph is specified size.
+    # graph = drop_nodes(graph, args.pieces)
+
+    # Visualize the map
+    draw_graph(graph, args.state)
 
 if __name__ == "__main__":
     log("Initial Builder Script by Norton Pengra")
@@ -279,9 +355,9 @@ if __name__ == "__main__":
     # Random Generation Parameters
     parser.add_argument("state", type=str, help="A state code (such as 53_WASHINGTON).")
     parser.add_argument("granularity", default="precinct", choices=["block", "county", "precinct"], type=str, help="How large the initial chunks should be.")
-    parser.add_argument("output", type=str, help="Name of file to output.")
+    parser.add_argument("output", type=str, choices=["all", "weifan", "geoJson", "pickle"], help="Format of output.")
     parser.add_argument("-pieces", type=int, help="Number of pieces to split the state into. Pass nothing to maintain pieces defined by state set.")
-    # parser.add_argument("-offload", type=bool, default=True, help="Execute script on remote server (Will be faster than any laptop).")
+    # parser.add_argument("-offload", type=bool, default=True, help="Execute script on remote server (Will be roughly 30% - 50% faster than any laptop, but I get to keep your data :).")
     parser.add_argument("-visualize", type=bool, default=False, help="Execute script and output a quick image of produced map.")
     parser.add_argument("-v", type=bool, default=False, help="Execute with output")
 
