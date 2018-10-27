@@ -105,16 +105,24 @@ def connect_nodes(graph):
     """
     Create an adjacency matrix given a set of vertexes.
     First, check if the polygons overlap when projected to the x and y axis.
-    In washington, this check eliminates 50%-96% of all paired polygons depending on granularity.
-    The smaller the granularity, the higher the elimnation rates.
+    In Washington, this check eliminates 50%-96% of all paired polygons depending on granularity.
+    Typically, the smaller the granularity, the higher the elimnation rates.
     
     If their projections overlap, start to do the expensive C++ implemented Weiler-Atherton checks.
 
-    Notes:
-    How to do it in GIS: http://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/how-polygonneighbors-analysis-works.htm
+    ## Notes:
+    GIS Alternative (not automatic): http://desktop.arcgis.com/en/arcmap/latest/tools/analysis-toolbox/how-polygonneighbors-analysis-works.htm
     
-    References:
-    https://en.wikipedia.org/wiki/Weiler–Atherton_clipping_algorithm
+    ## References:
+    The fantastic Algorithm: https://en.wikipedia.org/wiki/Weiler–Atherton_clipping_algorithm
+
+    ## Performance Notes:
+    Worst case (everything is connected to everything): o(n^4)
+    Best case (no adjacencies): o(n^2) 
+    
+    Server will execute this code in roughly 40-50% faster than laptop.
+
+    REQUIRES LARGE AMOUNTS OF RAM. Washington state @ block level typically requires 3-4GB of RAM.
     """
     overlappings = 0
     potential_candidates = 0
@@ -125,6 +133,10 @@ def connect_nodes(graph):
             log("Connecting Node #{} to others".format(gid))
         
         for gid2, geo_data2 in graph.nodes.data():
+            # An absolutely disgusting way to skip nodes we've already looked at.
+            # data() doesn't support indexing.
+            if int(gid2) < int(gid): continue
+            
             # check if they overlap when projected to 1d
             potential_candidate = (
                 (geo_data['min_lon'] <= geo_data2['max_lon'] and 
@@ -135,9 +147,17 @@ def connect_nodes(graph):
 
             if potential_candidate:
                 # Expensive.
+                
                 polyA = shapely.geometry.Polygon(geo_data['vertexes'])
                 polyB = shapely.geometry.Polygon(geo_data2['vertexes'])
-                overlappings += polyA.touches(polyB)
+                try:
+                    overlaps = polyA.touches(polyB)
+                except shapely.errors.TopologicalError:
+                    # Assume it just doesn't border.
+                    overlaps = False
+                
+                if overlaps:
+                    graph.add_edge((gid, gid2))
 
             potential_candidates += potential_candidate
             failures += not potential_candidate
