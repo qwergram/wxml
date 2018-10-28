@@ -345,7 +345,6 @@ def draw_graph(graph, name, image=False):
     log("Create plotly plot with name {}".format(name))
     return plt.plot(figure, filename=name)
 
-
 def drop_nodes(graph, pieces):
     """
     Select random points in the graph and have it "consume" other points in the graph.
@@ -398,6 +397,41 @@ def drop_nodes(graph, pieces):
 def cache_network(graph):
     networkx.write_gpickle(graph, "graph_cache.networkx")
 
+def seed_districts(graph, districts):
+    bar = IncrementalBar("[!] Claiming Districts", max=len(graph.nodes))
+    graph_pool = [_ for _ in graph.nodes]
+    random.shuffle(graph_pool)
+
+    # Start the district with some seeds
+    for district in range(1, districts + 1):
+        bar.next()
+        seed = graph_pool.pop()
+        graph.nodes.get(seed)['district'] = district
+
+    # While there are unclaimed nodes
+    while graph_pool:
+        # Let each district claim a new node
+        for district in range(1, districts + 1):
+            round_complete = False
+            # Find the nodes that belong to a district
+            for node, props in graph.nodes(data=True): 
+                if props.get('district') == district:
+                    # iterate through edges and find an unclaimed neighbor
+                    for _, neighbor in graph.edges(node):
+                        if neighbor in graph_pool:
+                            graph_pool.remove(neighbor)
+                            bar.next()
+                            graph.nodes.get(neighbor)['district'] = district
+                            round_complete = True
+                            break
+                if round_complete: break # Quicker breaking
+            if round_complete: break # Quicker breaking
+
+    bar.finish()
+
+    return graph
+
+
 def main(args):
     """
     Run script with -h flag for documentation on main.
@@ -428,6 +462,9 @@ def main(args):
         # Generate a map given seed
         graph = drop_nodes(connect_nodes(load_into_graph(seed_map)), args.pieces)
         
+        # Start district claiming
+        graph = seed_districts(graph, args.districts)
+
         # Cache network
         cache_network(graph)
 
@@ -457,7 +494,9 @@ if __name__ == "__main__":
     parser.add_argument("state", type=str, help="A state code (such as 53_WASHINGTON).")
     parser.add_argument("granularity", default="precinct", choices=["block", "county", "precinct", "file"], type=str, help="How large the initial chunks should be. If file, checks directory file_input/")
     parser.add_argument("output", type=str, choices=["all", "weifan", "geoJson", "image", "plotly"], help="Format of output.")
+    parser.add_argument("districts", type=int, help="Number of districts to split the state into.")
     parser.add_argument("-pieces", type=int, default=0, help="Number of pieces to split the state into. Pass nothing to maintain pieces defined by state set. Passing in a value less than the seed data will result in a noop.")
+    
     # parser.add_argument("-offload", type=bool, default=True, help="Execute script on remote server (Will be roughly 30% - 50% faster than any laptop, but I get to keep your data :).")
     parser.add_argument("-v", type=bool, default=False, help="Execute with output")
 
