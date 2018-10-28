@@ -149,7 +149,12 @@ def connect_nodes(graph):
                 polyB = shapely.geometry.Polygon(geo_data2['vertexes'])
 
                 # If a polygon self-intersects, fix it with buffer(0)
-                # this essentially splits the polygon in two.                
+                # this essentially splits the polygon in two.
+                # Note that this operation is _incredibly_ expensive.
+
+                # Commenting the two conditionals below typically 
+                # speeds the program by 110%, especially with bad data.
+
                 if not polyA.is_valid:
                     polyA = polyA.buffer(0)
                     invalids += 1
@@ -358,8 +363,6 @@ def drop_nodes(graph, pieces):
         bar = IncrementalBar('[!] Dropping Nodes...', max=drop_count)
 
         for i in range(drop_count):
-            if i % 100 == 0:
-                log("Dropping node #{}".format(i))
             
             # get a random node to drop
             drop = choices.pop()
@@ -368,7 +371,6 @@ def drop_nodes(graph, pieces):
             old_edges = graph.edges(drop)
             
             if len(old_edges) == 0:
-                import pdb; pdb.set_trace()
                 continue
             elif len(old_edges) == 1:
                 random_index = 0
