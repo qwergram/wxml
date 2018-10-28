@@ -18,6 +18,7 @@ import io
 import os
 import random
 from collections import Iterable
+import glob
 
 try:
     import requests
@@ -75,13 +76,11 @@ def seed_census_api(state, granularity):
     shape = fiona.open(dirname + filename + ".shp")
     return shape
 
-
 def seed_pengra_api(state, granularity):
     """
     Build an initial node graph using personal API.
     """
     raise NotImplementedError("Server still being worked on.")
-
 
 def seed_blocks(state):
     """
@@ -90,20 +89,12 @@ def seed_blocks(state):
     """
     return seed_census_api(state, "tabblock")
 
-
 def seed_counties(state):
     """
     Build an initial node graph from counties.
     Data comes from US Census.
     """
     return seed_census_api(state, "county")
-
-
-def min_max_collision_check(polygonACoordinates, polygonBCoordinates):
-    """
-    Check if the polygons overlap each other 
-    when projected to the x axis and y axis.
-    """
 
 def connect_nodes(graph):
     """
@@ -126,7 +117,7 @@ def connect_nodes(graph):
     
     Server will execute this code in roughly 40-50% faster than laptop.
 
-    REQUIRES LARGE AMOUNTS OF RAM. Washington state @ block level typically requires 3-4GB of RAM.
+    REQUIRES LARGE AMOUNTS OF RAM. Washington state @ block level typically requires 5-6GB of RAM.
     """
     overlappings = 0
     potential_candidates = 0
@@ -173,7 +164,6 @@ def connect_nodes(graph):
 
     return graph
 
-
 def load_into_graph(shape):
     """
     Take in a fiona shape file and convert it to a graph.
@@ -206,7 +196,10 @@ def load_into_graph(shape):
                 else:
                     yield item
 
-        coordinates = flatten_coordinates(coordinates)
+        if poly_type == "MultiPolygon":
+            coordinates = flatten_coordinates(coordinates)    
+        elif poly_type != "Polygon":
+            pass
         
         # Set mins/maxes to first item in dataset
         # These values are safe because world coordinates
@@ -380,6 +373,10 @@ def main(args):
         seed_map = seed_counties(args.state)
     # elif args.granularity == "precinct":
     #     log("Seeding Precincts...")
+    elif args.granularity == "file":
+        target = glob.glob('file_input/*.shp')[0]
+        log("Seeding from {}".format(target))
+        seed_map = fiona.open(target)
 
     # Generate a map given seed
     graph = drop_nodes(connect_nodes(load_into_graph(seed_map)), args.pieces)
@@ -408,7 +405,7 @@ if __name__ == "__main__":
 
     # Random Generation Parameters
     parser.add_argument("state", type=str, help="A state code (such as 53_WASHINGTON).")
-    parser.add_argument("granularity", default="precinct", choices=["block", "county", "precinct"], type=str, help="How large the initial chunks should be.")
+    parser.add_argument("granularity", default="precinct", choices=["block", "county", "precinct", "file"], type=str, help="How large the initial chunks should be. If file, checks directory file_input/")
     parser.add_argument("output", type=str, choices=["all", "weifan", "geoJson", "pickle", "plotly"], help="Format of output.")
     parser.add_argument("-pieces", type=int, default=0, help="Number of pieces to split the state into. Pass nothing to maintain pieces defined by state set. Passing in a value less than the seed data will result in a noop.")
     # parser.add_argument("-offload", type=bool, default=True, help="Execute script on remote server (Will be roughly 30% - 50% faster than any laptop, but I get to keep your data :).")
