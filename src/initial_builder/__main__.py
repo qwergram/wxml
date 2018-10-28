@@ -189,17 +189,14 @@ def load_into_graph(shape):
 
         def flatten_coordinates(iterable):
             for item in iterable:
-                if isinstance(item, Iterable) and len(item) != 2:
+                if isinstance(item, Iterable) and (len(item) != 2 or not isinstance(item[0], (float, int))):
                     yield from flatten_coordinates(item)
                     # To mark the end of a polygon
                     yield [None, None]
                 else:
                     yield item
 
-        if poly_type == "MultiPolygon":
-            coordinates = flatten_coordinates(coordinates)    
-        elif poly_type != "Polygon":
-            pass
+        coordinates = flatten_coordinates(coordinates)    
         
         # Set mins/maxes to first item in dataset
         # These values are safe because world coordinates
@@ -218,7 +215,10 @@ def load_into_graph(shape):
         vertexes = []
         
         # Find min/max
-        for (longitude, lattitude) in coordinates:
+        for vertex in coordinates:
+            if len(vertex) != 2:
+                print(vertex)
+            (longitude, lattitude) = vertex
             if longitude == None or lattitude == None: continue
             
             total += 1
@@ -281,7 +281,9 @@ def draw_graph(graph, name):
         hoverinfo='none',
     )
     
-    for polyA, polyB in graph.edges:
+    for i, (polyA, polyB) in enumerate(graph.edges):
+        if len(graph.edges) > 1000 and i % 100 == 0:
+            log("Tracing edge #{}".format(i))
         polyA = graph.nodes.get(polyA)
         polyB = graph.nodes.get(polyB)
         ax, ay = polyA['avg_lat'], polyA['avg_lon']
