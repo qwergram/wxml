@@ -124,13 +124,13 @@ def connect_nodes(graph):
     overlappings = 0
     potential_candidates = 0
     failures = 0
-    bar = IncrementalBar("[!] Creating Edges...", max=len(graph.nodes.data()) ** 2)
+    bar = IncrementalBar("[!] Creating Edges...", max=len(graph.nodes.data()))
     for gid, geo_data in graph.nodes.data():
-        
+        bar.next()
         for gid2, geo_data2 in graph.nodes.data():
             # An absolutely disgusting way to skip nodes we've already looked at.
             # data() doesn't support indexing.
-            bar.next()
+            
             if int(gid2) <= int(gid): continue
             
             # check if they overlap when projected to 1d
