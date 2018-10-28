@@ -42,22 +42,12 @@ US_CENSUS_API = "https://www2.census.gov/geo/tiger/TIGER2009/"
 # CACHE_API = "https://data.pengra.io/state_gis/"
 
 COLORS = [
-    "#f46242",
-    "#f4b841",
-    "#f4f141",
-    "#bada55",
-    "#61f441",
-    "#41f491",
-    "#41f4d9",
-    "#41d0f4",
-    "#4188f4",
-    "#4c41f4",
-    "#9a41f4",
-    "#d341f4",
-    "#f441d0",
-    "#f4417c",
-    "#f44141"
-]
+    "#f46242", "#f4b841", "#f4f141", "#bada55", "#61f441", "#41f491", "#41f4d9", 
+    "#41d0f4", "#4188f4", "#4c41f4", "#9a41f4", "#d341f4", "#f441d0", "#f4417c", 
+    "#f44141", "#ffdddd", "#ffe8dd", "#fffedd", "#f3ffdd", "#e2ffdd", "#ddffef",
+    "#ddfbff", "#ddebff", "#e0ddff", "#f6ddff", "#ffddf8", "#6b4141", "#6b5241",
+    "#6b5d41", "#6b6641", "#5a6b41", "#436b41", "#416b54", "#416b64", "#41616b",
+    "#414c6b", "#4b416b", "#58416b", "#66416b", "#6b4150", "#ffffff", "#000000"
 
 # For LOGGER
 VERBOSE = False
@@ -298,6 +288,11 @@ def draw_graph(graph, name, districts, image=False):
 
     for district in range(districts):
         district_nodes = [node for node, props in graph.nodes(data=True) if props.get('district') == district + 1]
+        hex_code = '0123456789abcdef'
+        if district > len(COLORS):
+            color = '#' + [random.choice(hex_code) for i in range(6)]
+        else:
+            color = COLORS[district]
         node_traces.append(
             go.Scattergeo(
                 lat=[graph.nodes.get(node)['avg_lat'] for node in district_nodes],
@@ -307,7 +302,7 @@ def draw_graph(graph, name, districts, image=False):
                 marker={
                     "size": 10,
                     "line": {"width": 0.9},
-                    "color": COLORS[district]
+                    "color": color
                 },
                 hoverinfo="text",
             )
