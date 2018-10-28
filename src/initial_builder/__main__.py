@@ -29,6 +29,9 @@ try:
     import plotly
     import plotly.plotly as plt
     import plotly.graph_objs as go
+    import plotly.io as pio
+    from progress.bar import IncrementalBar
+    from progress.spinner import Spinner
 except ImportError:
     raise ImportError("Requires 3rd party library, did you do `pip install -r requirements.txt`?")
 
@@ -53,7 +56,6 @@ def is_valid_state(state):
     with io.open("initial_builder/valid_states.json") as handle:
         valid_states = json.loads(handle.read())
     return state in valid_states
-
 
 def seed_census_api(state, granularity):
     """
@@ -250,7 +252,7 @@ def load_into_graph(shape):
 
     return graph
 
-def draw_graph(graph, name):
+def draw_graph(graph, name, image=False):
     log("Building Node Trace")
     
     node_trace = go.Scattergeo(
@@ -281,9 +283,13 @@ def draw_graph(graph, name):
         hoverinfo='none',
     )
     
+    bar = IncrementalBar('[!] Building Edges...', max=len(graph.edges))
+
     for i, (polyA, polyB) in enumerate(graph.edges):
-        if len(graph.edges) > 1000 and i % 100 == 0:
-            log("Tracing edge #{}".format(i))
+        bar.next()
+
+        if i > 2000: break
+
         polyA = graph.nodes.get(polyA)
         polyB = graph.nodes.get(polyB)
         ax, ay = polyA['avg_lat'], polyA['avg_lon']
@@ -291,6 +297,8 @@ def draw_graph(graph, name):
         edge_trace['lat'] += (ax, bx, None)
         edge_trace['lon'] += (ay, by, None)
     
+    bar.finish()
+
     figure = go.Figure(
         data=[edge_trace, node_trace],
         layout=go.Layout(
@@ -309,8 +317,14 @@ def draw_graph(graph, name):
         )
     )
     
+    if image:
+        log("Create image with name {}".format(name))
+        return pio.write_image(figure, '{}.png'.format(name))
+
     log("Create plotly plot with name {}".format(name))
     return plt.plot(figure, filename=name)
+
+def something(): pass
 
 def drop_nodes(graph, pieces):
     """
@@ -325,6 +339,8 @@ def drop_nodes(graph, pieces):
         # In a list for the sake of indexes
         choices = [str(_) for _ in range(len(graph))]
         random.shuffle(choices)
+
+        bar = IncrementalBar('[!] Dropping Nodes...', max=drop_count)
 
         for i in range(drop_count):
             if i % 100 == 0:
@@ -355,8 +371,15 @@ def drop_nodes(graph, pieces):
                 break
             
             graph.remove_node(drop)
+
+            bar.next()
+
+        bar.finish()
         
     return graph
+
+def cache_network(graph):
+    networkx.write_gpickle(graph, "graph_cache.networkx")
 
 def main(args):
     """
@@ -366,22 +389,30 @@ def main(args):
     if not is_valid_state(args.state):
         raise ValueError("Unknown State: {}".format(args.state))
 
-    log("Building Graph for {}".format(args.state))
-    seed_map = None
-    
-    if args.granularity == "block":
-        seed_map = seed_blocks(args.state)
-    elif args.granularity == "county":
-        seed_map = seed_counties(args.state)
-    # elif args.granularity == "precinct":
-    #     log("Seeding Precincts...")
-    elif args.granularity == "file":
-        target = glob.glob('file_input/*.shp')[0]
-        log("Seeding from {}".format(target))
-        seed_map = fiona.open(target)
+    if os.path.isfile("graph_cache.networkx"):
+        log("Detected cached graph")
+        graph = networkx.read_gpickle("graph_cache.networkx")
 
-    # Generate a map given seed
-    graph = drop_nodes(connect_nodes(load_into_graph(seed_map)), args.pieces)
+    else:
+        log("Building Graph for {}".format(args.state))
+        seed_map = None
+        
+        if args.granularity == "block":
+            seed_map = seed_blocks(args.state)
+        elif args.granularity == "county":
+            seed_map = seed_counties(args.state)
+        # elif args.granularity == "precinct":
+        #     log("Seeding Precincts...")
+        elif args.granularity == "file":
+            target = glob.glob('file_input/*.shp')[0]
+            log("Seeding from {}".format(target))
+            seed_map = fiona.open(target)
+
+        # Generate a map given seed
+        graph = drop_nodes(connect_nodes(load_into_graph(seed_map)), args.pieces)
+        
+        # Cache network
+        cache_network(graph)
 
     # Output the graph
     if args.output == "plotly" or args.output == "all":
@@ -393,9 +424,9 @@ def main(args):
     if args.output == "geoJson" or args.output == "all":
         # geoJson output
         pass
-    if args.output == "pickle" or args.output == "all":
-        # python pickle
-        pass
+    if args.output == "image" or args.output == "all":
+        # image output
+        draw_graph(graph, args.state, True)
 
 if __name__ == "__main__":
     log("Initial Graph Builder Script")
@@ -408,10 +439,9 @@ if __name__ == "__main__":
     # Random Generation Parameters
     parser.add_argument("state", type=str, help="A state code (such as 53_WASHINGTON).")
     parser.add_argument("granularity", default="precinct", choices=["block", "county", "precinct", "file"], type=str, help="How large the initial chunks should be. If file, checks directory file_input/")
-    parser.add_argument("output", type=str, choices=["all", "weifan", "geoJson", "pickle", "plotly"], help="Format of output.")
+    parser.add_argument("output", type=str, choices=["all", "weifan", "geoJson", "image", "plotly"], help="Format of output.")
     parser.add_argument("-pieces", type=int, default=0, help="Number of pieces to split the state into. Pass nothing to maintain pieces defined by state set. Passing in a value less than the seed data will result in a noop.")
     # parser.add_argument("-offload", type=bool, default=True, help="Execute script on remote server (Will be roughly 30% - 50% faster than any laptop, but I get to keep your data :).")
-    parser.add_argument("-visualize", type=bool, default=False, help="Execute script and output a quick image of produced map.")
     parser.add_argument("-v", type=bool, default=False, help="Execute with output")
 
     # Check inputs are valid
