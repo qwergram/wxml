@@ -41,6 +41,24 @@ from util import *
 US_CENSUS_API = "https://www2.census.gov/geo/tiger/TIGER2009/"
 # CACHE_API = "https://data.pengra.io/state_gis/"
 
+COLORS = [
+    "#f46242",
+    "#f4b841",
+    "#f4f141",
+    "#bada55",
+    "#61f441",
+    "#41f491",
+    "#41f4d9",
+    "#41d0f4",
+    "#4188f4",
+    "#4c41f4",
+    "#9a41f4",
+    "#d341f4",
+    "#f441d0",
+    "#f4417c",
+    "#f44141"
+]
+
 # For LOGGER
 VERBOSE = False
 
@@ -278,20 +296,22 @@ def draw_graph(graph, name, districts, image=False):
     
     node_traces = []
 
-    # for i in range(): p
-
-    node_trace = go.Scattergeo(
-        lat=[graph.nodes.get(node)['avg_lat'] for node in graph.nodes],
-        lon=[graph.nodes.get(node)['avg_lon'] for node in graph.nodes],
-        mode="markers",
-        name="pieces",
-        marker={
-            "size": 10,
-            "line": {"width": 0.9},
-            "color": "#bada55"
-        },
-        hoverinfo="text",
-    )
+    for district in range(districts):
+        district_nodes = [node for node, props in graph.nodes(data=True) if props.get('district') == district + 1]
+        node_traces.append(
+            go.Scattergeo(
+                lat=[graph.nodes.get(node)['avg_lat'] for node in district_nodes],
+                lon=[graph.nodes.get(node)['avg_lon'] for node in district_nodes],
+                mode="markers",
+                name="District {}".format(district + 1),
+                marker={
+                    "size": 10,
+                    "line": {"width": 0.9},
+                    "color": COLORS[district]
+                },
+                hoverinfo="text",
+            )
+        )
     
     log("Building Edge Trace")
 
@@ -325,7 +345,7 @@ def draw_graph(graph, name, districts, image=False):
     bar.finish()
 
     figure = go.Figure(
-        data=[edge_trace, node_trace],
+        data=[edge_trace] + node_traces,
         layout=go.Layout(
             hovermode="closest",
             xaxis={"showgrid": False, "zeroline": False},
@@ -414,18 +434,20 @@ def seed_districts(graph, districts):
     graph_pool = [_ for _ in graph.nodes]
     random.shuffle(graph_pool)
 
+    district_sizes = [[1, district] for district in range(1, districts + 1)]
+
     # Start the district with some seeds
     for district in range(1, districts + 1):
         bar.next()
         seed = graph_pool.pop()
         graph.nodes.get(seed)['district'] = district
 
-    last_run = len(graph_pool)
-
     # While there are unclaimed nodes
     while graph_pool:
+        last_run = len(graph_pool)
         # Let each district claim a new node
-        for district in range(1, districts + 1):
+        district_sizes = sorted(district_sizes)
+        for i, (size, district) in enumerate(district_sizes):
             round_complete = False
             # Find the nodes that belong to a district
             for node, props in graph.nodes(data=True): 
@@ -434,6 +456,7 @@ def seed_districts(graph, districts):
                     for _, neighbor in graph.edges(node):
                         if neighbor in graph_pool:
                             graph_pool.remove(neighbor)
+                            district_sizes[i][0] += 1
                             bar.next()
                             graph.nodes.get(neighbor)['district'] = district
                             round_complete = True
@@ -442,7 +465,8 @@ def seed_districts(graph, districts):
             if round_complete: break # Quicker breaking
 
         if len(graph_pool) == last_run:
-            import pdb; pdb.set_trace()
+            for node in graph_pool:
+                graph.remove_node(node)
 
     bar.finish()
 
@@ -487,7 +511,7 @@ def main(args):
     # Output the graph
     if args.output == "plotly" or args.output == "all":
         # Plotly graph
-        draw_graph(graph, args.state)
+        draw_graph(graph, args.state, args.districts)
     if args.output == "weifan" or args.output == "all":
         # weifan's adjacency graph format
         pass
@@ -512,7 +536,8 @@ if __name__ == "__main__":
     parser.add_argument("output", type=str, choices=["all", "weifan", "geoJson", "image", "plotly"], help="Format of output.")
     parser.add_argument("districts", type=int, help="Number of districts to split the state into.")
     parser.add_argument("-pieces", type=int, default=0, help="Number of pieces to split the state into. Pass nothing to maintain pieces defined by state set. Passing in a value less than the seed data will result in a noop.")
-    
+    parser.add_argument("-no-cache", type=bool, help="Execute without using any cache.")
+
     # parser.add_argument("-offload", type=bool, default=True, help="Execute script on remote server (Will be roughly 30% - 50% faster than any laptop, but I get to keep your data :).")
     parser.add_argument("-v", type=bool, default=False, help="Execute with output")
 
