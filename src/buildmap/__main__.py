@@ -467,6 +467,7 @@ def seed_districts(graph, districts):
         if len(graph_pool) == last_run:
             for node in graph_pool:
                 graph.remove_node(node)
+            break
 
     bar.finish()
 
