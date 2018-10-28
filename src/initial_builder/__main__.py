@@ -16,6 +16,7 @@ import argparse
 import json
 import io
 import os
+import random
 from collections import Iterable
 
 try:
@@ -138,7 +139,7 @@ def connect_nodes(graph):
         for gid2, geo_data2 in graph.nodes.data():
             # An absolutely disgusting way to skip nodes we've already looked at.
             # data() doesn't support indexing.
-            if int(gid2) < int(gid): continue
+            if int(gid2) <= int(gid): continue
             
             # check if they overlap when projected to 1d
             potential_candidate = (
@@ -294,7 +295,6 @@ def draw_graph(graph, name):
         bx, by = polyB['avg_lat'], polyB['avg_lon']
         edge_trace['lat'] += (ax, bx, None)
         edge_trace['lon'] += (ay, by, None)
-        # break
     
     figure = go.Figure(
         data=[edge_trace, node_trace],
@@ -314,8 +314,54 @@ def draw_graph(graph, name):
         )
     )
     
-    log("Created plot with name {}".format(name))
+    log("Create plotly plot with name {}".format(name))
     return plt.plot(figure, filename=name)
+
+def drop_nodes(graph, pieces):
+    """
+    Select random points in the graph and have it "consume" other points in the graph.
+    """
+    
+    if pieces < len(graph) and pieces > 0:
+        drop_count = len(graph) - pieces
+        log("Dropping {} nodes to fulfill pieces requirement".format(drop_count))
+        
+        # Populate a "bag" of nodes
+        # In a list for the sake of indexes
+        choices = [str(_) for _ in range(len(graph))]
+        random.shuffle(choices)
+
+        for i in range(drop_count):
+            if i % 100 == 0:
+                log("Dropping node #{}".format(i))
+            
+            # get a random node to drop
+            drop = choices.pop()
+            
+            # get a list of it's neighbors and select one
+            old_edges = graph.edges(drop)
+            
+            if len(old_edges) == 0:
+                import pdb; pdb.set_trace()
+                continue
+            elif len(old_edges) == 1:
+                random_index = 0
+            else:
+                random_index = random.randint(0, len(old_edges) - 1)
+            
+            for i, edge in enumerate(old_edges):
+                # Again, generators don't have indexes
+                if i < random_index: continue
+
+                consuming_node = edge[1]
+                # Have consuming node inherit all old edges
+                for _, other_node in old_edges:
+                    graph.add_edge(consuming_node, other_node)
+                break
+            
+            graph.remove_node(drop)
+        
+    return graph
 
 def main(args):
     """
@@ -336,16 +382,24 @@ def main(args):
     #     log("Seeding Precincts...")
 
     # Generate a map given seed
-    graph = connect_nodes(load_into_graph(seed_map))
+    graph = drop_nodes(connect_nodes(load_into_graph(seed_map)), args.pieces)
 
-    # Start dropping random nodes until graph is specified size.
-    # graph = drop_nodes(graph, args.pieces)
-
-    # Visualize the map
-    draw_graph(graph, args.state)
+    # Output the graph
+    if args.output == "plotly" or args.output == "all":
+        # Plotly graph
+        draw_graph(graph, args.state)
+    if args.output == "weifan" or args.output == "all":
+        # weifan's adjacency graph format
+        pass
+    if args.output == "geoJson" or args.output == "all":
+        # geoJson output
+        pass
+    if args.output == "pickle" or args.output == "all":
+        # python pickle
+        pass
 
 if __name__ == "__main__":
-    log("Initial Builder Script by Norton Pengra")
+    log("Initial Graph Builder Script")
     
     parser = argparse.ArgumentParser(description="""
     A tool that takes in a state and splits it up into n pieces. Piece granularity is defined by the user.
@@ -355,8 +409,8 @@ if __name__ == "__main__":
     # Random Generation Parameters
     parser.add_argument("state", type=str, help="A state code (such as 53_WASHINGTON).")
     parser.add_argument("granularity", default="precinct", choices=["block", "county", "precinct"], type=str, help="How large the initial chunks should be.")
-    parser.add_argument("output", type=str, choices=["all", "weifan", "geoJson", "pickle"], help="Format of output.")
-    parser.add_argument("-pieces", type=int, help="Number of pieces to split the state into. Pass nothing to maintain pieces defined by state set.")
+    parser.add_argument("output", type=str, choices=["all", "weifan", "geoJson", "pickle", "plotly"], help="Format of output.")
+    parser.add_argument("-pieces", type=int, default=0, help="Number of pieces to split the state into. Pass nothing to maintain pieces defined by state set. Passing in a value less than the seed data will result in a noop.")
     # parser.add_argument("-offload", type=bool, default=True, help="Execute script on remote server (Will be roughly 30% - 50% faster than any laptop, but I get to keep your data :).")
     parser.add_argument("-visualize", type=bool, default=False, help="Execute script and output a quick image of produced map.")
     parser.add_argument("-v", type=bool, default=False, help="Execute with output")
