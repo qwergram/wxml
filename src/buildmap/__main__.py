@@ -48,6 +48,7 @@ COLORS = [
     "#ddfbff", "#ddebff", "#e0ddff", "#f6ddff", "#ffddf8", "#6b4141", "#6b5241",
     "#6b5d41", "#6b6641", "#5a6b41", "#436b41", "#416b54", "#416b64", "#41616b",
     "#414c6b", "#4b416b", "#58416b", "#66416b", "#6b4150", "#ffffff", "#000000"
+]
 
 # For LOGGER
 VERBOSE = False
