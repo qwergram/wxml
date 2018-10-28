@@ -290,7 +290,7 @@ def draw_graph(graph, name, districts, image=False):
     for district in range(districts):
         district_nodes = [node for node, props in graph.nodes(data=True) if props.get('district') == district + 1]
         hex_code = '0123456789abcdef'
-        if district > len(COLORS):
+        if district >= len(COLORS):
             color = '#' + [random.choice(hex_code) for i in range(6)]
         else:
             color = COLORS[district]
