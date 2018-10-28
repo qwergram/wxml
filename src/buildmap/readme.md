@@ -2,6 +2,8 @@
 
 A simple tool to build initial graphs for walking.
 
+![](https://imgur.com/mDXu8y2.png)
+
 Running `buildmap/ -h` will return the following output:
 
 ```txt

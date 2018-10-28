@@ -273,9 +273,13 @@ def load_into_graph(shape):
 
     return graph
 
-def draw_graph(graph, name, image=False):
+def draw_graph(graph, name, districts, image=False):
     log("Building Node Trace")
     
+    node_traces = []
+
+    # for i in range(): p
+
     node_trace = go.Scattergeo(
         lat=[graph.nodes.get(node)['avg_lat'] for node in graph.nodes],
         lon=[graph.nodes.get(node)['avg_lon'] for node in graph.nodes],
@@ -350,13 +354,13 @@ def drop_nodes(graph, pieces):
     Select random points in the graph and have it "consume" other points in the graph.
     """
     
-    if pieces < len(graph) and pieces > 0:
-        drop_count = len(graph) - pieces
+    if pieces < len(graph.nodes) and pieces > 0:
+        drop_count = len(graph.nodes) - pieces
         log("Dropping {} nodes to fulfill pieces requirement".format(drop_count))
         
         # Populate a "bag" of nodes
         # In a list for the sake of indexes
-        choices = [str(_) for _ in range(len(graph))]
+        choices = [str(_) for _ in range(len(graph.nodes))]
         random.shuffle(choices)
 
         bar = IncrementalBar('[!] Dropping Nodes...', max=drop_count)
@@ -398,6 +402,14 @@ def cache_network(graph):
     networkx.write_gpickle(graph, "graph_cache.networkx")
 
 def seed_districts(graph, districts):
+    """
+    A simple procedure that selects n random seed nodes (n = number of districts)
+    and then selects neighbors of those seeds and claims them to be of the same
+    district.
+
+    Performance Notes:
+    o(n^3), but operations are cheap.
+    """
     bar = IncrementalBar("[!] Claiming Districts", max=len(graph.nodes))
     graph_pool = [_ for _ in graph.nodes]
     random.shuffle(graph_pool)
@@ -408,6 +420,8 @@ def seed_districts(graph, districts):
         seed = graph_pool.pop()
         graph.nodes.get(seed)['district'] = district
 
+    last_run = len(graph_pool)
+
     # While there are unclaimed nodes
     while graph_pool:
         # Let each district claim a new node
@@ -416,7 +430,7 @@ def seed_districts(graph, districts):
             # Find the nodes that belong to a district
             for node, props in graph.nodes(data=True): 
                 if props.get('district') == district:
-                    # iterate through edges and find an unclaimed neighbor
+                    # Iterate through edges and find an unclaimed neighbor
                     for _, neighbor in graph.edges(node):
                         if neighbor in graph_pool:
                             graph_pool.remove(neighbor)
@@ -427,10 +441,12 @@ def seed_districts(graph, districts):
                 if round_complete: break # Quicker breaking
             if round_complete: break # Quicker breaking
 
+        if len(graph_pool) == last_run:
+            import pdb; pdb.set_trace()
+
     bar.finish()
 
     return graph
-
 
 def main(args):
     """
@@ -480,7 +496,7 @@ def main(args):
         pass
     if args.output == "image" or args.output == "all":
         # image output
-        draw_graph(graph, args.state, True)
+        draw_graph(graph, args.state, args.districts, True)
 
 if __name__ == "__main__":
     log("Initial Graph Builder Script")
