@@ -124,6 +124,7 @@ def connect_nodes(graph):
     overlappings = 0
     potential_candidates = 0
     failures = 0
+    invalids = 0
     bar = IncrementalBar("[!] Creating Edges...", max=len(graph.nodes.data()))
     for gid, geo_data in graph.nodes.data():
         bar.next()
@@ -146,6 +147,17 @@ def connect_nodes(graph):
                 
                 polyA = shapely.geometry.Polygon(geo_data['vertexes'])
                 polyB = shapely.geometry.Polygon(geo_data2['vertexes'])
+
+                # If a polygon self-intersects, fix it with buffer(0)
+                # this essentially splits the polygon in two.                
+                if not polyA.is_valid:
+                    polyA = polyA.buffer(0)
+                    invalids += 1
+                
+                if not polyB.is_valid:
+                    polyB = polyB.buffer(0)
+                    invalids += 1
+
                 try:
                     overlaps = bool(polyA.touches(polyB))
                     overlaps = overlaps or bool(polyA.intersects(polyB))
@@ -164,6 +176,7 @@ def connect_nodes(graph):
 
     log("Found {} potential candidates ({:.2f}% of total)".format(potential_candidates, potential_candidates * 100 / (failures + potential_candidates)))
     log("Found {} overlappings ({:.2f}% of potential candidates)".format(overlappings, overlappings * 100 / potential_candidates))
+    log("Found {} invalid polygons ({:.2f}% of total)".format(invalids, invalids * 100 / (failures + potential_candidates)))
 
     return graph
 
