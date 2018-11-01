@@ -406,6 +406,9 @@ def drop_nodes(graph, pieces):
                     graph.add_edge(consuming_node, other_node)
                 break
             
+            graph.nodes[consuming_node].set_default('contains', [])
+            graph.nodes[consuming_node]['contains'].append(nodes.graph[drop]['TARGET_FID']) # Not sure if this is the write one
+
             graph.remove_node(drop)
 
             bar.next()
@@ -486,7 +489,7 @@ def main(args):
     if not is_valid_state(args.state):
         raise ValueError("Unknown State: {}".format(args.state))
 
-    if os.path.isfile("graph_cache.networkx"):
+    if os.path.isfile("graph_cache.networkx") and not args.no_cache:
         log("Detected cached graph")
         graph = networkx.read_gpickle("graph_cache.networkx")
 
@@ -520,7 +523,7 @@ def main(args):
         draw_graph(graph, args.state, args.districts)
     if args.output == "weifan" or args.output == "all":
         # weifan's precinct/district map
-        weifan_export(graph, args.state)
+        weifan_export(graph, args.state, args.districts)
     if args.output == "geoJson" or args.output == "all":
         # geoJson output
         pass
