@@ -469,6 +469,15 @@ def seed_districts(graph, districts):
 
     return graph
 
+def weifan_export(graph, name):
+    """
+    Export all the districts as TSV file.
+    <Precinct ID>"\t"<District ID>
+    """
+    for node in graph.nodes():
+        import pdb; pdb.set_trace()
+
+
 def main(args):
     """
     Run script with -h flag for documentation on main.
@@ -510,8 +519,8 @@ def main(args):
         # Plotly graph
         draw_graph(graph, args.state, args.districts)
     if args.output == "weifan" or args.output == "all":
-        # weifan's adjacency graph format
-        pass
+        # weifan's precinct/district map
+        weifan_export(graph, args.state)
     if args.output == "geoJson" or args.output == "all":
         # geoJson output
         pass
