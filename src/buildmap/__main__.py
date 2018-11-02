@@ -291,7 +291,7 @@ def draw_graph(graph, name, districts, image=False):
         district_nodes = [node for node, props in graph.nodes(data=True) if props.get('district') == district + 1]
         hex_code = '0123456789abcdef'
         if district >= len(COLORS):
-            color = '#' + "".join([random.choice(hex_code) for i in range(6)])
+            color = '#' + "".join([random.choice(hex_code) for i in range(6)]) # 6 HEX digits
         else:
             color = COLORS[district]
         node_traces.append(
