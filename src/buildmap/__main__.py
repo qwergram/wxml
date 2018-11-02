@@ -479,15 +479,12 @@ def weifan_export(graph, name):
     """
     bar = IncrementalBar("[!] Writing Weifan's Format", max=len(graph.nodes))
     with io.open("{}.tsv".format(name), 'w') as handle:
-        handle.writeline("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID")
+        handle.write("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID\n")
         for node in graph.nodes():
             bar.next()
-            handle.writeline("{}\t{}".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district']))
+            handle.write("{}\t{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district']))
     bar.finish()
     
-            
-
-
 def main(args):
     """
     Run script with -h flag for documentation on main.
