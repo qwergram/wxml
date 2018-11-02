@@ -478,7 +478,7 @@ def weifan_export(graph, name):
     <Precinct ID>"\t"<District ID>
     """
     bar = IncrementalBar("[!] Writing Weifan's Format", max=len(graph.nodes))
-    with io.open("{}.tsv".format(name)) as handle:
+    with io.open("{}.tsv".format(name), 'w') as handle:
         handle.writeline("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID")
         for node in graph.nodes():
             bar.next()
