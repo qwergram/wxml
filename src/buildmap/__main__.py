@@ -477,8 +477,15 @@ def weifan_export(graph, name):
     Export all the districts as TSV file.
     <Precinct ID>"\t"<District ID>
     """
-    for node in graph.nodes():
-        import pdb; pdb.set_trace()
+    bar = IncrementalBar("[!] Writing Weifan's Format", max=len(graph.nodes))
+    with io.open("{}.tsv".format(name)) as handle:
+        handle.writeline("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID")
+        for node in graph.nodes():
+            bar.next()
+            handle.writeline("{}\t{}".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district']))
+    bar.finish()
+    
+            
 
 
 def main(args):
