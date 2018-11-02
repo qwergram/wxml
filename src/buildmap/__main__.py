@@ -406,7 +406,7 @@ def drop_nodes(graph, pieces):
                     graph.add_edge(consuming_node, other_node)
                 break
             
-            graph.nodes[consuming_node].set_default('contains', [])
+            graph.nodes[consuming_node].setdefault('contains', [])
             graph.nodes[consuming_node]['contains'].append(nodes.graph[drop]['WA_GEO_ID']) # Not sure if this is the write one
 
             graph.remove_node(drop)
