@@ -407,7 +407,7 @@ def drop_nodes(graph, pieces):
                 break
             
             graph.nodes[consuming_node].set_default('contains', [])
-            graph.nodes[consuming_node]['contains'].append(nodes.graph[drop]['TARGET_FID']) # Not sure if this is the write one
+            graph.nodes[consuming_node]['contains'].append(nodes.graph[drop]['WA_GEO_ID']) # Not sure if this is the write one
 
             graph.remove_node(drop)
 
@@ -482,6 +482,7 @@ def weifan_export(graph, name):
         handle.write("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID\n")
         for node in graph.nodes():
             bar.next()
+            import pdb; pdb.set_trace()
             handle.write("{}\t{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district']))
     bar.finish()
     
