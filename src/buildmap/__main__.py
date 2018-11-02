@@ -523,7 +523,7 @@ def main(args):
         draw_graph(graph, args.state, args.districts)
     if args.output == "weifan" or args.output == "all":
         # weifan's precinct/district map
-        weifan_export(graph, args.states)
+        weifan_export(graph, args.state)
     if args.output == "geoJson" or args.output == "all":
         # geoJson output
         pass
