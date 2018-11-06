@@ -33,8 +33,8 @@ def get_shape_file(dir_location):
     Check if a path contains a shape file.
     """
     if os.path.isdir(dir_location):
-        path = glob.glob(os.path.join(dir_location, "*.shp")):
-            return fiona.open(path)
+        path = glob.glob(os.path.join(dir_location, "*.shp"))
+        return fiona.open(path)
     return []
 
 
