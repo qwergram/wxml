@@ -39,12 +39,13 @@ def get_shape_file(dir_location):
     return []
 
 
-def iterate_shape(shape, precinct_flag, population, polygon, population_flag, population_threshold, primary_key):
+def iterate_shape(shape, precinct_flag, population, polygon, population_flag, population_threshold, primary_key, show_bar=True):
     """
     Iterate through the polygons declared in a shape file.
     Returns 
     """
-    bar = IncrementalBar("[!] Reading Shapes... ", max=len(shape))
+    if show_bar:
+        bar = IncrementalBar("[!] Reading Shapes... ", max=len(shape))
     flags = 0
     for i, polygon in enumerate(shape):
         # GeoJSON standard formatting
@@ -67,9 +68,11 @@ def iterate_shape(shape, precinct_flag, population, polygon, population_flag, po
 
         yield (flag, wa_geo_id, precinct_id, properties[population_flag], poly_type)
         
-        bar.next()
+        if show_bar:
+            bar.next()
     
-    bar.finish()
+    if show_bar:
+        bar.finish()
 
 
 def output_results(issues):
@@ -92,7 +95,7 @@ def write_results(issues):
 
 def main(args):
     shape = get_shape_file(args.path)
-    issues = iterate_shape(shape, args.precinct_flag, args.population, args.polygon, args.population_flag, args.population_threshold, args.primary_key)
+    issues = iterate_shape(shape, args.precinct_flag, args.population, args.polygon, args.population_flag, args.population_threshold, args.primary_key, args.output == "txt")
 
     if args.output == "stdout":
         output_results(issues)
