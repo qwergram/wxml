@@ -25,7 +25,7 @@ try:
 except ImportError:
     raise ImportError("Requires 3rd party library, did you do `pip install -r requirements.txt`?")
 
-from .buildmap.util import *
+from util import *
 
 
 def get_shape_file(dir_location):
