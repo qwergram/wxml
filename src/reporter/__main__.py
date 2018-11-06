@@ -34,7 +34,8 @@ def get_shape_file(dir_location):
     """
     if os.path.isdir(dir_location):
         path = glob.glob(os.path.join(dir_location, "*.shp"))
-        return fiona.open(path)
+        if len(path) >= 1:
+            return fiona.open(path[0])
     return []
 
 
