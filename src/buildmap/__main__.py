@@ -147,15 +147,19 @@ def connect_nodes(graph):
             if potential_candidate:
                 # Expensive.
                 
-                polyA = shapely.geometry.Polygon(geo_data['vertexes'])
-                polyB = shapely.geometry.Polygon(geo_data2['vertexes'])
+                if geo_data['geometry']['type'].lower() == 'polygon':
+                    polyA = shapely.geometry.Polygon(shapely.geometry.shape(geo_data['geometry']))
+                elif geo_data['geometry']['type'].lower() == 'multipolygon':
+                    polyA = shapely.geometry.MultiPolygon(shapely.geometry.shape(geo_data['geometry']))
+
+                if geo_data2['geometry']['type'].lower() == 'polygon':
+                    polyB = shapely.geometry.Polygon(shapely.geometry.shape(geo_data2['geometry']))
+                elif geo_data2['geometry']['type'].lower() == 'multipolygon':
+                    polyB = shapely.geometry.MultiPolygon(shapely.geometry.shape(geo_data2['geometry']))
 
                 # If a polygon self-intersects, fix it with buffer(0)
                 # this essentially splits the polygon in two.
                 # Note that this operation is _incredibly_ expensive.
-
-                # Commenting the two conditionals below typically 
-                # speeds the program by 110%, especially with bad data.
 
                 if not polyA.is_valid:
                     polyA = polyA.buffer(0)
@@ -201,8 +205,9 @@ def load_into_graph(shape):
         # GeoJSON standard formatting
         fid = polygon['id']
         properties = polygon['properties']
-        coordinates = polygon['geometry']['coordinates']
-        poly_type = polygon['geometry']['type']
+        geometry = polygon['geometry']
+        coordinates = geometry['coordinates']
+        poly_type = geometry['type']
 
         # Nice to have messages
         # bar.next()
@@ -259,7 +264,7 @@ def load_into_graph(shape):
 
         graph.add_node(
             fid,  # GIS decided indexes.
-            vertexes=vertexes,
+            geometry=geometry,
             # For quickly determining if a x/y axis projected polygons overlap
             min_lon=minimum_long,
             max_lon=minimum_long,
@@ -503,8 +508,6 @@ def main(args):
             seed_map = seed_blocks(args.state)
         elif args.granularity == "county":
             seed_map = seed_counties(args.state)
-        # elif args.granularity == "precinct":
-        #     log("Seeding Precincts...")
         elif args.granularity == "file":
             target = glob.glob('file_input/*.shp')[0]
             log("Seeding from {}".format(target))
