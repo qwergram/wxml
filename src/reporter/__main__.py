@@ -65,15 +65,12 @@ def iterate_shape(shape, precinct_flag, population_flag, land_flag, population_t
         if poly_type.lower() != "polygon":
             flag = True
         
-        if precinct_flag is None:
+        if precinct_flag in [None, "NA"]:
             flag = True
 
-        if properties['ALAND10'] <= land_threshold:
+        if properties[land_flag] <= land_threshold:
             flag = True
 
-        if properties['NAME10'].lower() == 'na':
-            flag = True
-        
         yield (flag, wa_geo_id, precinct_id, properties[population_flag], poly_type)
         
         if show_bar:
