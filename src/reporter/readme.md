@@ -14,4 +14,4 @@ Issues are:
 
 Command: `python reporter/ file_input/ "WA_GEO_ID" "NAME10" "REG_08" "ALAND10" txt`
 
-Output: ![](https://imgur.com/OJ2qfdU.png)
+Output: [![](https://imgur.com/OJ2qfdU.png)](https://github.com/pengra/wxml/blob/master/src/reporter/example.csv)
