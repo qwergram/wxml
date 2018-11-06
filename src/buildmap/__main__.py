@@ -9,7 +9,6 @@ Norton Pengra - nortonjp@uw.edu - github.com/pengra
 """
 
 __VERSION__ = 0.01
-TYPE_CHECK = True
 
 import sys
 import argparse
@@ -50,12 +49,6 @@ COLORS = [
     "#414c6b", "#4b416b", "#58416b", "#66416b", "#6b4150", "#ffffff", "#000000"
 ]
 
-# For LOGGER
-VERBOSE = False
-
-def log(*args, **kwargs):
-    if VERBOSE:
-        print('[!]', *args, **kwargs)
 
 def is_valid_state(state):
     """
@@ -291,7 +284,7 @@ def draw_graph(graph, name, districts, image=False):
         district_nodes = [node for node, props in graph.nodes(data=True) if props.get('district') == district + 1]
         hex_code = '0123456789abcdef'
         if district >= len(COLORS):
-            color = '#' + "".join([random.choice(hex_code) for i in range(6)])
+            color = '#' + "".join([random.choice(hex_code) for i in range(6)]) # 6 HEX digits
         else:
             color = COLORS[district]
         node_traces.append(
@@ -369,7 +362,7 @@ def drop_nodes(graph, pieces):
     """
     Select random points in the graph and have it "consume" other points in the graph.
     """
-    
+    import pdb; pdb.set_trace()
     if pieces < len(graph.nodes) and pieces > 0:
         drop_count = len(graph.nodes) - pieces
         log("Dropping {} nodes to fulfill pieces requirement".format(drop_count))
@@ -406,6 +399,9 @@ def drop_nodes(graph, pieces):
                     graph.add_edge(consuming_node, other_node)
                 break
             
+            graph.nodes[consuming_node].setdefault('contains', [])
+            graph.nodes[consuming_node]['contains'].append(graph.nodes[drop]['WA_GEO_ID']) # Not sure if this is the write one
+
             graph.remove_node(drop)
 
             bar.next()
@@ -469,6 +465,22 @@ def seed_districts(graph, districts):
 
     return graph
 
+def weifan_export(graph, name):
+    """
+    Export all the districts as TSV file.
+    <Precinct ID>"\t"<District ID>
+    """
+    bar = IncrementalBar("[!] Writing Weifan's Format", max=len(graph.nodes))
+    with io.open("{}.tsv".format(name), 'w') as handle:
+        handle.write("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID\n")
+        for node in graph.nodes():
+            bar.next()
+            handle.write("{}\t{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district']))
+            for child_node in graph.nodes.get(node).get('contains', []):
+                handle.write("{}\t{}\n".format(child_node, graph.nodes.get(node)['district']))
+
+    bar.finish()
+    
 def main(args):
     """
     Run script with -h flag for documentation on main.
@@ -477,7 +489,7 @@ def main(args):
     if not is_valid_state(args.state):
         raise ValueError("Unknown State: {}".format(args.state))
 
-    if os.path.isfile("graph_cache.networkx"):
+    if os.path.isfile("graph_cache.networkx") and not args.no_cache:
         log("Detected cached graph")
         graph = networkx.read_gpickle("graph_cache.networkx")
 
@@ -510,8 +522,8 @@ def main(args):
         # Plotly graph
         draw_graph(graph, args.state, args.districts)
     if args.output == "weifan" or args.output == "all":
-        # weifan's adjacency graph format
-        pass
+        # weifan's precinct/district map
+        weifan_export(graph, args.state)
     if args.output == "geoJson" or args.output == "all":
         # geoJson output
         pass

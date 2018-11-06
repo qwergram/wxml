@@ -2,6 +2,10 @@ import io
 import requests
 import zipfile
 
+# For LOGGER
+VERBOSE = False
+
+
 def download_file(url):
     local_filename = url.split('/')[-1]
     # NOTE the stream=True parameter
@@ -17,3 +21,7 @@ def unzip(filename, dirname):
     zip_ref = zipfile.ZipFile(filename, 'r')
     zip_ref.extractall(dirname + "/")
     zip_ref.close()
+
+def log(*args, **kwargs):
+    if VERBOSE:
+        print('[!]', *args, **kwargs)
