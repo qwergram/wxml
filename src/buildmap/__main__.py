@@ -475,8 +475,10 @@ def weifan_export(graph, name):
         handle.write("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID\n")
         for node in graph.nodes():
             bar.next()
-            import pdb; pdb.set_trace()
             handle.write("{}\t{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district']))
+            for child_node in graph.nodes.get(node).get('contains', []):
+                handle.write("{}\t{}\n".format(child_node, graph.nodes.get(node)['district']))
+
     bar.finish()
     
 def main(args):
