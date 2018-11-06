@@ -17,3 +17,7 @@ def unzip(filename, dirname):
     zip_ref = zipfile.ZipFile(filename, 'r')
     zip_ref.extractall(dirname + "/")
     zip_ref.close()
+
+def log(*args, **kwargs):
+    if VERBOSE:
+        print('[!]', *args, **kwargs)

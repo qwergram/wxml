@@ -9,7 +9,6 @@ Norton Pengra - nortonjp@uw.edu - github.com/pengra
 """
 
 __VERSION__ = 0.01
-TYPE_CHECK = True
 
 import sys
 import argparse
@@ -52,10 +51,6 @@ COLORS = [
 
 # For LOGGER
 VERBOSE = False
-
-def log(*args, **kwargs):
-    if VERBOSE:
-        print('[!]', *args, **kwargs)
 
 def is_valid_state(state):
     """
@@ -407,7 +402,7 @@ def drop_nodes(graph, pieces):
                 break
             
             graph.nodes[consuming_node].setdefault('contains', [])
-            graph.nodes[consuming_node]['contains'].append(nodes.graph[drop]['WA_GEO_ID']) # Not sure if this is the write one
+            graph.nodes[consuming_node]['contains'].append(graph.nodes[drop]['WA_GEO_ID']) # Not sure if this is the write one
 
             graph.remove_node(drop)
 
