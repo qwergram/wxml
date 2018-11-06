@@ -199,7 +199,7 @@ def load_into_graph(shape):
     # The graph
     graph = networkx.Graph()
 
-    # bar = IncrementalBar("[!] Loading polygons as nodes...", max=len(shape))
+    bar = IncrementalBar("[!] Loading polygons as nodes...", max=len(shape))
     # Populate a graph with the usual data
     for i, polygon in enumerate(shape):
         # GeoJSON standard formatting
@@ -210,7 +210,7 @@ def load_into_graph(shape):
         poly_type = geometry['type']
 
         # Nice to have messages
-        # bar.next()
+        bar.next()
 
         # Sometimes coordinates are nested inside another list.
         # Use generators to avoid killing the computer.
@@ -276,9 +276,7 @@ def load_into_graph(shape):
             **properties
         )
     
-    # bar.finish()
-
-    import pdb; pdb.set_trace()
+    bar.finish()
 
     return graph
 
