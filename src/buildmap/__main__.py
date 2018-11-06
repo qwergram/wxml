@@ -219,8 +219,6 @@ def load_into_graph(shape):
             for item in iterable:
                 if isinstance(item, Iterable) and (len(item) != 2 or not isinstance(item[0], (float, int))):
                     yield from flatten_coordinates(item)
-                    # To mark the end of a polygon
-                    yield [None, None]
                 else:
                     yield item
 
