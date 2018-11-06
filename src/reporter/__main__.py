@@ -90,7 +90,7 @@ def write_results(issues):
         for report in issues:
             flag, primary_key, precinct_id, population, poly_type = report
             if flag:
-                handle.write("\t".join([str(_) for _ in [primary_key, precinct_id, population, poly_type]]))
+                handle.write(", ".join(['"' + str(_) + '"' for _ in [primary_key, precinct_id, population, poly_type]]))
                 handle.write("\n")
 
 def main(args):
