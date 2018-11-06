@@ -67,6 +67,8 @@ def iterate_shape(shape, precinct_flag, population_flag, population_threshold, p
         
         if precinct_flag is None:
             flag = True
+
+        import pdb; pdb.set_trace()
         
         yield (flag, wa_geo_id, precinct_id, properties[population_flag], poly_type)
         
