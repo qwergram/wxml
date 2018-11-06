@@ -195,17 +195,17 @@ def load_into_graph(shape):
     # The graph
     graph = networkx.Graph()
 
-    bar = IncrementalBar("[!] Loading polygons as nodes...", max=len(shape))
+    # bar = IncrementalBar("[!] Loading polygons as nodes...", max=len(shape))
     # Populate a graph with the usual data
     for i, polygon in enumerate(shape):
         # GeoJSON standard formatting
-        fid= polygon['id']
+        fid = polygon['id']
         properties = polygon['properties']
         coordinates = polygon['geometry']['coordinates']
         poly_type = polygon['geometry']['type']
 
         # Nice to have messages
-        bar.next()
+        # bar.next()
 
         # Sometimes coordinates are nested inside another list.
         # Use generators to avoid killing the computer.
@@ -271,7 +271,9 @@ def load_into_graph(shape):
             **properties
         )
     
-    bar.finish()
+    # bar.finish()
+
+    import pdb; pdb.set_trace()
 
     return graph
 
@@ -362,7 +364,6 @@ def drop_nodes(graph, pieces):
     """
     Select random points in the graph and have it "consume" other points in the graph.
     """
-    import pdb; pdb.set_trace()
     if pieces < len(graph.nodes) and pieces > 0:
         drop_count = len(graph.nodes) - pieces
         log("Dropping {} nodes to fulfill pieces requirement".format(drop_count))
