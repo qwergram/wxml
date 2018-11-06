@@ -90,7 +90,7 @@ def output_results(issues):
 
 def write_results(issues):
     print("Writing Report")
-    with io.open("report.tsv", "w") as handle:
+    with io.open("report.csv", "w") as handle:
         handle.write("primary key, precinct, population, polygon type\n")
         for report in issues:
             flag, primary_key, precinct_id, population, poly_type = report
