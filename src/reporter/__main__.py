@@ -110,8 +110,8 @@ if __name__ == "__main__":
 
     # Random Generation Parameters
     parser.add_argument("path", type=str, help="A relative or absolute filepath to shapefile directory.")
-    parser.add_argument("primary-key", default="WA_GEO_ID", type=str, help="Which field is the primary key. For instance, \"WA_GEO_ID\"")
-    parser.add_argument("precinct-flag", default="", type=str, help="Which field the precinct ID is declared in.")
+    parser.add_argument("primary_key", default="WA_GEO_ID", type=str, help="Which field is the primary key. For instance, \"WA_GEO_ID\"")
+    parser.add_argument("precinct_flag", default="", type=str, help="Which field the precinct ID is declared in.")
     parser.add_argument("output", type=str, default="stdout", choices=["stdout", "txt"], help="Format of output.")
     parser.add_argument("-precinct", default=False, type=bool, help="Pass true to filter out precincts with no precinct ID")
     parser.add_argument("-population", default=False, type=bool, help="Pass true to filter out precincts with 0 population.")
