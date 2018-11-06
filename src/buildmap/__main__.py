@@ -49,8 +49,6 @@ COLORS = [
     "#414c6b", "#4b416b", "#58416b", "#66416b", "#6b4150", "#ffffff", "#000000"
 ]
 
-# For LOGGER
-VERBOSE = False
 
 def is_valid_state(state):
     """

@@ -2,6 +2,10 @@ import io
 import requests
 import zipfile
 
+# For LOGGER
+VERBOSE = False
+
+
 def download_file(url):
     local_filename = url.split('/')[-1]
     # NOTE the stream=True parameter
