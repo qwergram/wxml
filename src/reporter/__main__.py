@@ -92,7 +92,7 @@ def write_results(issues):
 
 def main(args):
     shape = get_shape_file(args.path)
-    issues = iterate_shape(shape, args.precinct_flag, args.population, args.polygon, args.population_flag, args.primary_key)
+    issues = iterate_shape(shape, args.precinct_flag, args.population, args.polygon, args.population_flag, args.population_threshold, args.primary_key)
 
     if args.output == "stdout":
         output_results(issues)
