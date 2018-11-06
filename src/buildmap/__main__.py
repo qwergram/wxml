@@ -363,6 +363,7 @@ def drop_nodes(graph, pieces):
     Select random points in the graph and have it "consume" other points in the graph.
     """
     import pdb; pdb.set_trace()
+
     if pieces < len(graph.nodes) and pieces > 0:
         drop_count = len(graph.nodes) - pieces
         log("Dropping {} nodes to fulfill pieces requirement".format(drop_count))
