@@ -120,8 +120,6 @@ if __name__ == "__main__":
     parser.add_argument("-polygon", type=bool, default=False, help="Pass true to filter out multi polygons.")
     parser.add_argument("-v", type=bool, default=False, help="Execute with debugging output")
 
-    import pdb; pdb.set_trace()
-
     # Check inputs are valid
     args = parser.parse_args()
 
