@@ -484,6 +484,8 @@ def weifan_export(graph, name):
 
     bar.finish()
     
+    import pdb; pdb.set_trace()
+
 def main(args):
     """
     Run script with -h flag for documentation on main.
