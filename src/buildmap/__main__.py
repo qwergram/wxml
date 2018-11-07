@@ -189,8 +189,6 @@ def connect_nodes(graph):
     log("Found {} overlappings ({:.2f}% of potential candidates)".format(overlappings, overlappings * 100 / potential_candidates))
     log("Found {} invalid polygons ({:.2f}% of total)".format(invalids, invalids * 100 / (failures + potential_candidates)))
 
-    import pdb; pdb.set_trace();
-
     return graph
 
 def load_into_graph(shape):
