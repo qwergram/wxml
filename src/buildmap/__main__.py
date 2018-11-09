@@ -127,6 +127,7 @@ def connect_nodes(graph):
     potential_candidates = 0
     failures = 0
     invalids = 0
+    merge = 0
     bar = IncrementalBar("[!] Creating Edges...", max=len(graph.nodes.data()))
     for gid, geo_data in graph.nodes.data():
         bar.next()
@@ -169,16 +170,15 @@ def connect_nodes(graph):
                     polyB = polyB.buffer(0)
                     invalids += 1
 
-                try:
-                    overlaps = bool(polyA.touches(polyB))
-                    overlaps = overlaps or bool(polyA.intersects(polyB))
-                except shapely.errors.TopologicalError:
-                    # Assume it just doesn't border.
-                    overlaps = False
+                overlaps = bool(polyA.touches(polyB)) or bool(polyA.intersects(polyB))
                 
-                if overlaps:
+                if overlaps and (geo_data['geometry']['type'].lower() == geo_data2['geometry']['type'].lower() == 'polygon'):
                     overlappings += 1
                     graph.add_edge(gid, gid2)
+
+                elif overlaps:
+                    merge += 1
+                    graph.
 
             potential_candidates += potential_candidate
             failures += not potential_candidate
@@ -187,6 +187,7 @@ def connect_nodes(graph):
 
     log("Found {} potential candidates ({:.2f}% of total)".format(potential_candidates, potential_candidates * 100 / (failures + potential_candidates)))
     log("Found {} overlappings ({:.2f}% of potential candidates)".format(overlappings, overlappings * 100 / potential_candidates))
+    log("Conducted {} merges".format(merges))
     log("Found {} invalid polygons ({:.2f}% of total)".format(invalids, invalids * 100 / (failures + potential_candidates)))
 
     return graph
@@ -245,7 +246,6 @@ def load_into_graph(shape):
             if len(vertex) != 2:
                 print(vertex)
             (longitude, lattitude) = vertex
-            if longitude == None or lattitude == None: continue
             
             total += 1
             sum_long += longitude
@@ -263,6 +263,7 @@ def load_into_graph(shape):
         graph.add_node(
             fid,  # GIS decided indexes.
             geometry=geometry,
+            flatgeometry=coordinates,
             # For quickly determining if a x/y axis projected polygons overlap
             min_lon=minimum_long,
             max_lon=minimum_long,
@@ -361,6 +362,27 @@ def draw_graph(graph, name, districts, image=False):
     log("Create plotly plot with name {}".format(name))
     return plt.plot(figure, filename=name)
 
+def drop_node(graph, consumer, target):
+    """
+    given a graph, have the consumer claim the target.
+    Stores all data associated with target in target in a dictionary:
+    contains: {
+        "target_id": **target_data
+    }
+    if target has "contains" attribute, the data is merged to all same level.
+    """
+    graph.nodes[consumer].setdefault('contains', {})
+    existing_data = graph.nodes[target].get('contains', {})
+    del graph.nodes[target]['contains']
+
+    import pdb; pdb.set_trace()
+
+    graph.nodes[consumer]['contains'][target] = graph.nodes[target]
+
+
+    #graph.nodes[consuming_node]['contains'].append(graph.nodes[drop]['WA_GEO_ID']) # Not sure if this is the right one
+    graph.remove_node(drop)
+
 def drop_nodes(graph, pieces):
     """
     Select random points in the graph and have it "consume" other points in the graph.
@@ -402,11 +424,8 @@ def drop_nodes(graph, pieces):
                     graph.add_edge(consuming_node, other_node)
                 break
             
-            graph.nodes[consuming_node].setdefault('contains', [])
-            graph.nodes[consuming_node]['contains'].append(graph.nodes[drop]['WA_GEO_ID']) # Not sure if this is the write one
-
-            graph.remove_node(drop)
-
+            drop_node(graph, consuming_node, drop)
+            
             bar.next()
 
         bar.finish()
