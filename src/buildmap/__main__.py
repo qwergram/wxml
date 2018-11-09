@@ -178,7 +178,7 @@ def connect_nodes(graph):
 
                 elif overlaps:
                     merge += 1
-                    graph.
+                    # drop_edge(graph, consumer is multi polygon, single polygon)
 
             potential_candidates += potential_candidate
             failures += not potential_candidate
@@ -187,7 +187,7 @@ def connect_nodes(graph):
 
     log("Found {} potential candidates ({:.2f}% of total)".format(potential_candidates, potential_candidates * 100 / (failures + potential_candidates)))
     log("Found {} overlappings ({:.2f}% of potential candidates)".format(overlappings, overlappings * 100 / potential_candidates))
-    log("Conducted {} merges".format(merges))
+    log("Found {} candidates for merging".format(merges))
     log("Found {} invalid polygons ({:.2f}% of total)".format(invalids, invalids * 100 / (failures + potential_candidates)))
 
     return graph
