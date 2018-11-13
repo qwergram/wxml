@@ -381,9 +381,7 @@ def drop_node(graph, consumer, target):
     for (child, data) in existing_data:
         graph.nodes[consumer]['contains'][child] = data
 
-
-    #graph.nodes[consuming_node]['contains'].append(graph.nodes[drop]['WA_GEO_ID']) # Not sure if this is the right one
-    graph.remove_node(drop)
+    graph.remove_node(target)
 
 def drop_nodes(graph, pieces):
     """
