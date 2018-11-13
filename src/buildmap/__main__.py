@@ -378,7 +378,7 @@ def drop_node(graph, consumer, target):
 
     graph.nodes[consumer]['contains'][target] = graph.nodes[target]
 
-    for (child, data) in existing_data:
+    for (child, data) in existing_data.items():
         graph.nodes[consumer]['contains'][child] = data
 
     graph.remove_node(target)
