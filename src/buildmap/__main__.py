@@ -135,7 +135,7 @@ def connect_nodes(graph):
             # An absolutely disgusting way to skip nodes we've already looked at.
             # data() doesn't support indexing.
             
-            if int(gid2) <= int(gid): continue
+            if int(gid2) < int(gid): continue
             
             # check if they overlap when projected to 1d
             potential_candidate = (
@@ -145,7 +145,7 @@ def connect_nodes(graph):
                 geo_data2['min_lat'] <= geo_data['max_lat'])
             )
 
-            if potential_candidate:
+            if potential_candidate and gid2 != gid:
                 # Expensive.
                 
                 if geo_data['geometry']['type'].lower() == 'polygon':
