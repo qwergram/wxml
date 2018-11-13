@@ -371,9 +371,11 @@ def drop_node(graph, consumer, target):
     }
     if target has "contains" attribute, the data is merged to all same level.
     """
-    import pdb; pdb.set_trace()
-    
-    graph.nodes[consumer].setdefault('contains', {})
+
+    try:
+        graph.nodes[consumer].setdefault('contains', {})
+    except KeyError:
+        import pdb; pdb.set_trace()
     existing_data = graph.nodes[target].get('contains', {})
     if existing_data:
         del graph.nodes[target]['contains']
