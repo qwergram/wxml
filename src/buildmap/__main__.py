@@ -373,7 +373,8 @@ def drop_node(graph, consumer, target):
     """
     graph.nodes[consumer].setdefault('contains', {})
     existing_data = graph.nodes[target].get('contains', {})
-    del graph.nodes[target]['contains']
+    if existing_data:
+        del graph.nodes[target]['contains']
 
     import pdb; pdb.set_trace()
 
@@ -557,6 +558,7 @@ def main(args):
     if args.output == "image" or args.output == "all":
         # image output
         draw_graph(graph, args.state, args.districts, True)
+
 
 if __name__ == "__main__":
     log("Initial Graph Builder Script")
