@@ -376,9 +376,10 @@ def drop_node(graph, consumer, target):
     if existing_data:
         del graph.nodes[target]['contains']
 
-    import pdb; pdb.set_trace()
-
     graph.nodes[consumer]['contains'][target] = graph.nodes[target]
+
+    for (child, data) in existing_data:
+        graph.nodes[consumer]['contains'][child] = data
 
 
     #graph.nodes[consuming_node]['contains'].append(graph.nodes[drop]['WA_GEO_ID']) # Not sure if this is the right one
@@ -501,7 +502,7 @@ def weifan_export(graph, name):
     bar = IncrementalBar("[!] Writing Weifan's Format", max=len(graph.nodes))
     with io.open("{}.tsv".format(name), 'w') as handle:
         handle.write("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID\n")
-        for node in graph.nodes():
+        for node in sorted(graph.nodes()):
             bar.next()
             handle.write("{}\t{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district']))
             for child_node in graph.nodes.get(node).get('contains', []):
