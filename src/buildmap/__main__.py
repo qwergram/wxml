@@ -544,13 +544,13 @@ def main(args):
             seed_map = fiona.open(target)
 
         # Generate a map given seed
-        graph = drop_nodes(connect_nodes(load_into_graph(seed_map)), args.pieces)
+        graph = connect_nodes(load_into_graph(seed_map))
         
-        # Start district claiming
-        graph = seed_districts(graph, args.districts)
-
-        # Cache network
+        # Cache network after edges are built
         cache_network(graph)
+
+    # Start district claiming after dropping nodes
+    graph = drop_nodes(seed_districts(graph, args.districts), args.pieces)
 
     # Output the graph
     if args.output == "plotly" or args.output == "all":
