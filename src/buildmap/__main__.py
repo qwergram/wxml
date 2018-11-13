@@ -376,11 +376,15 @@ def drop_node(graph, consumer, target):
         graph.nodes[consumer].setdefault('contains', {})
     except KeyError:
         import pdb; pdb.set_trace()
+    
     existing_data = graph.nodes[target].get('contains', {})
     if existing_data:
         del graph.nodes[target]['contains']
 
-    graph.nodes[consumer]['contains'][target] = graph.nodes[target]
+    try:
+        graph.nodes[consumer]['contains'][target] = graph.nodes[target]
+    except KeyError:
+        import pdb; pdb.set_trace()
 
     for (child, data) in existing_data.items():
         graph.nodes[consumer]['contains'][child] = data
