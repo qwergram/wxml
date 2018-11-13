@@ -263,7 +263,7 @@ def load_into_graph(shape):
         graph.add_node(
             fid,  # GIS decided indexes.
             geometry=geometry,
-            flatgeometry=coordinates,
+            # flatgeometry=coordinates,
             # For quickly determining if a x/y axis projected polygons overlap
             min_lon=minimum_long,
             max_lon=minimum_long,
