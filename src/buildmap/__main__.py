@@ -364,6 +364,7 @@ def draw_graph(graph, name, districts, image=False):
     log("Create plotly plot with name {}".format(name))
     return plt.plot(figure, filename=name)
 
+
 def drop_node(graph, consumer, target):
     """
     given a graph, have the consumer claim the target.
@@ -393,10 +394,13 @@ def drop_node(graph, consumer, target):
 
     graph.remove_node(target)
 
+
 def drop_nodes(graph, pieces):
     """
     Select random points in the graph and have it "consume" other points in the graph.
     """
+
+    graph.remove_edges_from(graph.selfloop_edges())
 
     if pieces < len(graph.nodes) and pieces > 0:
         drop_count = len(graph.nodes) - pieces
@@ -415,7 +419,6 @@ def drop_nodes(graph, pieces):
             drop = choices.pop()
             
             # get a list of it's neighbors and select one
-
             old_edges = graph.edges(drop)
             
             if len(old_edges) == 0:
