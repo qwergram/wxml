@@ -145,7 +145,7 @@ def connect_nodes(graph):
                 geo_data2['min_lat'] <= geo_data['max_lat'])
             )
 
-            if potential_candidate and gid2 != gid:
+            if potential_candidate:
                 # Expensive.
                 
                 if geo_data['geometry']['type'].lower() == 'polygon':
@@ -184,6 +184,8 @@ def connect_nodes(graph):
             failures += not potential_candidate
 
     bar.finish()
+
+    graph.remove_edges_from(graph.selfloop_edges())
 
     log("Found {} potential candidates ({:.2f}% of total)".format(potential_candidates, potential_candidates * 100 / (failures + potential_candidates)))
     log("Found {} overlappings ({:.2f}% of potential candidates)".format(overlappings, overlappings * 100 / potential_candidates))
