@@ -415,6 +415,7 @@ def drop_nodes(graph, pieces):
             drop = choices.pop()
             
             # get a list of it's neighbors and select one
+
             old_edges = graph.edges(drop)
             
             if len(old_edges) == 0:
@@ -433,7 +434,10 @@ def drop_nodes(graph, pieces):
                 for _, other_node in old_edges:
                     graph.add_edge(consuming_node, other_node)
                 break
-            
+
+            if drop == consuming_node:
+                import pdb; pdb.set_trace()
+
             drop_node(graph, consuming_node, drop)
             
             bar.next()
