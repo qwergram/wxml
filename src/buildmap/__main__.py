@@ -213,6 +213,8 @@ def connect_nodes(graph):
         bar.next()
         while consumer in changing_map:
             consumer = changing_map[consumer]
+        while target in changing_map:
+            target = changing_map[target]
         
         drop_node(graph, consumer, target)
         changing_map[consumer] = target
