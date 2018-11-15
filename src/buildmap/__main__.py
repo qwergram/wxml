@@ -211,8 +211,7 @@ def connect_nodes(graph):
 
     for (consumer, target) in to_drop:
         bar.next()
-        if consumer != target:
-            drop_node(graph, consumer, target)
+        drop_node(graph, consumer, target)
 
     bar.finish()
 
