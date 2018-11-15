@@ -129,6 +129,10 @@ def connect_nodes(graph):
     invalids = 0
     merge = 0
     bar = IncrementalBar("[!] Creating Edges...", max=len(graph.nodes.data()))
+
+    def overlaps(polya, polyb):
+        return bool(polya.touches(polyb))) or bool(polya.intersects(polyb))
+
     for gid, geo_data in graph.nodes.data():
         bar.next()
         for gid2, geo_data2 in graph.nodes.data():
@@ -158,40 +162,44 @@ def connect_nodes(graph):
                 elif geo_data2['geometry']['type'].lower() == 'multipolygon':
                     polyB = shapely.geometry.MultiPolygon(shapely.geometry.shape(geo_data2['geometry']))
 
-                # If a polygon self-intersects, fix it with buffer(0)
-                # this essentially splits the polygon in two.
-                # Note that this operation is _incredibly_ expensive.
-
-                if not polyA.is_valid:
-                    polyA = polyA.buffer(0)
-                    invalids += 1
+                overlaps = overlaps(polyA, polyB)
                 
-                if not polyB.is_valid:
-                    polyB = polyB.buffer(0)
-                    invalids += 1
-
-                overlaps = bool(polyA.touches(polyB)) or bool(polyA.intersects(polyB))
-                
-                if overlaps and (geo_data['geometry']['type'].lower() == geo_data2['geometry']['type'].lower() == 'polygon'):
+                if overlaps:
+                    
+                    # 0 Multipolygons && and all scenarios
+                    # if geo_data['geometry']['type'].lower() == geo_data2['geometry']['type'].lower() == 'polygon':
                     overlappings += 1
                     graph.add_edge(gid, gid2)
 
-                elif overlaps:
-                    merge += 1
+                    # 2 multipolygons
+                    elif geo_data['geometry']['type'].lower() == 'multipolygon' and geo_data2['geometry']['type'].lower() == 'multipolygon':
+                        merge += 1
 
-                    # IF NONE IS MULTIPOLYGON
-                        # DO NOTHING
-                    # IF ONE IS MULTIPOLYGON AND IF SINGLE POLYGON IS STRICTLY INSIDE MULTI POLYGON:
-                        # 
-                    # IF TWO IS MULTIPOLYGON
-                        # 
+                        bandedA = polyA.convex_hull()
+                        bandedB = polyB.convex_hull()
 
+                        if overlap(bandedA, bandedB):
+                            drop_node(graph, gid, gid2)
 
-                    if geo_data['geometry']['type'].lower() == 'multipolygon' or geo_data2['geometry']['type'].lower() == 'multipolygon':
-                        import pdb; pdb.set_trace()
-                        # drop_edge(graph, gid, gid2)
-                    
-                    # drop_edge(graph, consumer is multi polygon, single polygon)
+                    # a is multipolygon, b is polygon
+                    elif geo_data['geometry']['type'].lower() == 'multipolygon':
+                        merge += 1
+
+                        bandedA = polyA.convex_hull()
+
+                        if overlap(bandedA, polyB):
+                            drop_node(graph, gid, gid2)
+                        
+
+                    # b is multipolygon, a is polygon
+                    elif geo_data2['geometry']['type'].lower() == 'multipolygon':
+                        merge += 1
+
+                        bandedB = polyB.convex_hull()
+
+                        if overlap(polyA, bandedB):
+                            drop_node(graph, gid, gid2)
+
 
             potential_candidates += potential_candidate
             failures += not potential_candidate
