@@ -164,7 +164,7 @@ def connect_nodes(graph):
                 elif geo_data2['geometry']['type'].lower() == 'multipolygon':
                     polyB = shapely.geometry.MultiPolygon(shapely.geometry.shape(geo_data2['geometry']))
 
-                if overlaps(polyA, polyB):
+                if gid != gid2 and overlaps(polyA, polyB):
                     
                     # 0 Multipolygons && and all scenarios
                     # if geo_data['geometry']['type'].lower() == geo_data2['geometry']['type'].lower() == 'polygon':
@@ -211,7 +211,8 @@ def connect_nodes(graph):
 
     for (consumer, target) in to_drop:
         bar.next()
-        drop_node(graph, consumer, target)
+        if consumer != target:
+            drop_node(graph, consumer, target)
 
     bar.finish()
 
