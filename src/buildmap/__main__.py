@@ -178,7 +178,20 @@ def connect_nodes(graph):
 
                 elif overlaps:
                     merge += 1
-                    # drop_edge(graph, consumer is multi polygon, single polygon)
+
+                    # IF NONE IS MULTIPOLYGON
+                        # DO NOTHING
+                    # IF ONE IS MULTIPOLYGON AND IF SINGLE POLYGON IS STRICTLY INSIDE MULTI POLYGON:
+                        # 
+                    # IF TWO IS MULTIPOLYGON
+                        # 
+
+
+                    if geo_data['geometry']['type'].lower() == 'multipolygon' or geo_data2['geometry']['type'].lower() == 'multipolygon':
+                        import pdb; pdb.set_trace()
+                        # drop_edge(graph, gid, gid2)
+                    
+                    drop_edge(graph, consumer is multi polygon, single polygon)
 
             potential_candidates += potential_candidate
             failures += not potential_candidate
