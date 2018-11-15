@@ -162,9 +162,7 @@ def connect_nodes(graph):
                 elif geo_data2['geometry']['type'].lower() == 'multipolygon':
                     polyB = shapely.geometry.MultiPolygon(shapely.geometry.shape(geo_data2['geometry']))
 
-                overlaps = overlaps(polyA, polyB)
-                
-                if overlaps:
+                if overlaps(polyA, polyB):
                     
                     # 0 Multipolygons && and all scenarios
                     # if geo_data['geometry']['type'].lower() == geo_data2['geometry']['type'].lower() == 'polygon':
