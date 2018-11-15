@@ -172,7 +172,7 @@ def connect_nodes(graph):
                     graph.add_edge(gid, gid2)
 
                     # 2 multipolygons
-                    elif geo_data['geometry']['type'].lower() == 'multipolygon' and geo_data2['geometry']['type'].lower() == 'multipolygon':
+                    if geo_data['geometry']['type'].lower() == 'multipolygon' and geo_data2['geometry']['type'].lower() == 'multipolygon':
                         merge += 1
 
                         bandedA = polyA.convex_hull()
