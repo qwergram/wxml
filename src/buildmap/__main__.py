@@ -178,7 +178,7 @@ def connect_nodes(graph):
                         bandedA = polyA.convex_hull
                         bandedB = polyB.convex_hull
 
-                        if overlap(bandedA, bandedB):
+                        if overlaps(bandedA, bandedB):
                             drop_node(graph, gid, gid2)
                             # either mark the nodes for deletion
                             # use an iterator of some sort
