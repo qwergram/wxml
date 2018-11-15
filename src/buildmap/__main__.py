@@ -185,7 +185,7 @@ def connect_nodes(graph):
 
                         bandedA = polyA.convex_hull
 
-                        if overlap(bandedA, polyB):
+                        if overlaps(bandedA, polyB):
                             drop_node(graph, gid, gid2)
                         
 
@@ -195,7 +195,7 @@ def connect_nodes(graph):
 
                         bandedB = polyB.convex_hull
 
-                        if overlap(polyA, bandedB):
+                        if overlaps(polyA, bandedB):
                             drop_node(graph, gid, gid2)
 
 
