@@ -133,6 +133,8 @@ def connect_nodes(graph):
     def overlaps(polya, polyb):
         return bool(polya.touches(polyb)) or bool(polya.intersects(polyb))
 
+    import pdb; pdb.set_trace()
+
     for gid, geo_data in graph.nodes.data():
         bar.next()
         for gid2, geo_data2 in graph.nodes.data():
@@ -178,6 +180,8 @@ def connect_nodes(graph):
 
                         if overlap(bandedA, bandedB):
                             drop_node(graph, gid, gid2)
+                            # either mark the nodes for deletion
+                            # use an iterator of some sort
 
                     # a is multipolygon, b is polygon
                     elif geo_data['geometry']['type'].lower() == 'multipolygon':
