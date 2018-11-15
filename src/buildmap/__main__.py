@@ -133,7 +133,7 @@ def connect_nodes(graph):
     def overlaps(polya, polyb):
         return bool(polya.touches(polyb)) or bool(polya.intersects(polyb))
 
-    import pdb; pdb.set_trace()
+    to_drop = []
 
     for gid, geo_data in list(graph.nodes.data()):
         bar.next()
@@ -179,9 +179,7 @@ def connect_nodes(graph):
                         bandedB = polyB.convex_hull
 
                         if overlaps(bandedA, bandedB):
-                            drop_node(graph, gid, gid2)
-                            # either mark the nodes for deletion
-                            # use an iterator of some sort
+                            to_drop.append((gid, gid2))
 
                     # a is multipolygon, b is polygon
                     elif geo_data['geometry']['type'].lower() == 'multipolygon':
@@ -190,9 +188,8 @@ def connect_nodes(graph):
                         bandedA = polyA.convex_hull
 
                         if overlaps(bandedA, polyB):
-                            drop_node(graph, gid, gid2)
-                        
-
+                            to_drop.append((gid, gid2))
+                            
                     # b is multipolygon, a is polygon
                     elif geo_data2['geometry']['type'].lower() == 'multipolygon':
                         merge += 1
@@ -200,11 +197,19 @@ def connect_nodes(graph):
                         bandedB = polyB.convex_hull
 
                         if overlaps(polyA, bandedB):
-                            drop_node(graph, gid, gid2)
+                            to_drop.append((gid, gid2))
 
 
             potential_candidates += potential_candidate
             failures += not potential_candidate
+
+    bar.finish()
+
+    bar = IncrementalBar("[!] Creating Edges...", max=len(to_drop))
+
+    for (consumer, target) in to_drop:
+        bar.next()
+        drop_node(graph, consumer, target)
 
     bar.finish()
 
