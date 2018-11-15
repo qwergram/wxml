@@ -233,12 +233,13 @@ def connect_nodes(graph):
         # consume_history.append(consumer)        
         # target_history.append(target)
 
-        target_consumption_history[target] = consumer
+        if target != consumer:
+            target_consumption_history[target] = consumer
 
-        try:
-            drop_node(graph, consumer, target)
-        except KeyError:
-            import pdb; pdb.set_trace()
+            try:
+                drop_node(graph, consumer, target)
+            except KeyError:
+                import pdb; pdb.set_trace()
 
     bar.finish()
 
