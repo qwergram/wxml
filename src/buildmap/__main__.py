@@ -205,7 +205,7 @@ def connect_nodes(graph):
 
     bar.finish()
 
-    bar = IncrementalBar("[!] Creating Edges...", max=len(to_drop))
+    bar = IncrementalBar("[!] Merging Multi Polygons...", max=len(to_drop))
 
     for (consumer, target) in to_drop:
         bar.next()
