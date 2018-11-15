@@ -205,19 +205,13 @@ def connect_nodes(graph):
 
     bar.finish()
 
-    bar = IncrementalBar("[!] Merging Multi Polygons...", max=len(to_drop))
+    import pdb;pdb.set_trace()
 
-    changing_map = {}
+    bar = IncrementalBar("[!] Merging Multi Polygons...", max=len(to_drop))
 
     for (consumer, target) in to_drop:
         bar.next()
-        while consumer in changing_map:
-            consumer = changing_map[consumer]
-        while target in changing_map:
-            target = changing_map[target]
-        
         drop_node(graph, consumer, target)
-        changing_map[target] = consumer
 
     bar.finish()
 
