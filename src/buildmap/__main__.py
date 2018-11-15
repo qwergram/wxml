@@ -224,6 +224,12 @@ def connect_nodes(graph):
             
             to_drop[i] = (c2, t2)
 
+        while consumer in target_consumption_history.keys():
+            consumer = target_consumption_history[consumer]
+
+        while target in target_consumption_history.keys():
+            target = target_consumption_history[target]
+
         # consume_history.append(consumer)        
         # target_history.append(target)
 
