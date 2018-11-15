@@ -173,8 +173,8 @@ def connect_nodes(graph):
                     if geo_data['geometry']['type'].lower() == 'multipolygon' and geo_data2['geometry']['type'].lower() == 'multipolygon':
                         merge += 1
 
-                        bandedA = polyA.convex_hull()
-                        bandedB = polyB.convex_hull()
+                        bandedA = polyA.convex_hull
+                        bandedB = polyB.convex_hull
 
                         if overlap(bandedA, bandedB):
                             drop_node(graph, gid, gid2)
@@ -183,7 +183,7 @@ def connect_nodes(graph):
                     elif geo_data['geometry']['type'].lower() == 'multipolygon':
                         merge += 1
 
-                        bandedA = polyA.convex_hull()
+                        bandedA = polyA.convex_hull
 
                         if overlap(bandedA, polyB):
                             drop_node(graph, gid, gid2)
@@ -193,7 +193,7 @@ def connect_nodes(graph):
                     elif geo_data2['geometry']['type'].lower() == 'multipolygon':
                         merge += 1
 
-                        bandedB = polyB.convex_hull()
+                        bandedB = polyB.convex_hull
 
                         if overlap(polyA, bandedB):
                             drop_node(graph, gid, gid2)
