@@ -209,11 +209,12 @@ def connect_nodes(graph):
 
     bar = IncrementalBar("[!] Merging Multi Polygons...", max=len(to_drop))
 
+    consume_history = []
+    target_history = []
+
     while to_drop:
         (consumer, target) = to_drop.pop()
         bar.next()
-        
-        import pdb; pdb.set_trace()
 
         for i, (c2, t2) in enumerate(to_drop):
             if c2 == target:
@@ -221,9 +222,12 @@ def connect_nodes(graph):
             elif t2 == target:
                 to_drop[i] = (c2, target)
 
-        import pdb; pdb.set_trace()
-
-        drop_node(graph, consumer, target)
+        consume_history.append(consumer)        
+        target_history.append(target)
+        try:
+            drop_node(graph, consumer, target)
+        except KeyError:
+            import pdb; pdb.set_trace()
 
     bar.finish()
 
