@@ -217,7 +217,7 @@ def connect_nodes(graph):
             target = changing_map[target]
         
         drop_node(graph, consumer, target)
-        changing_map[consumer] = target
+        changing_map[target] = consumer
 
     bar.finish()
 
