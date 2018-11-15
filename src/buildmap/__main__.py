@@ -435,7 +435,9 @@ def drop_nodes(graph, pieces):
                 consuming_node = edge[1]
                 # Have consuming node inherit all old edges
                 for _, other_node in old_edges:
-                    graph.add_edge(consuming_node, other_node)
+                    # 如果是一樣的
+                    if other_node != consuming_node:
+                        graph.add_edge(consuming_node, other_node)
                 break
 
             if drop == consuming_node:
