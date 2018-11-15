@@ -131,7 +131,7 @@ def connect_nodes(graph):
     bar = IncrementalBar("[!] Creating Edges...", max=len(graph.nodes.data()))
 
     def overlaps(polya, polyb):
-        return bool(polya.touches(polyb))) or bool(polya.intersects(polyb))
+        return bool(polya.touches(polyb)) or bool(polya.intersects(polyb))
 
     for gid, geo_data in graph.nodes.data():
         bar.next()
