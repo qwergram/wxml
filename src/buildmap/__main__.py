@@ -213,7 +213,7 @@ def connect_nodes(graph):
         (consumer, target) = to_drop.pop()
         bar.next()
         
-        for i, (c2, t2) in to_drop:
+        for i, (c2, t2) in enumerate(to_drop):
             if c2 == target:
                 to_drop[i] = (target, t2)
             elif t2 == target:
