@@ -213,6 +213,8 @@ def connect_nodes(graph):
         (consumer, target) = to_drop.pop()
         bar.next()
         
+        import pdb; pdb.set_trace()
+
         for i, (c2, t2) in enumerate(to_drop):
             if c2 == target:
                 to_drop[i] = (target, t2)
