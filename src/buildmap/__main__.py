@@ -191,7 +191,7 @@ def connect_nodes(graph):
                         import pdb; pdb.set_trace()
                         # drop_edge(graph, gid, gid2)
                     
-                    drop_edge(graph, consumer is multi polygon, single polygon)
+                    # drop_edge(graph, consumer is multi polygon, single polygon)
 
             potential_candidates += potential_candidate
             failures += not potential_candidate
