@@ -214,6 +214,7 @@ def connect_nodes(graph):
 
     while to_drop:
         (consumer, target) = to_drop.pop()
+        originalConsumer, originalTarget = consumer, target
         bar.next()
 
         for i, (c2, t2) in enumerate(to_drop):
@@ -241,7 +242,10 @@ def connect_nodes(graph):
             except KeyError:
                 import pdb; pdb.set_trace()
 
+
     bar.finish()
+
+    import pdb; pdb.set_trace()
 
     graph.remove_edges_from(graph.selfloop_edges())
 
