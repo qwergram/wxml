@@ -375,19 +375,13 @@ def drop_node(graph, consumer, target):
     if target has "contains" attribute, the data is merged to all same level.
     """
 
-    try:
-        graph.nodes[consumer].setdefault('contains', {})
-    except KeyError:
-        import pdb; pdb.set_trace()
+    graph.nodes[consumer].setdefault('contains', {})
     
     existing_data = graph.nodes[target].get('contains', {})
     if existing_data:
         del graph.nodes[target]['contains']
 
-    try:
-        graph.nodes[consumer]['contains'][target] = graph.nodes[target]
-    except KeyError:
-        import pdb; pdb.set_trace()
+    graph.nodes[consumer]['contains'][target] = graph.nodes[target]
 
     for (child, data) in existing_data.items():
         graph.nodes[consumer]['contains'][child] = data
@@ -439,9 +433,6 @@ def drop_nodes(graph, pieces):
                     if other_node != consuming_node:
                         graph.add_edge(consuming_node, other_node)
                 break
-
-            if drop == consuming_node:
-                import pdb; pdb.set_trace()
 
             drop_node(graph, consuming_node, drop)
             
@@ -527,7 +518,6 @@ def weifan_export(graph, name):
 
     bar.finish()
     
-    import pdb; pdb.set_trace()
 
 def main(args):
     """
