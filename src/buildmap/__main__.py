@@ -209,8 +209,16 @@ def connect_nodes(graph):
 
     bar = IncrementalBar("[!] Merging Multi Polygons...", max=len(to_drop))
 
-    for (consumer, target) in to_drop:
+    while to_drop:
+        (consumer, target) = to_drop.pop()
         bar.next()
+        
+        for i, (c2, t2) in to_drop:
+            if c2 == target:
+                to_drop[i] = (target, t2)
+            elif t2 == target:
+                to_drop[i] = (c2, target)
+
         drop_node(graph, consumer, target)
 
     bar.finish()
