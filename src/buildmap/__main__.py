@@ -205,7 +205,7 @@ def connect_nodes(graph):
 
     bar.finish()
 
-    import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
 
     bar = IncrementalBar("[!] Merging Multi Polygons...", max=len(to_drop))
 
