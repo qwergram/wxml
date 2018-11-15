@@ -221,6 +221,8 @@ def connect_nodes(graph):
             elif t2 == target:
                 to_drop[i] = (c2, target)
 
+        import pdb; pdb.set_trace()
+
         drop_node(graph, consumer, target)
 
     bar.finish()
