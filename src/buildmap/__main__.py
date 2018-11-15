@@ -135,9 +135,9 @@ def connect_nodes(graph):
 
     import pdb; pdb.set_trace()
 
-    for gid, geo_data in graph.nodes.data():
+    for gid, geo_data in list(graph.nodes.data()):
         bar.next()
-        for gid2, geo_data2 in graph.nodes.data():
+        for gid2, geo_data2 in list(graph.nodes.data()):
             # An absolutely disgusting way to skip nodes we've already looked at.
             # data() doesn't support indexing.
             
