@@ -230,16 +230,12 @@ def connect_nodes(graph):
 
         if target != consumer:
             target_consumption_history[target] = consumer
+            drop_node(graph, consumer, target)
 
-            try:
-                drop_node(graph, consumer, target)
-            except KeyError:
-                import pdb; pdb.set_trace()
 
+    graph['ghosts'] = target_consumption_history
 
     bar.finish()
-
-    import pdb; pdb.set_trace()
 
     graph.remove_edges_from(graph.selfloop_edges())
 
@@ -256,7 +252,7 @@ def load_into_graph(shape):
     O(number of polygons * number of vertexes in polygons)
     """
     # The graph
-    graph = networkx.Graph()
+    graph = networkx.Graph(ghosts={})
 
     bar = IncrementalBar("[!] Loading polygons as nodes...", max=len(shape))
     # Populate a graph with the usual data
@@ -485,10 +481,13 @@ def drop_nodes(graph, pieces):
                 consuming_node = edge[1]
                 # Have consuming node inherit all old edges
                 for _, other_node in old_edges:
-                    # 如果是一樣的
+                    # 如果一樣
                     if other_node != consuming_node:
                         graph.add_edge(consuming_node, other_node)
                 break
+
+            while drop in graph['ghosts']:
+                drop = graph['ghosts'][drop]
 
             try:
                 drop_node(graph, consuming_node, drop)
