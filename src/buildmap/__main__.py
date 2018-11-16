@@ -233,7 +233,7 @@ def connect_nodes(graph):
             drop_node(graph, consumer, target)
 
 
-    graph.ghosts['ghosts'] = target_consumption_history
+    graph.graph['ghosts'] = target_consumption_history
 
     bar.finish()
 
