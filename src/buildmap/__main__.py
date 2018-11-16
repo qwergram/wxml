@@ -574,13 +574,13 @@ def weifan_export(graph, name):
     """
     seperator = ", "
     bar = IncrementalBar("[!] Writing Weifan's Format", max=len(graph.nodes))
-    with io.open("{}.csv".format(name), 'w') as handle:
-        handle.write("WA_GEO_ID" + seperator + "ARTIFICIAL_DISTRICT_ID" + seperator + "SUPER_SET_ID\n")
+    with io.open("{}.tsv".format(name), 'w') as handle:
+        handle.write("WA_GEO_ID{seperator}ARTIFICIAL_DISTRICT_ID{seperator}SUPER_SET_ID\n".format(seperator=seperator))
         for i, node in enumerate(sorted(graph.nodes())):
             bar.next()
-            handle.write("{}" + seperator + "{}" + seperator + "{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district'], i))
+            handle.write("{}{seperator}{}{seperator}{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district'], i, seperator=seperator))
             for child_node in graph.nodes.get(node).get('contains', []):
-                handle.write("{}" + seperator + "{}" + seperator + "{}\n".format(child_node, graph.nodes.get(node)['district'], i))
+                handle.write("{}{seperator}{}{seperator}{}\n".format(child_node, graph.nodes.get(node)['district'], i, seperator=seperator))
 
     bar.finish()
     
