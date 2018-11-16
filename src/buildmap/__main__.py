@@ -486,14 +486,13 @@ def drop_nodes(graph, pieces):
                         graph.add_edge(consuming_node, other_node)
                 break
 
-            originalDrop = drop
-            originalConsumer = consuming_node
-
             while drop in graph.graph['ghosts']:
                 drop = graph.graph['ghosts'][drop]
 
             while consuming_node in graph.graph['ghosts']:
                 consuming_node = graph.graph['ghosts'][consuming_node]
+
+            target_consumption_history[drop] = consuming_node
 
             try:
                 drop_node(graph, consuming_node, drop)
