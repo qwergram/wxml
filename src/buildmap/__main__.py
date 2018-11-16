@@ -233,6 +233,7 @@ def connect_nodes(graph):
             drop_node(graph, consumer, target)
 
 
+    import pdb; pdb.set_trace()
     graph['ghosts'] = target_consumption_history
 
     bar.finish()
