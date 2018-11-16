@@ -492,10 +492,12 @@ def drop_nodes(graph, pieces):
             while consuming_node in graph.graph['ghosts']:
                 consuming_node = graph.graph['ghosts'][consuming_node]
 
-            graph.graph['ghosts'][drop] = consuming_node
+            
 
             try:
-                drop_node(graph, consuming_node, drop)
+                if consuming_node != drop:
+                    graph.graph['ghosts'][drop] = consuming_node
+                    drop_node(graph, consuming_node, drop)
             except KeyError:
                 import pdb; pdb.set_trace()
             
