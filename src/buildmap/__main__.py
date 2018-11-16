@@ -464,7 +464,7 @@ def drop_nodes(graph, pieces):
             # get a random node to drop
             drop = choices.pop()
 
-            drop_count -= len(drop.get('contains', {}))
+            drop_count -= len(graph.nodes.get('contains', {}))
             
             # get a list of it's neighbors and select one
             old_edges = graph.edges(drop)
