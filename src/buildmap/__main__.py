@@ -382,8 +382,6 @@ def draw_graph(graph, name, districts, image=False):
     for i, (polyA, polyB) in enumerate(graph.edges):
         bar.next()
 
-        if i > 2000: break
-
         polyA = graph.nodes.get(polyA)
         polyB = graph.nodes.get(polyB)
         ax, ay = polyA['avg_lat'], polyA['avg_lon']
