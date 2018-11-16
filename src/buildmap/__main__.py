@@ -207,6 +207,8 @@ def connect_nodes(graph):
 
     bar = IncrementalBar("[!] Merging Multi Polygons...", max=len(to_drop))
 
+
+    # Merging
     target_consumption_history = {}
 
     while to_drop:
@@ -416,7 +418,6 @@ def draw_graph(graph, name, districts, image=False):
     log("Create plotly plot with name {}".format(name))
     return plt.plot(figure, filename=name)
 
-
 def drop_node(graph, consumer, target):
     """
     given a graph, have the consumer claim the target.
@@ -439,7 +440,6 @@ def drop_node(graph, consumer, target):
         graph.nodes[consumer]['contains'][child] = data
 
     graph.remove_node(target)
-
 
 def drop_nodes(graph, pieces):
     """
@@ -576,12 +576,12 @@ def weifan_export(graph, name):
     """
     bar = IncrementalBar("[!] Writing Weifan's Format", max=len(graph.nodes))
     with io.open("{}.tsv".format(name), 'w') as handle:
-        handle.write("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID\n")
-        for node in sorted(graph.nodes()):
+        handle.write("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID\tSUPER_SET_ID\n")
+        for i, node in enumerate(sorted(graph.nodes())):
             bar.next()
-            handle.write("{}\t{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district']))
+            handle.write("{}\t{}\t{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district'], i))
             for child_node in graph.nodes.get(node).get('contains', []):
-                handle.write("{}\t{}\n".format(child_node, graph.nodes.get(node)['district']))
+                handle.write("{}\t{}\t{}\n".format(child_node, graph.nodes.get(node)['district'], i))
 
     bar.finish()
     
