@@ -494,8 +494,6 @@ def drop_nodes(graph, pieces):
             while consuming_node in graph.graph['ghosts']:
                 consuming_node = graph.graph['ghosts'][consuming_node]
 
-            
-
             try:
                 if consuming_node != drop:
                     graph.graph['ghosts'][drop] = consuming_node
@@ -503,7 +501,7 @@ def drop_nodes(graph, pieces):
             except KeyError:
                 import pdb; pdb.set_trace()
             
-            bar.next()
+            bar.next(drop_count)
 
         bar.finish()
         
