@@ -233,8 +233,7 @@ def connect_nodes(graph):
             drop_node(graph, consumer, target)
 
 
-    import pdb; pdb.set_trace()
-    graph['ghosts'] = target_consumption_history
+    graph.ghosts['ghosts'] = target_consumption_history
 
     bar.finish()
 
@@ -487,8 +486,11 @@ def drop_nodes(graph, pieces):
                         graph.add_edge(consuming_node, other_node)
                 break
 
-            while drop in graph['ghosts']:
-                drop = graph['ghosts'][drop]
+            while drop in graph.graph['ghosts']:
+                drop = graph.graph['ghosts'][drop]
+
+            while consuming_node in graph.graph['ghosts']:
+                consuming_node = graph.graph['ghosts'][consuming_node]
 
             try:
                 drop_node(graph, consuming_node, drop)
