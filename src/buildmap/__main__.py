@@ -428,7 +428,7 @@ def drop_node(graph, consumer, target):
     """
 
     graph.nodes[consumer].setdefault('contains', {})
-    
+
     existing_data = graph.nodes[target].get('contains', {})
     if existing_data:
         del graph.nodes[target]['contains']
@@ -459,10 +459,12 @@ def drop_nodes(graph, pieces):
 
         bar = IncrementalBar('[!] Dropping Nodes...', max=drop_count)
 
-        for i in range(drop_count):
+        while drop_count > 0:
             
             # get a random node to drop
             drop = choices.pop()
+
+            drop_count -= len(drop.get('contains', {}))
             
             # get a list of it's neighbors and select one
             old_edges = graph.edges(drop)
