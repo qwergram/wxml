@@ -572,14 +572,15 @@ def weifan_export(graph, name):
     Export all the districts as TSV file.
     <Precinct ID>"\t"<District ID>
     """
+    seperator = ", "
     bar = IncrementalBar("[!] Writing Weifan's Format", max=len(graph.nodes))
     with io.open("{}.tsv".format(name), 'w') as handle:
-        handle.write("WA_GEO_ID\tARTIFICIAL_DISTRICT_ID\tSUPER_SET_ID\n")
+        handle.write("WA_GEO_ID" + seperator + "ARTIFICIAL_DISTRICT_ID" + seperator + "SUPER_SET_ID\n")
         for i, node in enumerate(sorted(graph.nodes())):
             bar.next()
-            handle.write("{}\t{}\t{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district'], i))
+            handle.write("{}" + seperator + "{}" + seperator + "{}\n".format(graph.nodes.get(node)['WA_GEO_ID'], graph.nodes.get(node)['district'], i))
             for child_node in graph.nodes.get(node).get('contains', []):
-                handle.write("{}\t{}\t{}\n".format(child_node, graph.nodes.get(node)['district'], i))
+                handle.write("{}" + seperator + "{}" + seperator + "{}\n".format(child_node, graph.nodes.get(node)['district'], i))
 
     bar.finish()
     
