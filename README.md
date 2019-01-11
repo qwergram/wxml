@@ -1,13 +1,19 @@
-# Project is separated into a few stages
+# Project Rakan + Xayah
 
-TODO:
+An interesting Gerrymanering analysis tool by the UW WXML team. Circa 2018.
 
-- C++ representation of matrix and use it in python (vmatrix)
-- Code to build networkx representations (seed)
-- Download networkx representations and pass it to C++ representation of matrix (main)
-- Live visualization of code running (visualize)
+## Pre-requisite Setup
 
-TEST TODOS:
+- Rakan prereqs:
+    - Setup python (virtual environment suggested)
+    - Install C++ Compiler (such as g++ or clang)
+- Xayah prereqs:
+    - Install nodejs + npm
 
-- Timed tests
-- networkx tests
+## Rakan Compilation Code
+
+Run: `python setup.py build_ext`
+
+## Launch Xayah code
+
+Run: `npm start`

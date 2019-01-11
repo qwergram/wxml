@@ -286,6 +286,75 @@ body.cython { font-family: courier; font-size: 12; }
 .cython.score-252 {background-color: #FFFF09;}
 .cython.score-253 {background-color: #FFFF09;}
 .cython.score-254 {background-color: #FFFF09;}
+.cython .hll { background-color: #ffffcc }
+.cython  { background: #f8f8f8; }
+.cython .c { color: #408080; font-style: italic } /* Comment */
+.cython .err { border: 1px solid #FF0000 } /* Error */
+.cython .k { color: #008000; font-weight: bold } /* Keyword */
+.cython .o { color: #666666 } /* Operator */
+.cython .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cython .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cython .cp { color: #BC7A00 } /* Comment.Preproc */
+.cython .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.cython .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cython .cs { color: #408080; font-style: italic } /* Comment.Special */
+.cython .gd { color: #A00000 } /* Generic.Deleted */
+.cython .ge { font-style: italic } /* Generic.Emph */
+.cython .gr { color: #FF0000 } /* Generic.Error */
+.cython .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.cython .gi { color: #00A000 } /* Generic.Inserted */
+.cython .go { color: #888888 } /* Generic.Output */
+.cython .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.cython .gs { font-weight: bold } /* Generic.Strong */
+.cython .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.cython .gt { color: #0044DD } /* Generic.Traceback */
+.cython .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.cython .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.cython .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.cython .kp { color: #008000 } /* Keyword.Pseudo */
+.cython .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.cython .kt { color: #B00040 } /* Keyword.Type */
+.cython .m { color: #666666 } /* Literal.Number */
+.cython .s { color: #BA2121 } /* Literal.String */
+.cython .na { color: #7D9029 } /* Name.Attribute */
+.cython .nb { color: #008000 } /* Name.Builtin */
+.cython .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.cython .no { color: #880000 } /* Name.Constant */
+.cython .nd { color: #AA22FF } /* Name.Decorator */
+.cython .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.cython .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.cython .nf { color: #0000FF } /* Name.Function */
+.cython .nl { color: #A0A000 } /* Name.Label */
+.cython .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.cython .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.cython .nv { color: #19177C } /* Name.Variable */
+.cython .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.cython .w { color: #bbbbbb } /* Text.Whitespace */
+.cython .mb { color: #666666 } /* Literal.Number.Bin */
+.cython .mf { color: #666666 } /* Literal.Number.Float */
+.cython .mh { color: #666666 } /* Literal.Number.Hex */
+.cython .mi { color: #666666 } /* Literal.Number.Integer */
+.cython .mo { color: #666666 } /* Literal.Number.Oct */
+.cython .sa { color: #BA2121 } /* Literal.String.Affix */
+.cython .sb { color: #BA2121 } /* Literal.String.Backtick */
+.cython .sc { color: #BA2121 } /* Literal.String.Char */
+.cython .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.cython .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.cython .s2 { color: #BA2121 } /* Literal.String.Double */
+.cython .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.cython .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.cython .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.cython .sx { color: #008000 } /* Literal.String.Other */
+.cython .sr { color: #BB6688 } /* Literal.String.Regex */
+.cython .s1 { color: #BA2121 } /* Literal.String.Single */
+.cython .ss { color: #19177C } /* Literal.String.Symbol */
+.cython .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.cython .fm { color: #0000FF } /* Name.Function.Magic */
+.cython .vc { color: #19177C } /* Name.Variable.Class */
+.cython .vg { color: #19177C } /* Name.Variable.Global */
+.cython .vi { color: #19177C } /* Name.Variable.Instance */
+.cython .vm { color: #19177C } /* Name.Variable.Magic */
+.cython .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 </head>
 <body class="cython">
@@ -295,37 +364,37 @@ body.cython { font-family: courier; font-size: 12; }
     Click on a line that starts with a "<code>+</code>" to see the C code that Cython generated for it.
 </p>
 <p>Raw output: <a href="rakan.cpp">rakan.cpp</a></p>
-<div class="cython"><pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">001</span>: # distutils: language = c++</pre>
+<div class="cython"><pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">001</span>: <span class="c"># distutils: language = c++</span></pre>
 <pre class='cython code score-8 '>  __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyDict_NewPresized</span>(0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   if (<span class='py_c_api'>PyDict_SetItem</span>(__pyx_d, __pyx_n_s_test, __pyx_t_1) &lt; 0) <span class='error_goto'>__PYX_ERR(1, 1, __pyx_L1_error)</span>
   <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_1); __pyx_t_1 = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">002</span>: from cython.operator import dereference, preincrement, address</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">002</span>: <span class="k">from</span> <span class="nn">cython.operator</span> <span class="k">import</span> <span class="n">dereference</span><span class="p">,</span> <span class="n">preincrement</span><span class="p">,</span> <span class="n">address</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">003</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">004</span>: from libcpp.list cimport list as clist</pre>
-<pre class="cython line score-0">&#xA0;<span class="">005</span>: from libcpp.vector cimport vector as cvector</pre>
+<pre class="cython line score-0">&#xA0;<span class="">004</span>: <span class="k">from</span> <span class="nn">libcpp.list</span> <span class="k">cimport</span> <span class="nb">list</span> <span class="k">as</span> <span class="n">clist</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">005</span>: <span class="k">from</span> <span class="nn">libcpp.vector</span> <span class="k">cimport</span> <span class="n">vector</span> <span class="k">as</span> <span class="n">cvector</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">006</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">007</span>: from rakan cimport Precinct as cPrecinct</pre>
-<pre class="cython line score-0">&#xA0;<span class="">008</span>: from rakan cimport Rakan as cRakan</pre>
+<pre class="cython line score-0">&#xA0;<span class="">007</span>: <span class="k">from</span> <span class="nn">rakan</span> <span class="k">cimport</span> <span class="n">Precinct</span> <span class="k">as</span> <span class="n">cPrecinct</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">008</span>: <span class="k">from</span> <span class="nn">rakan</span> <span class="k">cimport</span> <span class="n">Rakan</span> <span class="k">as</span> <span class="n">cRakan</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">009</span>: </pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">010</span>: cdef class PyPrecinct:</pre>
-<pre class='cython code score-0 '>struct __pyx_obj_5rakan_PyPrecinct {
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">010</span>: <span class="k">cdef</span> <span class="k">class</span> <span class="nf">PyPrecinct</span><span class="p">:</span></pre>
+<pre class='cython code score-0 '>struct __pyx_obj_5rakan_5rakan_PyPrecinct {
   PyObject_HEAD
-  struct __pyx_vtabstruct_5rakan_PyPrecinct *__pyx_vtab;
+  struct __pyx_vtabstruct_5rakan_5rakan_PyPrecinct *__pyx_vtab;
   rakan::Precinct __pyx___cprecinct;
 };
 /* … */
-struct __pyx_vtabstruct_5rakan_PyPrecinct {
+struct __pyx_vtabstruct_5rakan_5rakan_PyPrecinct {
   PyObject *(*factory)(rakan::Precinct);
 };
-static struct __pyx_vtabstruct_5rakan_PyPrecinct *__pyx_vtabptr_5rakan_PyPrecinct;
+static struct __pyx_vtabstruct_5rakan_5rakan_PyPrecinct *__pyx_vtabptr_5rakan_5rakan_PyPrecinct;
 </pre><pre class="cython line score-0">&#xA0;<span class="">011</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">012</span>:     cdef cPrecinct __cprecinct</pre>
+<pre class="cython line score-0">&#xA0;<span class="">012</span>:     <span class="k">cdef</span> <span class="kt">cPrecinct</span> <span class="nf">__cprecinct</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">013</span>: </pre>
-<pre class="cython line score-38" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">014</span>:     def __cinit__(self, int rid=0, int district=0):</pre>
+<pre class="cython line score-38" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">014</span>:     <span class="k">def</span> <span class="nf">__cinit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">rid</span><span class="o">=</span><span class="mf">0</span><span class="p">,</span> <span class="nb">int</span> <span class="n">district</span><span class="o">=</span><span class="mf">0</span><span class="p">):</span></pre>
 <pre class='cython code score-38 '>/* Python wrapper */
-static int __pyx_pw_5rakan_10PyPrecinct_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_5rakan_10PyPrecinct_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_5rakan_5rakan_10PyPrecinct_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_5rakan_5rakan_10PyPrecinct_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_rid;
   int __pyx_v_district;
   int __pyx_r;
@@ -387,18 +456,18 @@ static int __pyx_pw_5rakan_10PyPrecinct_1__cinit__(PyObject *__pyx_v_self, PyObj
   __pyx_L5_argtuple_error:;
   <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__cinit__", 0, 0, 2, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(1, 14, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct___cinit__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self), __pyx_v_rid, __pyx_v_district);
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct___cinit__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self), __pyx_v_rid, __pyx_v_district);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_5rakan_10PyPrecinct___cinit__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self, int __pyx_v_rid, int __pyx_v_district) {
+static int __pyx_pf_5rakan_5rakan_10PyPrecinct___cinit__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self, int __pyx_v_rid, int __pyx_v_district) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__cinit__", 0);
@@ -407,13 +476,13 @@ static int __pyx_pf_5rakan_10PyPrecinct___cinit__(struct __pyx_obj_5rakan_PyPrec
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">015</span>:         self.__cprecinct = cPrecinct(rid, district)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">015</span>:         <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span> <span class="o">=</span> <span class="n">cPrecinct</span><span class="p">(</span><span class="n">rid</span><span class="p">,</span> <span class="n">district</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  try {
     __pyx_t_1 = rakan::Precinct(__pyx_v_rid, __pyx_v_district);
   } catch(...) {
@@ -422,24 +491,24 @@ static int __pyx_pf_5rakan_10PyPrecinct___cinit__(struct __pyx_obj_5rakan_PyPrec
   }
   __pyx_v_self-&gt;__pyx___cprecinct = __pyx_t_1;
 </pre><pre class="cython line score-0">&#xA0;<span class="">016</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">017</span>:     #def __dealloc__(self):</pre>
-<pre class="cython line score-0">&#xA0;<span class="">018</span>:     #    del self.__cprecinct</pre>
+<pre class="cython line score-0">&#xA0;<span class="">017</span>:     <span class="c">#def __dealloc__(self):</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">018</span>:     <span class="c">#    del self.__cprecinct</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">019</span>: </pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">020</span>:     def __eq__(self, other):</pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">020</span>:     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span></pre>
 <pre class='cython code score-5 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_3__eq__(PyObject *__pyx_v_self, PyObject *__pyx_v_other); /*proto*/
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_3__eq__(PyObject *__pyx_v_self, PyObject *__pyx_v_other) {
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_3__eq__(PyObject *__pyx_v_self, PyObject *__pyx_v_other); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_3__eq__(PyObject *__pyx_v_self, PyObject *__pyx_v_other) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__eq__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_2__eq__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self), ((PyObject *)__pyx_v_other));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_2__eq__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self), ((PyObject *)__pyx_v_other));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_10PyPrecinct_2__eq__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self, PyObject *__pyx_v_other) {
+static PyObject *__pyx_pf_5rakan_5rakan_10PyPrecinct_2__eq__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self, PyObject *__pyx_v_other) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__eq__", 0);
@@ -449,14 +518,14 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_2__eq__(struct __pyx_obj_5rakan_Py
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2);
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_3);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.__eq__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.__eq__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-12" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">021</span>:         return other.rid == self.rid</pre>
+</pre><pre class="cython line score-12" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">021</span>:         <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">rid</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">rid</span></pre>
 <pre class='cython code score-12 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_v_other, __pyx_n_s_rid);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 21, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
@@ -469,21 +538,21 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_2__eq__(struct __pyx_obj_5rakan_Py
   __pyx_t_3 = 0;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">022</span>: </pre>
-<pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">023</span>:     def __str__(self):</pre>
+<pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">023</span>:     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-8 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_5__str__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_5__str__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_5__str__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_5__str__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__str__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_4__str__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_4__str__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_10PyPrecinct_4__str__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_10PyPrecinct_4__str__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__str__", 0);
@@ -496,14 +565,14 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_4__str__(struct __pyx_obj_5rakan_P
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_7);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.__str__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.__str__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-46" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">024</span>:         return "&lt;Rakan Precinct rid={} district={}&gt;".format(self.__cprecinct.rid, self.__cprecinct.district)</pre>
+</pre><pre class="cython line score-46" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">024</span>:         <span class="k">return</span> <span class="s">&quot;&lt;Rakan Precinct rid={} district={}&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">rid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">district</span><span class="p">)</span></pre>
 <pre class='cython code score-46 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyObject_GetAttrStr</span>(__pyx_kp_s_Rakan_Precinct_rid_district, __pyx_n_s_format);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 24, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
@@ -564,22 +633,22 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_4__str__(struct __pyx_obj_5rakan_P
   __pyx_t_1 = 0;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">025</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">026</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">027</span>:     def rid(self):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">026</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">027</span>:     <span class="k">def</span> <span class="nf">rid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_3rid_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_3rid_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_3rid_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_3rid_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_3rid___get__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_3rid___get__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_10PyPrecinct_3rid___get__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_10PyPrecinct_3rid___get__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -587,14 +656,14 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_3rid___get__(struct __pyx_obj_5rak
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.rid.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.rid.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">028</span>:         return self.__cprecinct.rid;</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">028</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">rid</span><span class="p">;</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_self-&gt;__pyx___cprecinct.rid);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 28, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
@@ -602,22 +671,22 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_3rid___get__(struct __pyx_obj_5rak
   __pyx_t_1 = 0;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">029</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">030</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">031</span>:     def district(self):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">030</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">031</span>:     <span class="k">def</span> <span class="nf">district</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_8district_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_8district_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_8district_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_8district_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_8district___get__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_8district___get__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_10PyPrecinct_8district___get__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_10PyPrecinct_8district___get__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -625,14 +694,14 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_8district___get__(struct __pyx_obj
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.district.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.district.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">032</span>:         return self.__cprecinct.district;</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">032</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">district</span><span class="p">;</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_self-&gt;__pyx___cprecinct.district);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 32, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
@@ -640,11 +709,11 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_8district___get__(struct __pyx_obj
   __pyx_t_1 = 0;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">033</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">034</span>:     @district.setter</pre>
-<pre class="cython line score-9" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">035</span>:     def district(self, int value):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">034</span>:     <span class="nd">@district</span><span class="o">.</span><span class="n">setter</span></pre>
+<pre class="cython line score-9" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">035</span>:     <span class="k">def</span> <span class="nf">district</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">value</span><span class="p">):</span></pre>
 <pre class='cython code score-9 '>/* Python wrapper */
-static int __pyx_pw_5rakan_10PyPrecinct_8district_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_arg_value); /*proto*/
-static int __pyx_pw_5rakan_10PyPrecinct_8district_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_arg_value) {
+static int __pyx_pw_5rakan_5rakan_10PyPrecinct_8district_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_arg_value); /*proto*/
+static int __pyx_pw_5rakan_5rakan_10PyPrecinct_8district_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_arg_value) {
   int __pyx_v_value;
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
@@ -654,18 +723,18 @@ static int __pyx_pw_5rakan_10PyPrecinct_8district_3__set__(PyObject *__pyx_v_sel
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.district.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.district.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_8district_2__set__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self), ((int)__pyx_v_value));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_8district_2__set__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self), ((int)__pyx_v_value));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_5rakan_10PyPrecinct_8district_2__set__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self, int __pyx_v_value) {
+static int __pyx_pf_5rakan_5rakan_10PyPrecinct_8district_2__set__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self, int __pyx_v_value) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__set__", 0);
@@ -675,25 +744,25 @@ static int __pyx_pf_5rakan_10PyPrecinct_8district_2__set__(struct __pyx_obj_5rak
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">036</span>:         self.__cprecinct.district = value</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">036</span>:         <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">district</span> <span class="o">=</span> <span class="n">value</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_self-&gt;__pyx___cprecinct.district = __pyx_v_value;
 </pre><pre class="cython line score-0">&#xA0;<span class="">037</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">038</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">039</span>:     def area(self):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">038</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">039</span>:     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_4area_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_4area_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_4area_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_4area_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_4area___get__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_4area___get__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_10PyPrecinct_4area___get__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_10PyPrecinct_4area___get__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -701,14 +770,14 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_4area___get__(struct __pyx_obj_5ra
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.area.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.area.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">040</span>:         return self.__cprecinct.area</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">040</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">area</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_self-&gt;__pyx___cprecinct.area);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 40, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
@@ -716,22 +785,22 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_4area___get__(struct __pyx_obj_5ra
   __pyx_t_1 = 0;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">041</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">042</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">043</span>:     def democrat_votes(self):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">042</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">043</span>:     <span class="k">def</span> <span class="nf">democrat_votes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_14democrat_votes_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_14democrat_votes_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_14democrat_votes_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_14democrat_votes_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_14democrat_votes___get__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_14democrat_votes___get__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_10PyPrecinct_14democrat_votes___get__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_10PyPrecinct_14democrat_votes___get__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -739,14 +808,14 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_14democrat_votes___get__(struct __
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.democrat_votes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.democrat_votes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">044</span>:         return self.__cprecinct.democrat_votes</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">044</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">democrat_votes</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_self-&gt;__pyx___cprecinct.democrat_votes);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 44, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
@@ -754,22 +823,22 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_14democrat_votes___get__(struct __
   __pyx_t_1 = 0;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">045</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">046</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">047</span>:     def republican_votes(self):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">046</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">047</span>:     <span class="k">def</span> <span class="nf">republican_votes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_16republican_votes_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_16republican_votes_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_16republican_votes_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_16republican_votes_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_16republican_votes___get__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_16republican_votes___get__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_10PyPrecinct_16republican_votes___get__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_10PyPrecinct_16republican_votes___get__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -777,14 +846,14 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_16republican_votes___get__(struct 
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.republican_votes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.republican_votes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">048</span>:         return self.__cprecinct.republican_votes</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">048</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">republican_votes</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_self-&gt;__pyx___cprecinct.republican_votes);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 48, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
@@ -792,22 +861,22 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_16republican_votes___get__(struct 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">049</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">050</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">051</span>:     def other_votes(self):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">050</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">051</span>:     <span class="k">def</span> <span class="nf">other_votes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_11other_votes_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_11other_votes_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_11other_votes_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_11other_votes_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_11other_votes___get__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_11other_votes___get__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_10PyPrecinct_11other_votes___get__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_10PyPrecinct_11other_votes___get__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -815,14 +884,14 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_11other_votes___get__(struct __pyx
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.other_votes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.other_votes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">052</span>:         return self.__cprecinct.other_votes</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">052</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">other_votes</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_1 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_v_self-&gt;__pyx___cprecinct.other_votes);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 52, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
@@ -830,22 +899,22 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_11other_votes___get__(struct __pyx
   __pyx_t_1 = 0;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">053</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">054</span>:     @property</pre>
-<pre class="cython line score-4" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">055</span>:     def neighbors(self):</pre>
+<pre class="cython line score-0">&#xA0;<span class="">054</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-4" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">055</span>:     <span class="k">def</span> <span class="nf">neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-4 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_9neighbors_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_10PyPrecinct_9neighbors_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_9neighbors_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_10PyPrecinct_9neighbors_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_10PyPrecinct_9neighbors___get__(((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_10PyPrecinct_9neighbors___get__(((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_10PyPrecinct_9neighbors___get__(struct __pyx_obj_5rakan_PyPrecinct *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_10PyPrecinct_9neighbors___get__(struct __pyx_obj_5rakan_5rakan_PyPrecinct *__pyx_v_self) {
   rakan::Precinct *__pyx_v__;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
@@ -855,14 +924,14 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_9neighbors___get__(struct __pyx_ob
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_5);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.neighbors.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.neighbors.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-9" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">056</span>:         return [PyPrecinct.factory(dereference(_)) for _ in self.__cprecinct.neighbors]</pre>
+</pre><pre class="cython line score-9" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">056</span>:         <span class="k">return</span> <span class="p">[</span><span class="n">PyPrecinct</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">dereference</span><span class="p">(</span><span class="n">_</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cprecinct</span><span class="o">.</span><span class="n">neighbors</span><span class="p">]</span></pre>
 <pre class='cython code score-9 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   __pyx_t_1 = <span class='py_c_api'>PyList_New</span>(0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 56, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
@@ -873,7 +942,7 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_9neighbors___get__(struct __pyx_ob
     __pyx_t_4 = *__pyx_t_2;
     ++__pyx_t_2;
     __pyx_v__ = __pyx_t_4;
-    __pyx_t_5 = __pyx_f_5rakan_10PyPrecinct_factory((*__pyx_v__));<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 56, __pyx_L1_error)</span>
+    __pyx_t_5 = __pyx_f_5rakan_5rakan_10PyPrecinct_factory((*__pyx_v__));<span class='error_goto'> if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 56, __pyx_L1_error)</span>
     <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_5);
     if (unlikely(<span class='pyx_c_api'>__Pyx_ListComp_Append</span>(__pyx_t_1, (PyObject*)__pyx_t_5))) <span class='error_goto'>__PYX_ERR(1, 56, __pyx_L1_error)</span>
     <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_5); __pyx_t_5 = 0;
@@ -882,9 +951,9 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_9neighbors___get__(struct __pyx_ob
   __pyx_t_1 = 0;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">057</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">058</span>:     @staticmethod</pre>
-<pre class="cython line score-4" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">059</span>:     cdef factory(cPrecinct cprecinct):</pre>
-<pre class='cython code score-4 '>static PyObject *__pyx_f_5rakan_10PyPrecinct_factory(rakan::Precinct __pyx_v_cprecinct) {
+<pre class="cython line score-0">&#xA0;<span class="">058</span>:     <span class="nd">@staticmethod</span></pre>
+<pre class="cython line score-4" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">059</span>:     <span class="k">cdef</span> <span class="nf">factory</span><span class="p">(</span><span class="n">cPrecinct</span> <span class="n">cprecinct</span><span class="p">):</span></pre>
+<pre class='cython code score-4 '>static PyObject *__pyx_f_5rakan_5rakan_10PyPrecinct_factory(rakan::Precinct __pyx_v_cprecinct) {
   PyObject *__pyx_v_py_obj = NULL;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
@@ -893,7 +962,7 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_9neighbors___get__(struct __pyx_ob
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyPrecinct.factory", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyPrecinct.factory", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_py_obj);
@@ -901,34 +970,34 @@ static PyObject *__pyx_pf_5rakan_10PyPrecinct_9neighbors___get__(struct __pyx_ob
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">060</span>:         py_obj = PyPrecinct.__new__(PyPrecinct)</pre>
-<pre class='cython code score-0 '>  __pyx_t_1 = ((PyObject *)__pyx_tp_new_5rakan_PyPrecinct(((PyTypeObject *)__pyx_ptype_5rakan_PyPrecinct), __pyx_empty_tuple, NULL));<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 60, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">060</span>:         <span class="n">py_obj</span> <span class="o">=</span> <span class="n">PyPrecinct</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">PyPrecinct</span><span class="p">)</span></pre>
+<pre class='cython code score-0 '>  __pyx_t_1 = ((PyObject *)__pyx_tp_new_5rakan_5rakan_PyPrecinct(((PyTypeObject *)__pyx_ptype_5rakan_5rakan_PyPrecinct), __pyx_empty_tuple, NULL));<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 60, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(((PyObject *)__pyx_t_1));
   __pyx_v_py_obj = ((PyObject *)__pyx_t_1);
   __pyx_t_1 = 0;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">061</span>:         (&lt;PyPrecinct&gt;py_obj).__cprecinct = cprecinct</pre>
-<pre class='cython code score-0 '>  ((struct __pyx_obj_5rakan_PyPrecinct *)__pyx_v_py_obj)-&gt;__pyx___cprecinct = __pyx_v_cprecinct;
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">062</span>:         return py_obj</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">061</span>:         <span class="p">(&lt;</span><span class="kt">PyPrecinct</span><span class="p">&gt;</span><span class="n">py_obj</span><span class="p">)</span><span class="o">.</span><span class="n">__cprecinct</span> <span class="o">=</span> <span class="n">cprecinct</span></pre>
+<pre class='cython code score-0 '>  ((struct __pyx_obj_5rakan_5rakan_PyPrecinct *)__pyx_v_py_obj)-&gt;__pyx___cprecinct = __pyx_v_cprecinct;
+</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">062</span>:         <span class="k">return</span> <span class="n">py_obj</span></pre>
 <pre class='cython code score-2 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_py_obj);
   __pyx_r = __pyx_v_py_obj;
   goto __pyx_L0;
 </pre><pre class="cython line score-0">&#xA0;<span class="">063</span>: </pre>
 <pre class="cython line score-0">&#xA0;<span class="">064</span>: </pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">065</span>: cdef class PyRakan:</pre>
-<pre class='cython code score-0 '>struct __pyx_obj_5rakan_PyRakan {
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">065</span>: <span class="k">cdef</span> <span class="k">class</span> <span class="nf">PyRakan</span><span class="p">:</span></pre>
+<pre class='cython code score-0 '>struct __pyx_obj_5rakan_5rakan_PyRakan {
   PyObject_HEAD
   rakan::Rakan __pyx___crakan;
 };
 
 
 </pre><pre class="cython line score-0">&#xA0;<span class="">066</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">067</span>:     cdef cRakan __crakan</pre>
+<pre class="cython line score-0">&#xA0;<span class="">067</span>:     <span class="k">cdef</span> <span class="kt">cRakan</span> <span class="nf">__crakan</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">068</span>: </pre>
-<pre class="cython line score-38" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">069</span>:     def __cinit__(self, int size = 10000, int districts = 100):</pre>
+<pre class="cython line score-38" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">069</span>:     <span class="k">def</span> <span class="nf">__cinit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">size</span> <span class="o">=</span> <span class="mf">10000</span><span class="p">,</span> <span class="nb">int</span> <span class="n">districts</span> <span class="o">=</span> <span class="mf">100</span><span class="p">):</span></pre>
 <pre class='cython code score-38 '>/* Python wrapper */
-static int __pyx_pw_5rakan_7PyRakan_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_5rakan_7PyRakan_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_5rakan_5rakan_7PyRakan_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_5rakan_5rakan_7PyRakan_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_size;
   int __pyx_v_districts;
   int __pyx_r;
@@ -990,18 +1059,18 @@ static int __pyx_pw_5rakan_7PyRakan_1__cinit__(PyObject *__pyx_v_self, PyObject 
   __pyx_L5_argtuple_error:;
   <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("__cinit__", 0, 0, 2, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(1, 69, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5rakan_7PyRakan___cinit__(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self), __pyx_v_size, __pyx_v_districts);
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan___cinit__(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self), __pyx_v_size, __pyx_v_districts);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static int __pyx_pf_5rakan_7PyRakan___cinit__(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self, int __pyx_v_size, int __pyx_v_districts) {
+static int __pyx_pf_5rakan_5rakan_7PyRakan___cinit__(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self, int __pyx_v_size, int __pyx_v_districts) {
   int __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__cinit__", 0);
@@ -1010,13 +1079,13 @@ static int __pyx_pf_5rakan_7PyRakan___cinit__(struct __pyx_obj_5rakan_PyRakan *_
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">070</span>:         self.__crakan = cRakan(size, districts)</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">070</span>:         <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span> <span class="o">=</span> <span class="n">cRakan</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">districts</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>  try {
     __pyx_t_1 = rakan::Rakan(__pyx_v_size, __pyx_v_districts);
   } catch(...) {
@@ -1025,45 +1094,44 @@ static int __pyx_pf_5rakan_7PyRakan___cinit__(struct __pyx_obj_5rakan_PyRakan *_
   }
   __pyx_v_self-&gt;__pyx___crakan = __pyx_t_1;
 </pre><pre class="cython line score-0">&#xA0;<span class="">071</span>: </pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">072</span>:     def __dealloc__(self):</pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">072</span>:     <span class="k">def</span> <span class="nf">__dealloc__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre>
 <pre class='cython code score-0 '>/* Python wrapper */
-static void __pyx_pw_5rakan_7PyRakan_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_5rakan_7PyRakan_3__dealloc__(PyObject *__pyx_v_self) {
+static void __pyx_pw_5rakan_5rakan_7PyRakan_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_5rakan_5rakan_7PyRakan_3__dealloc__(PyObject *__pyx_v_self) {
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__dealloc__ (wrapper)", 0);
-  __pyx_pf_5rakan_7PyRakan_2__dealloc__(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self));
+  __pyx_pf_5rakan_5rakan_7PyRakan_2__dealloc__(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
 }
 
-static void __pyx_pf_5rakan_7PyRakan_2__dealloc__(CYTHON_UNUSED struct __pyx_obj_5rakan_PyRakan *__pyx_v_self) {
+static void __pyx_pf_5rakan_5rakan_7PyRakan_2__dealloc__(CYTHON_UNUSED struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self) {
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__dealloc__", 0);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
 }
-</pre><pre class="cython line score-0">&#xA0;<span class="">073</span>:         pass</pre>
-<pre class="cython line score-0">&#xA0;<span class="">074</span>:         # del self.__crakan</pre>
-<pre class="cython line score-0">&#xA0;<span class="">075</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">076</span>:     # == API for debugging in python ==</pre>
-<pre class="cython line score-0">&#xA0;<span class="">077</span>: </pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">078</span>:     def __len__(self) -&gt; int:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">073</span>:         <span class="k">pass</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">074</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">075</span>:     <span class="c"># == API for debugging in python ==</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">076</span>: </pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">077</span>:     <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span></pre>
 <pre class='cython code score-0 '>/* Python wrapper */
-static Py_ssize_t __pyx_pw_5rakan_7PyRakan_5__len__(PyObject *__pyx_v_self); /*proto*/
-static Py_ssize_t __pyx_pw_5rakan_7PyRakan_5__len__(PyObject *__pyx_v_self) {
+static Py_ssize_t __pyx_pw_5rakan_5rakan_7PyRakan_5__len__(PyObject *__pyx_v_self); /*proto*/
+static Py_ssize_t __pyx_pw_5rakan_5rakan_7PyRakan_5__len__(PyObject *__pyx_v_self) {
   Py_ssize_t __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__len__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_4__len__(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_4__len__(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static Py_ssize_t __pyx_pf_5rakan_7PyRakan_4__len__(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self) {
+static Py_ssize_t __pyx_pf_5rakan_5rakan_7PyRakan_4__len__(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self) {
   Py_ssize_t __pyx_r;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__len__", 0);
@@ -1073,26 +1141,26 @@ static Py_ssize_t __pyx_pf_5rakan_7PyRakan_4__len__(struct __pyx_obj_5rakan_PyRa
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">079</span>:         return self.__crakan.atlas().size()</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">078</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">atlas</span><span class="p">()</span><span class="o">.</span><span class="n">size</span><span class="p">()</span></pre>
 <pre class='cython code score-0 '>  __pyx_r = __pyx_v_self-&gt;__pyx___crakan.atlas().size();
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">080</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">081</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">082</span>:     def districts(self) -&gt; list:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">079</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">080</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">081</span>:     <span class="k">def</span> <span class="nf">districts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_9districts_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_9districts_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_9districts_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_9districts_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_9districts___get__(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_9districts___get__(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_9districts___get__(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_9districts___get__(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self) {
   std::vector&lt;std::list&lt;int&gt; &gt;  __pyx_v_districts;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
@@ -1101,39 +1169,39 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_9districts___get__(struct __pyx_obj_5r
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.districts.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.districts.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">083</span>:         districts = self.__crakan.districts()</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">082</span>:         <span class="n">districts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">districts</span><span class="p">()</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_districts = __pyx_v_self-&gt;__pyx___crakan.districts();
-</pre><pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">084</span>:         return districts</pre>
+</pre><pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">083</span>:         <span class="k">return</span> <span class="n">districts</span></pre>
 <pre class='cython code score-1 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_list_3c_int_3e___(__pyx_v_districts);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 84, __pyx_L1_error)</span>
+  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_list_3c_int_3e___(__pyx_v_districts);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 83, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">085</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">086</span>:     @property</pre>
-<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">087</span>:     def precincts(self) -&gt; list:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">084</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">085</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-5" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">086</span>:     <span class="k">def</span> <span class="nf">precincts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span></pre>
 <pre class='cython code score-5 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_9precincts_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_9precincts_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_9precincts_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_9precincts_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_9precincts___get__(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_9precincts___get__(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_9precincts___get__(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_9precincts___get__(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self) {
   std::vector&lt;rakan::Precinct *&gt;  __pyx_v_c_precincts;
   PyObject *__pyx_v_py_precincts = NULL;
   rakan::Precinct *__pyx_v__;
@@ -1145,7 +1213,7 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_9precincts___get__(struct __pyx_obj_5r
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_4);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.precincts.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.precincts.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_v_py_precincts);
@@ -1153,10 +1221,10 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_9precincts___get__(struct __pyx_obj_5r
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">088</span>:         c_precincts = self.__crakan.atlas()</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">087</span>:         <span class="n">c_precincts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">atlas</span><span class="p">()</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_c_precincts = __pyx_v_self-&gt;__pyx___crakan.atlas();
-</pre><pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">089</span>:         py_precincts = [PyPrecinct.factory(dereference(_)) for _ in c_precincts]</pre>
-<pre class='cython code score-8 '>  __pyx_t_1 = <span class='py_c_api'>PyList_New</span>(0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 89, __pyx_L1_error)</span>
+</pre><pre class="cython line score-8" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">088</span>:         <span class="n">py_precincts</span> <span class="o">=</span> <span class="p">[</span><span class="n">PyPrecinct</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">dereference</span><span class="p">(</span><span class="n">_</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">c_precincts</span><span class="p">]</span></pre>
+<pre class='cython code score-8 '>  __pyx_t_1 = <span class='py_c_api'>PyList_New</span>(0);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 88, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   __pyx_t_2 = __pyx_v_c_precincts.begin();
   for (;;) {
@@ -1164,35 +1232,35 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_9precincts___get__(struct __pyx_obj_5r
     __pyx_t_3 = *__pyx_t_2;
     ++__pyx_t_2;
     __pyx_v__ = __pyx_t_3;
-    __pyx_t_4 = __pyx_f_5rakan_10PyPrecinct_factory((*__pyx_v__));<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 89, __pyx_L1_error)</span>
+    __pyx_t_4 = __pyx_f_5rakan_5rakan_10PyPrecinct_factory((*__pyx_v__));<span class='error_goto'> if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 88, __pyx_L1_error)</span>
     <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_4);
-    if (unlikely(<span class='pyx_c_api'>__Pyx_ListComp_Append</span>(__pyx_t_1, (PyObject*)__pyx_t_4))) <span class='error_goto'>__PYX_ERR(1, 89, __pyx_L1_error)</span>
+    if (unlikely(<span class='pyx_c_api'>__Pyx_ListComp_Append</span>(__pyx_t_1, (PyObject*)__pyx_t_4))) <span class='error_goto'>__PYX_ERR(1, 88, __pyx_L1_error)</span>
     <span class='pyx_macro_api'>__Pyx_DECREF</span>(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_py_precincts = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
-</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">090</span>:         return py_precincts</pre>
+</pre><pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">089</span>:         <span class="k">return</span> <span class="n">py_precincts</span></pre>
 <pre class='cython code score-2 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   <span class='pyx_macro_api'>__Pyx_INCREF</span>(__pyx_v_py_precincts);
   __pyx_r = __pyx_v_py_precincts;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">091</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">092</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">093</span>:     def edges(self) -&gt; list:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">090</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">091</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">092</span>:     <span class="k">def</span> <span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_5edges_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_5edges_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_5edges_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_5edges_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_5edges___get__(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_5edges___get__(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_5edges___get__(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_5edges___get__(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self) {
   rakan::DynamicBoundary __pyx_v_edges;
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
@@ -1201,40 +1269,40 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_5edges___get__(struct __pyx_obj_5rakan
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.edges.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.edges.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">094</span>:         edges = self.__crakan.edges()</pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">093</span>:         <span class="n">edges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_edges = __pyx_v_self-&gt;__pyx___crakan.edges();
-</pre><pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">095</span>:         return edges._tree</pre>
+</pre><pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">094</span>:         <span class="k">return</span> <span class="n">edges</span><span class="o">.</span><span class="n">_tree</span></pre>
 <pre class='cython code score-1 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_pair_3c_std_3a__3a_list_3c_int_3e____2c_std_3a__3a_list_3c_int_3e____3e___(__pyx_v_edges._tree);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 95, __pyx_L1_error)</span>
+  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_pair_3c_std_3a__3a_list_3c_int_3e____2c_std_3a__3a_list_3c_int_3e____3e___(__pyx_v_edges._tree);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 94, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">096</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">097</span>:     # == API for myself ==</pre>
-<pre class="cython line score-0">&#xA0;<span class="">098</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">099</span>:     def _unchecked_changes(self) -&gt; list:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">095</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">096</span>:     <span class="c"># == API for myself ==</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">097</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">098</span>:     <span class="k">def</span> <span class="nf">_unchecked_changes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_18_unchecked_changes_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_18_unchecked_changes_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_18_unchecked_changes_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_18_unchecked_changes_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_18_unchecked_changes___get__(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_18_unchecked_changes___get__(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_18_unchecked_changes___get__(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_18_unchecked_changes___get__(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -1242,37 +1310,37 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_18_unchecked_changes___get__(struct __
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan._unchecked_changes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan._unchecked_changes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">100</span>:         return self.__crakan._unchecked_changes</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">099</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">_unchecked_changes</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  __pyx_t_1 = <span class='pyx_c_api'>__pyx_convert_list_to_py_int</span>(__pyx_v_self-&gt;__pyx___crakan._unchecked_changes);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 100, __pyx_L1_error)</span>
+  __pyx_t_1 = <span class='pyx_c_api'>__pyx_convert_list_to_py_int</span>(__pyx_v_self-&gt;__pyx___crakan._unchecked_changes);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 99, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">101</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">102</span>:     @property</pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">103</span>:     def _checked_changes(self) -&gt; list:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">100</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">101</span>:     <span class="nd">@property</span></pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">102</span>:     <span class="k">def</span> <span class="nf">_checked_changes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_16_checked_changes_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_16_checked_changes_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_16_checked_changes_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_16_checked_changes_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_16_checked_changes___get__(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_16_checked_changes___get__(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_16_checked_changes___get__(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_16_checked_changes___get__(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("__get__", 0);
@@ -1280,49 +1348,93 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_16_checked_changes___get__(struct __py
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan._checked_changes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan._checked_changes.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">104</span>:         return self.__crakan._checked_changes</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">103</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">_checked_changes</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
-  __pyx_t_1 = <span class='pyx_c_api'>__pyx_convert_list_to_py_int</span>(__pyx_v_self-&gt;__pyx___crakan._checked_changes);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 104, __pyx_L1_error)</span>
+  __pyx_t_1 = <span class='pyx_c_api'>__pyx_convert_list_to_py_int</span>(__pyx_v_self-&gt;__pyx___crakan._checked_changes);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 103, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">105</span>: </pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">104</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">105</span>:     <span class="c"># == API for construction ==</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">106</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">107</span>:     # == API for construction ==</pre>
-<pre class="cython line score-0">&#xA0;<span class="">108</span>: </pre>
-<pre class="cython line score-12" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">109</span>:     def add_precinct(self, int district) -&gt; int:</pre>
-<pre class='cython code score-12 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_7add_precinct(PyObject *__pyx_v_self, PyObject *__pyx_arg_district); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_7add_precinct(PyObject *__pyx_v_self, PyObject *__pyx_arg_district) {
+<pre class="cython line score-39" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">107</span>:     <span class="k">def</span> <span class="nf">add_precinct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">district</span><span class="p">,</span> <span class="nb">int</span> <span class="n">population</span> <span class="o">=</span> <span class="mf">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span></pre>
+<pre class='cython code score-39 '>/* Python wrapper */
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_7add_precinct(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_7add_precinct(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_district;
+  int __pyx_v_population;
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("add_precinct (wrapper)", 0);
-  assert(__pyx_arg_district); {
-    __pyx_v_district = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_arg_district); if (unlikely((__pyx_v_district == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 109, __pyx_L3_error)</span>
+  {
+    static PyObject **__pyx_pyargnames[] = {&amp;__pyx_n_s_district,&amp;__pyx_n_s_population,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = <span class='py_c_api'>PyDict_Size</span>(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_district)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (kw_args &gt; 0) {
+          PyObject* value = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_population);
+          if (value) { values[1] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args &gt; 0)) {
+        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_precinct") &lt; 0)) <span class='error_goto'>__PYX_ERR(1, 107, __pyx_L3_error)</span>
+      }
+    } else {
+      switch (<span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)) {
+        case  2: values[1] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_district = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_district == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 107, __pyx_L3_error)</span>
+    if (values[1]) {
+      __pyx_v_population = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_population == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 107, __pyx_L3_error)</span>
+    } else {
+      __pyx_v_population = ((int)0);
+    }
   }
   goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("add_precinct", 0, 1, 2, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(1, 107, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.add_precinct", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.add_precinct", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_6add_precinct(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self), ((int)__pyx_v_district));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_6add_precinct(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self), __pyx_v_district, __pyx_v_population);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_6add_precinct(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self, int __pyx_v_district) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_6add_precinct(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self, int __pyx_v_district, int __pyx_v_population) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("add_precinct", 0);
@@ -1330,31 +1442,31 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_6add_precinct(struct __pyx_obj_5rakan_
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.add_precinct", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.add_precinct", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">110</span>:         return self.__crakan.add_precinct(district)</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">108</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">add_precinct</span><span class="p">(</span><span class="n">district</span><span class="p">,</span> <span class="n">population</span><span class="p">)</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   try {
-    __pyx_t_1 = __pyx_v_self-&gt;__pyx___crakan.add_precinct(__pyx_v_district);
+    __pyx_t_1 = __pyx_v_self-&gt;__pyx___crakan.add_precinct(__pyx_v_district, __pyx_v_population);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    <span class='error_goto'>__PYX_ERR(1, 110, __pyx_L1_error)</span>
+    <span class='error_goto'>__PYX_ERR(1, 108, __pyx_L1_error)</span>
   }
-  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 110, __pyx_L1_error)</span>
+  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyInt_From_int</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 108, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">111</span>: </pre>
-<pre class="cython line score-41" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">112</span>:     def set_neighbors(self, int rid1, int rid2):</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">109</span>: </pre>
+<pre class="cython line score-41" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">110</span>:     <span class="k">def</span> <span class="nf">set_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">rid1</span><span class="p">,</span> <span class="nb">int</span> <span class="n">rid2</span><span class="p">):</span></pre>
 <pre class='cython code score-41 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_9set_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_9set_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_9set_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_9set_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_rid1;
   int __pyx_v_rid2;
   PyObject *__pyx_r = 0;
@@ -1383,11 +1495,11 @@ static PyObject *__pyx_pw_5rakan_7PyRakan_9set_neighbors(PyObject *__pyx_v_self,
         case  1:
         if (likely((values[1] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_rid2)) != 0)) kw_args--;
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("set_neighbors", 1, 2, 2, 1); <span class='error_goto'>__PYX_ERR(1, 112, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("set_neighbors", 1, 2, 2, 1); <span class='error_goto'>__PYX_ERR(1, 110, __pyx_L3_error)</span>
         }
       }
       if (unlikely(kw_args &gt; 0)) {
-        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_neighbors") &lt; 0)) <span class='error_goto'>__PYX_ERR(1, 112, __pyx_L3_error)</span>
+        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_neighbors") &lt; 0)) <span class='error_goto'>__PYX_ERR(1, 110, __pyx_L3_error)</span>
       }
     } else if (<span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1395,25 +1507,25 @@ static PyObject *__pyx_pw_5rakan_7PyRakan_9set_neighbors(PyObject *__pyx_v_self,
       values[0] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 0);
       values[1] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 1);
     }
-    __pyx_v_rid1 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_rid1 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 112, __pyx_L3_error)</span>
-    __pyx_v_rid2 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_rid2 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 112, __pyx_L3_error)</span>
+    __pyx_v_rid1 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_rid1 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 110, __pyx_L3_error)</span>
+    __pyx_v_rid2 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_rid2 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 110, __pyx_L3_error)</span>
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("set_neighbors", 1, 2, 2, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(1, 112, __pyx_L3_error)</span>
+  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("set_neighbors", 1, 2, 2, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(1, 110, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.set_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.set_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_8set_neighbors(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self), __pyx_v_rid1, __pyx_v_rid2);
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_8set_neighbors(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self), __pyx_v_rid1, __pyx_v_rid2);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_8set_neighbors(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid1, int __pyx_v_rid2) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_8set_neighbors(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid1, int __pyx_v_rid2) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("set_neighbors", 0);
@@ -1421,54 +1533,54 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_8set_neighbors(struct __pyx_obj_5rakan
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.set_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.set_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">113</span>:         return self.__crakan.set_neighbors(rid1, rid2)</pre>
+</pre><pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">111</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">set_neighbors</span><span class="p">(</span><span class="n">rid1</span><span class="p">,</span> <span class="n">rid2</span><span class="p">)</span></pre>
 <pre class='cython code score-1 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   try {
     __pyx_v_self-&gt;__pyx___crakan.set_neighbors(__pyx_v_rid1, __pyx_v_rid2);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    <span class='error_goto'>__PYX_ERR(1, 113, __pyx_L1_error)</span>
+    <span class='error_goto'>__PYX_ERR(1, 111, __pyx_L1_error)</span>
   }
-  __pyx_t_1 = __Pyx_void_to_None(NULL);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 113, __pyx_L1_error)</span>
+  __pyx_t_1 = __Pyx_void_to_None(NULL);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 111, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">114</span>: </pre>
-<pre class="cython line score-0">&#xA0;<span class="">115</span>:     # == API for the mathematicains ==</pre>
-<pre class="cython line score-0">&#xA0;<span class="">116</span>: </pre>
-<pre class="cython line score-12" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">117</span>:     def get_neighbors(self, int rid) -&gt; dict:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">112</span>: </pre>
+<pre class="cython line score-0">&#xA0;<span class="">113</span>:     <span class="c"># == API for the mathematicians ==</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">114</span>: </pre>
+<pre class="cython line score-12" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">115</span>:     <span class="k">def</span> <span class="nf">get_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">rid</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span></pre>
 <pre class='cython code score-12 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_11get_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_rid); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_11get_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_rid) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_11get_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_rid); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_11get_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_rid) {
   int __pyx_v_rid;
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("get_neighbors (wrapper)", 0);
   assert(__pyx_arg_rid); {
-    __pyx_v_rid = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_arg_rid); if (unlikely((__pyx_v_rid == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 117, __pyx_L3_error)</span>
+    __pyx_v_rid = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_arg_rid); if (unlikely((__pyx_v_rid == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 115, __pyx_L3_error)</span>
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.get_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.get_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_10get_neighbors(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self), ((int)__pyx_v_rid));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_10get_neighbors(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self), ((int)__pyx_v_rid));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_10get_neighbors(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_10get_neighbors(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("get_neighbors", 0);
@@ -1476,53 +1588,53 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_10get_neighbors(struct __pyx_obj_5raka
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.get_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.get_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">118</span>:         return self.__crakan.get_neighbors(rid)</pre>
+</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">116</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">get_neighbors</span><span class="p">(</span><span class="n">rid</span><span class="p">)</span></pre>
 <pre class='cython code score-11 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   try {
     __pyx_t_1 = __pyx_v_self-&gt;__pyx___crakan.get_neighbors(__pyx_v_rid);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    <span class='error_goto'>__PYX_ERR(1, 118, __pyx_L1_error)</span>
+    <span class='error_goto'>__PYX_ERR(1, 116, __pyx_L1_error)</span>
   }
-  __pyx_t_2 = __pyx_convert_map_to_py_int____std_3a__3a_list_3c_int_3e___(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 118, __pyx_L1_error)</span>
+  __pyx_t_2 = __pyx_convert_map_to_py_int____std_3a__3a_list_3c_int_3e___(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 116, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
-  if (!(likely(<span class='py_c_api'>PyDict_CheckExact</span>(__pyx_t_2))||(<span class='py_c_api'>PyErr_Format</span>(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)-&gt;tp_name), 0))) <span class='error_goto'>__PYX_ERR(1, 118, __pyx_L1_error)</span>
+  if (!(likely(<span class='py_c_api'>PyDict_CheckExact</span>(__pyx_t_2))||(<span class='py_c_api'>PyErr_Format</span>(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)-&gt;tp_name), 0))) <span class='error_goto'>__PYX_ERR(1, 116, __pyx_L1_error)</span>
   __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">119</span>: </pre>
-<pre class="cython line score-12" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">120</span>:     def get_diff_district_neighbors(self, int rid) -&gt; dict:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">117</span>: </pre>
+<pre class="cython line score-12" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">118</span>:     <span class="k">def</span> <span class="nf">get_diff_district_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">rid</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span></pre>
 <pre class='cython code score-12 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_13get_diff_district_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_rid); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_13get_diff_district_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_rid) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_13get_diff_district_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_rid); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_13get_diff_district_neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_rid) {
   int __pyx_v_rid;
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("get_diff_district_neighbors (wrapper)", 0);
   assert(__pyx_arg_rid); {
-    __pyx_v_rid = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_arg_rid); if (unlikely((__pyx_v_rid == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 120, __pyx_L3_error)</span>
+    __pyx_v_rid = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(__pyx_arg_rid); if (unlikely((__pyx_v_rid == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 118, __pyx_L3_error)</span>
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.get_diff_district_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.get_diff_district_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_12get_diff_district_neighbors(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self), ((int)__pyx_v_rid));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_12get_diff_district_neighbors(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self), ((int)__pyx_v_rid));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_12get_diff_district_neighbors(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_12get_diff_district_neighbors(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("get_diff_district_neighbors", 0);
@@ -1530,32 +1642,32 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_12get_diff_district_neighbors(struct _
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.get_diff_district_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.get_diff_district_neighbors", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">121</span>:         return self.__crakan.get_diff_district_neighbors(rid)</pre>
+</pre><pre class="cython line score-11" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">119</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">get_diff_district_neighbors</span><span class="p">(</span><span class="n">rid</span><span class="p">)</span></pre>
 <pre class='cython code score-11 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   try {
     __pyx_t_1 = __pyx_v_self-&gt;__pyx___crakan.get_diff_district_neighbors(__pyx_v_rid);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    <span class='error_goto'>__PYX_ERR(1, 121, __pyx_L1_error)</span>
+    <span class='error_goto'>__PYX_ERR(1, 119, __pyx_L1_error)</span>
   }
-  __pyx_t_2 = __pyx_convert_map_to_py_int____std_3a__3a_list_3c_int_3e___(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 121, __pyx_L1_error)</span>
+  __pyx_t_2 = __pyx_convert_map_to_py_int____std_3a__3a_list_3c_int_3e___(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 119, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
-  if (!(likely(<span class='py_c_api'>PyDict_CheckExact</span>(__pyx_t_2))||(<span class='py_c_api'>PyErr_Format</span>(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)-&gt;tp_name), 0))) <span class='error_goto'>__PYX_ERR(1, 121, __pyx_L1_error)</span>
+  if (!(likely(<span class='py_c_api'>PyDict_CheckExact</span>(__pyx_t_2))||(<span class='py_c_api'>PyErr_Format</span>(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_2)-&gt;tp_name), 0))) <span class='error_goto'>__PYX_ERR(1, 119, __pyx_L1_error)</span>
   __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">122</span>: </pre>
-<pre class="cython line score-52" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">123</span>:     def are_connected(self, int rid1, int rid2, int black_listed_rid = -1) -&gt; bool:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">120</span>: </pre>
+<pre class="cython line score-52" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">121</span>:     <span class="k">def</span> <span class="nf">are_connected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">rid1</span><span class="p">,</span> <span class="nb">int</span> <span class="n">rid2</span><span class="p">,</span> <span class="nb">int</span> <span class="n">black_listed_rid</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span></pre>
 <pre class='cython code score-52 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_15are_connected(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_15are_connected(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_15are_connected(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_15are_connected(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_rid1;
   int __pyx_v_rid2;
   int __pyx_v_black_listed_rid;
@@ -1587,7 +1699,7 @@ static PyObject *__pyx_pw_5rakan_7PyRakan_15are_connected(PyObject *__pyx_v_self
         case  1:
         if (likely((values[1] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_rid2)) != 0)) kw_args--;
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("are_connected", 0, 2, 3, 1); <span class='error_goto'>__PYX_ERR(1, 123, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("are_connected", 0, 2, 3, 1); <span class='error_goto'>__PYX_ERR(1, 121, __pyx_L3_error)</span>
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -1597,7 +1709,7 @@ static PyObject *__pyx_pw_5rakan_7PyRakan_15are_connected(PyObject *__pyx_v_self
         }
       }
       if (unlikely(kw_args &gt; 0)) {
-        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "are_connected") &lt; 0)) <span class='error_goto'>__PYX_ERR(1, 123, __pyx_L3_error)</span>
+        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "are_connected") &lt; 0)) <span class='error_goto'>__PYX_ERR(1, 121, __pyx_L3_error)</span>
       }
     } else {
       switch (<span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)) {
@@ -1609,30 +1721,30 @@ static PyObject *__pyx_pw_5rakan_7PyRakan_15are_connected(PyObject *__pyx_v_self
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_rid1 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_rid1 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 123, __pyx_L3_error)</span>
-    __pyx_v_rid2 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_rid2 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 123, __pyx_L3_error)</span>
+    __pyx_v_rid1 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_rid1 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 121, __pyx_L3_error)</span>
+    __pyx_v_rid2 = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_rid2 == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 121, __pyx_L3_error)</span>
     if (values[2]) {
-      __pyx_v_black_listed_rid = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[2]); if (unlikely((__pyx_v_black_listed_rid == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 123, __pyx_L3_error)</span>
+      __pyx_v_black_listed_rid = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[2]); if (unlikely((__pyx_v_black_listed_rid == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 121, __pyx_L3_error)</span>
     } else {
       __pyx_v_black_listed_rid = ((int)-1);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("are_connected", 0, 2, 3, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(1, 123, __pyx_L3_error)</span>
+  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("are_connected", 0, 2, 3, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(1, 121, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.are_connected", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.are_connected", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_14are_connected(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self), __pyx_v_rid1, __pyx_v_rid2, __pyx_v_black_listed_rid);
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_14are_connected(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self), __pyx_v_rid1, __pyx_v_rid2, __pyx_v_black_listed_rid);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_14are_connected(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid1, int __pyx_v_rid2, int __pyx_v_black_listed_rid) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_14are_connected(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid1, int __pyx_v_rid2, int __pyx_v_black_listed_rid) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("are_connected", 0);
@@ -1640,42 +1752,42 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_14are_connected(struct __pyx_obj_5raka
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.are_connected", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.are_connected", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">124</span>:         return self.__crakan.are_connected(rid1, rid2, black_listed_rid)</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">122</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">are_connected</span><span class="p">(</span><span class="n">rid1</span><span class="p">,</span> <span class="n">rid2</span><span class="p">,</span> <span class="n">black_listed_rid</span><span class="p">)</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   try {
     __pyx_t_1 = __pyx_v_self-&gt;__pyx___crakan.are_connected(__pyx_v_rid1, __pyx_v_rid2, __pyx_v_black_listed_rid);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    <span class='error_goto'>__PYX_ERR(1, 124, __pyx_L1_error)</span>
+    <span class='error_goto'>__PYX_ERR(1, 122, __pyx_L1_error)</span>
   }
-  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyBool_FromLong</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 124, __pyx_L1_error)</span>
+  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyBool_FromLong</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 122, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">125</span>: </pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">126</span>:     def is_valid(self) -&gt; bool:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">123</span>: </pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">124</span>:     <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_17is_valid(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_17is_valid(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_17is_valid(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_17is_valid(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("is_valid (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_16is_valid(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_16is_valid(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_16is_valid(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_16is_valid(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("is_valid", 0);
@@ -1683,42 +1795,42 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_16is_valid(struct __pyx_obj_5rakan_PyR
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.is_valid", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.is_valid", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">127</span>:         return self.__crakan.is_valid()</pre>
+</pre><pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">125</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span></pre>
 <pre class='cython code score-3 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   try {
     __pyx_t_1 = __pyx_v_self-&gt;__pyx___crakan.is_valid();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    <span class='error_goto'>__PYX_ERR(1, 127, __pyx_L1_error)</span>
+    <span class='error_goto'>__PYX_ERR(1, 125, __pyx_L1_error)</span>
   }
-  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyBool_FromLong</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 127, __pyx_L1_error)</span>
+  __pyx_t_2 = <span class='pyx_c_api'>__Pyx_PyBool_FromLong</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 125, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">128</span>: </pre>
-<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">129</span>:     def propose_random_move(self) -&gt; tuple:</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">126</span>: </pre>
+<pre class="cython line score-3" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">127</span>:     <span class="k">def</span> <span class="nf">propose_random_move</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span></pre>
 <pre class='cython code score-3 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_19propose_random_move(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_19propose_random_move(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_19propose_random_move(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_19propose_random_move(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("propose_random_move (wrapper)", 0);
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_18propose_random_move(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_18propose_random_move(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self));
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_18propose_random_move(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_18propose_random_move(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("propose_random_move", 0);
@@ -1726,32 +1838,32 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_18propose_random_move(struct __pyx_obj
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_2);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.propose_random_move", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.propose_random_move", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-13" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">130</span>:         return self.__crakan.propose_random_move()</pre>
+</pre><pre class="cython line score-13" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">128</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">propose_random_move</span><span class="p">()</span></pre>
 <pre class='cython code score-13 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   try {
     __pyx_t_1 = __pyx_v_self-&gt;__pyx___crakan.propose_random_move();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    <span class='error_goto'>__PYX_ERR(1, 130, __pyx_L1_error)</span>
+    <span class='error_goto'>__PYX_ERR(1, 128, __pyx_L1_error)</span>
   }
-  __pyx_t_2 = <span class='pyx_c_api'>__pyx_convert_pair_to_py_int____int</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 130, __pyx_L1_error)</span>
+  __pyx_t_2 = <span class='pyx_c_api'>__pyx_convert_pair_to_py_int____int</span>(__pyx_t_1);<span class='error_goto'> if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 128, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_2);
-  if (!(likely(<span class='py_c_api'>PyTuple_CheckExact</span>(__pyx_t_2))||(<span class='py_c_api'>PyErr_Format</span>(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_2)-&gt;tp_name), 0))) <span class='error_goto'>__PYX_ERR(1, 130, __pyx_L1_error)</span>
+  if (!(likely(<span class='py_c_api'>PyTuple_CheckExact</span>(__pyx_t_2))||(<span class='py_c_api'>PyErr_Format</span>(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_2)-&gt;tp_name), 0))) <span class='error_goto'>__PYX_ERR(1, 128, __pyx_L1_error)</span>
   __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">131</span>: </pre>
-<pre class="cython line score-41" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">132</span>:     def move_precinct(self, int rid, int district):</pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">129</span>: </pre>
+<pre class="cython line score-41" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">130</span>:     <span class="k">def</span> <span class="nf">move_precinct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span> <span class="n">rid</span><span class="p">,</span> <span class="nb">int</span> <span class="n">district</span><span class="p">):</span></pre>
 <pre class='cython code score-41 '>/* Python wrapper */
-static PyObject *__pyx_pw_5rakan_7PyRakan_21move_precinct(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_5rakan_7PyRakan_21move_precinct(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_21move_precinct(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_5rakan_5rakan_7PyRakan_21move_precinct(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_rid;
   int __pyx_v_district;
   PyObject *__pyx_r = 0;
@@ -1780,11 +1892,11 @@ static PyObject *__pyx_pw_5rakan_7PyRakan_21move_precinct(PyObject *__pyx_v_self
         case  1:
         if (likely((values[1] = <span class='pyx_c_api'>__Pyx_PyDict_GetItemStr</span>(__pyx_kwds, __pyx_n_s_district)) != 0)) kw_args--;
         else {
-          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("move_precinct", 1, 2, 2, 1); <span class='error_goto'>__PYX_ERR(1, 132, __pyx_L3_error)</span>
+          <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("move_precinct", 1, 2, 2, 1); <span class='error_goto'>__PYX_ERR(1, 130, __pyx_L3_error)</span>
         }
       }
       if (unlikely(kw_args &gt; 0)) {
-        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "move_precinct") &lt; 0)) <span class='error_goto'>__PYX_ERR(1, 132, __pyx_L3_error)</span>
+        if (unlikely(<span class='pyx_c_api'>__Pyx_ParseOptionalKeywords</span>(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "move_precinct") &lt; 0)) <span class='error_goto'>__PYX_ERR(1, 130, __pyx_L3_error)</span>
       }
     } else if (<span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1792,25 +1904,25 @@ static PyObject *__pyx_pw_5rakan_7PyRakan_21move_precinct(PyObject *__pyx_v_self
       values[0] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 0);
       values[1] = <span class='py_macro_api'>PyTuple_GET_ITEM</span>(__pyx_args, 1);
     }
-    __pyx_v_rid = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_rid == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 132, __pyx_L3_error)</span>
-    __pyx_v_district = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_district == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 132, __pyx_L3_error)</span>
+    __pyx_v_rid = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[0]); if (unlikely((__pyx_v_rid == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 130, __pyx_L3_error)</span>
+    __pyx_v_district = <span class='pyx_c_api'>__Pyx_PyInt_As_int</span>(values[1]); if (unlikely((__pyx_v_district == (int)-1) &amp;&amp; <span class='py_c_api'>PyErr_Occurred</span>())) <span class='error_goto'>__PYX_ERR(1, 130, __pyx_L3_error)</span>
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("move_precinct", 1, 2, 2, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(1, 132, __pyx_L3_error)</span>
+  <span class='pyx_c_api'>__Pyx_RaiseArgtupleInvalid</span>("move_precinct", 1, 2, 2, <span class='py_macro_api'>PyTuple_GET_SIZE</span>(__pyx_args)); <span class='error_goto'>__PYX_ERR(1, 130, __pyx_L3_error)</span>
   __pyx_L3_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.move_precinct", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.move_precinct", __pyx_clineno, __pyx_lineno, __pyx_filename);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5rakan_7PyRakan_20move_precinct(((struct __pyx_obj_5rakan_PyRakan *)__pyx_v_self), __pyx_v_rid, __pyx_v_district);
+  __pyx_r = __pyx_pf_5rakan_5rakan_7PyRakan_20move_precinct(((struct __pyx_obj_5rakan_5rakan_PyRakan *)__pyx_v_self), __pyx_v_rid, __pyx_v_district);
 
   /* function exit code */
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5rakan_7PyRakan_20move_precinct(struct __pyx_obj_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid, int __pyx_v_district) {
+static PyObject *__pyx_pf_5rakan_5rakan_7PyRakan_20move_precinct(struct __pyx_obj_5rakan_5rakan_PyRakan *__pyx_v_self, int __pyx_v_rid, int __pyx_v_district) {
   PyObject *__pyx_r = NULL;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("move_precinct", 0);
@@ -1818,25 +1930,25 @@ static PyObject *__pyx_pf_5rakan_7PyRakan_20move_precinct(struct __pyx_obj_5raka
   /* function exit code */
   __pyx_L1_error:;
   <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_t_1);
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.PyRakan.move_precinct", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("rakan.rakan.PyRakan.move_precinct", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   <span class='refnanny'>__Pyx_XGIVEREF</span>(__pyx_r);
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">133</span>:         return self.__crakan.move_precinct(rid, district)</pre>
+</pre><pre class="cython line score-1" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">131</span>:         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__crakan</span><span class="o">.</span><span class="n">move_precinct</span><span class="p">(</span><span class="n">rid</span><span class="p">,</span> <span class="n">district</span><span class="p">)</span></pre>
 <pre class='cython code score-1 '>  <span class='pyx_macro_api'>__Pyx_XDECREF</span>(__pyx_r);
   try {
     __pyx_v_self-&gt;__pyx___crakan.move_precinct(__pyx_v_rid, __pyx_v_district);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    <span class='error_goto'>__PYX_ERR(1, 133, __pyx_L1_error)</span>
+    <span class='error_goto'>__PYX_ERR(1, 131, __pyx_L1_error)</span>
   }
-  __pyx_t_1 = __Pyx_void_to_None(NULL);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 133, __pyx_L1_error)</span>
+  __pyx_t_1 = __Pyx_void_to_None(NULL);<span class='error_goto'> if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 131, __pyx_L1_error)</span>
   <span class='refnanny'>__Pyx_GOTREF</span>(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">134</span>: </pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">132</span>: </pre>
 </div></body></html>
