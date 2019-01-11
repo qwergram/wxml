@@ -1,0 +1,4 @@
+_psuedo_code/
+*.so
+build/
+__pycache__/

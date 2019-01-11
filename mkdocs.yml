@@ -1,0 +1,20 @@
+site_name: 'Project Rakan'
+site_description: 'A UW WXML Project'
+site_author: 'Norton Pengra'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'deep purple'
+    accent: 'indigo'
+  logo: 'rakan.png'
+  favicon: 'rakan.png'
+
+markdown_extensions:
+  - pymdownx.arithmatex
+  - admonition
+  - codehilite
+
+extra_javascript:
+  - 'extra.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
