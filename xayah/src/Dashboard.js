@@ -45,6 +45,7 @@ class PrecinctMap extends Component {
       showPolygons: true, // show the precinct polygons
       edges: [], // node connection lines
       precincts: [], // precincts
+      districts: [], // districts, where the index corresponds to an rid and the value is the district
       lat: 0, // camera settings
       lng: 0,
       zoom: 1
