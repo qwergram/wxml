@@ -2,3 +2,7 @@ _psuedo_code/
 *.so
 build/
 __pycache__/
+*.html
+*.dnx
+*.rnx
+*.txt
