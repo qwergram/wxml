@@ -3,6 +3,9 @@
 #include <vector>
 #include <list>
 #include <algorithm>
+#include <string>
+#include <iostream>
+#include <stdio.h>
 
 namespace rakan {
     
@@ -12,9 +15,9 @@ namespace rakan {
     class DynamicBoundary {
     public: // for python
         false_tree _tree;
-        int _d_edges;
-        int _s_edges;
-        int _nodes;
+        int _d_edges = 0;
+        int _s_edges = 0;
+        int _nodes = 0;
     public:
         // Constructing the tree
         DynamicBoundary();

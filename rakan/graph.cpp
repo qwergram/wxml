@@ -1,4 +1,5 @@
 #include "graph.h"
+#include <stdio.h>
 
 namespace rakan {
     // Simple Precinct Class. Not declared as a struct for potential expansions.
@@ -51,8 +52,8 @@ namespace rakan {
         // update district table
         this->_districts[district].push_back(new_rid);
 
-        // add to unchecked chagnes
-        //this->_unchecked_changes.push_back(new_rid);
+        // add to unchecked changes
+        this->_unchecked_changes.push_back(new_rid);
 
         return new_rid;
     }
@@ -112,7 +113,7 @@ namespace rakan {
         if (this->_atlas[rid1]->district != this->_atlas[rid2]->district)
             throw std::invalid_argument("Districts between selected precincts are different");
         else if (rid1 == black_listed_rid || rid2 == black_listed_rid)
-            throw std::invalid_argument("Cannot blacklist the precinct taht is undergoing the connectivitiy test");
+            throw std::invalid_argument("Cannot blacklist the precinct that is undergoing the connectivitiy test");
 
         // allowed district
         int district = this->_atlas[rid1]->district;
@@ -171,6 +172,7 @@ namespace rakan {
     // and the second integer is the district number to convert it to.
     std::pair<int, int> Rakan::propose_random_move() {
         std::pair<int, int> random_rids = this->_edges.get_random_district_edge();
+        std::cout << random_rids.first << ' ' << random_rids.second << std::endl;
         return std::pair<int, int>(random_rids.first, this->_atlas[random_rids.second]->district);
     }
 

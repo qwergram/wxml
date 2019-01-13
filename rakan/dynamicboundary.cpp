@@ -1,5 +1,6 @@
 #include "dynamicboundary.h"
 
+
 // Simple dynamic boundary via just marking edges
 // Will not be wrapped in Python.
 
@@ -50,7 +51,7 @@ namespace rakan {
     // return the nth edge of this tree
     std::pair<int, int> DynamicBoundary::get_district_edge(int index) {
         if (index >= this->_d_edges || index < 0)
-            throw std::out_of_range("invalid index");
+            throw std::out_of_range("invalid index: " + std::to_string(index));
         int rid = 0;
         while (index >= (int)this->_tree[rid].first.size()) {
             index -= this->_tree[rid].first.size();
