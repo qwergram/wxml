@@ -61,10 +61,11 @@ cdef class PyPrecinct:
         (<PyPrecinct>py_obj).__cprecinct = cprecinct
         return py_obj
 
-
 cdef class PyRakan:
 
     cdef cRakan __crakan
+
+    # Initialization + Destruction
 
     def __cinit__(self, int size = 10000, int districts = 100):
         self.__crakan = cRakan(size, districts)
