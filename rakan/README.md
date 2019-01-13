@@ -31,4 +31,4 @@ Note the `networkx` file must contain the following properties:
 
 ## Using Parallel processing and Queues for walking
 
-A simple C++ structure has been implemented, where the structure contains basic information on the precinct. 
+A simple C++ structure has been implemented, where the structure contains basic information on the precinct.
