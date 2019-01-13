@@ -1,4 +1,4 @@
-from rakan import PyRakan as BaseRakan
+from rakan.rakan import PyRakan as BaseRakan
 from progress.bar import IncrementalBar
 
 import random
@@ -38,20 +38,22 @@ def build_rakan(nx_path):
     Example code to build a Rakan instance
     """
     graph = networkx.read_gpickle(nx_path)
+    print("Properties:", graph.graph)
     r = Rakan(len(graph.nodes), graph.graph['districts'])
     
     bar = IncrementalBar("Building Rakan (Step 1: Nodes)", max=len(graph.nodes))
-
+    
     # load up nodes with their respective populations
     for node in sorted(graph.nodes):
         r.add_precinct(graph.nodes[node]['dis'], graph.nodes[node]['pop'])
         bar.next()
-
+    
     bar.finish()
 
-    bar = IncrementalBar("Building Rakan (Step 1: Edges)", max=len(graph.edges))
+    bar = IncrementalBar("Building Rakan (Step 2: Edges)", max=len(graph.edges))
 
     for (node1, node2) in graph.edges:
+        
         r.set_neighbors(node1, node2)
         bar.next()
 
@@ -60,5 +62,5 @@ def build_rakan(nx_path):
     return r
 
 if __name__ == "__main__":
-    rakan = build_rakan("rakan/sample1.rnx")
+    rakan = build_rakan("rakan/iowa.dnx")
     rakan.walk()
