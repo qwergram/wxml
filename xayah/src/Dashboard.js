@@ -52,8 +52,19 @@ class PrecinctMap extends Component {
     }
   }
   componentDidMount() {
-    // logic for loading the whole thing first
-    this.setState({precincts: [] })
+    var ws = new WebSocket("ws://127.0.0.1:3001");
+    ws.onmessage = function (event) {
+        //event.data
+    };
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+  tick() {
+    this.setState({
+      precincts: []
+    });
   }
   render() {
     const position = [this.state.lat, this.state.lng] // this.state.precincts[0].nodeCoord()
