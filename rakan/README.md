@@ -21,6 +21,7 @@ Note the `networkx` file must contain the following properties:
     - `pop` (integer value) the population of the node.
     - `dis` (integer value) the district number this node is part of (indexed from 0). Use `-1` if no district assigned.
     - `name` (string value) human friendly name of this node.
+    - `vertexes` (list of pairs of floats) A list of the coordinates that describe the geogrpahic shape of this node
     <!-- - `edge` (boolean value) true if this node sits on the edge of a map -->
     - (more to come as the project matures)
 - graph properties:
