@@ -17,6 +17,8 @@ class Rakan(BaseRakanWithServer):
         # Completely random
         if random.randint(0, max_value) == 1:
             self.move_precinct(precinct, district)
+        
+        self.iterations += 1
 
     """
     An example walk.
@@ -47,7 +49,7 @@ def build_rakan(nx_path):
     for node in sorted(graph.nodes):
         r.add_precinct(graph.nodes[node]['dis'], graph.nodes[node]['pop'])
         if isinstance(r, BaseRakanWithServer):
-            r.add_vertexes(graph.nodes[node]['vertexes'])
+            r.add_vertexes(node, graph.nodes[node]['vertexes'])
         bar.next()
     
     bar.finish()
