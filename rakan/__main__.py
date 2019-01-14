@@ -1,10 +1,10 @@
-from rakan.rakan import PyRakan as BaseRakan
+from base import BaseRakanWithServer, BaseRakan
 from progress.bar import IncrementalBar
 
 import random
 import networkx
 
-class Rakan(BaseRakan):
+class Rakan(BaseRakanWithServer):
     """
     An example step
     Argument can be passed in.
@@ -46,6 +46,8 @@ def build_rakan(nx_path):
     # load up nodes with their respective populations
     for node in sorted(graph.nodes):
         r.add_precinct(graph.nodes[node]['dis'], graph.nodes[node]['pop'])
+        if isinstance(r, BaseRakanWithServer):
+            r.add_vertexes(graph.nodes[node]['vertexes'])
         bar.next()
     
     bar.finish()
@@ -63,4 +65,5 @@ def build_rakan(nx_path):
 
 if __name__ == "__main__":
     rakan = build_rakan("rakan/iowa.dnx")
-    rakan.walk()
+    import pdb; pdb.set_trace()
+    # rakan.walk()
