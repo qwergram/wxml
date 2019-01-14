@@ -61,12 +61,28 @@ class PrecinctMap extends Component {
         geoJasonObj.addData(feature);
     };
   }
+  create_precincts = () => {
+    let precincts = []
+
+    // Outer loop to create parent
+    for (let i = 0; i < 3; i++) {
+      let children = []
+      //Inner loop to create children
+      for (let j = 0; j < 5; j++) {
+        children.push(<td>{`Column ${j + 1}`}</td>)
+      }
+      //Create the parent and add the children
+      table.push(<tr>{children}</tr>)
+    }
+    return precincts
+  }
   render() {
     const position = [this.state.lat, this.state.lng] // this.state.precincts[0].nodeCoord()
     return (
       <Map center={position} zoom={this.state.zoom} id="mapid" style={{height: "50vh"}}>
         <TileLayer attribution="Shout out to the amazing folks @ <a href='https://openstreetmap.org'>OpenStreetMap</a>" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-        {this.state.precincts}
+        //{this.state.precincts}
+        {this.create_precincts()}
       </Map>
     );
   }
