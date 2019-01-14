@@ -52,19 +52,14 @@ class PrecinctMap extends Component {
     }
   }
   componentDidMount() {
+    var map = L.map(div).setView([37, 95], 2);
+    geoJasonObj = L.geoJson().addTo(map);
+
     var ws = new WebSocket("ws://127.0.0.1:3001");
     ws.onmessage = function (event) {
-        //event.data
+        feature = JSON.parse(event.data);
+        geoJasonObj.addData(feature);
     };
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
-  tick() {
-    this.setState({
-      precincts: []
-    });
   }
   render() {
     const position = [this.state.lat, this.state.lng] // this.state.precincts[0].nodeCoord()
