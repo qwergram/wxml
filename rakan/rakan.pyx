@@ -65,7 +65,8 @@ cdef class PyRakan:
 
     cdef cRakan __crakan
 
-    # Initialization + Destruction
+    def __init__(self, size = 10000, districts = 100):
+        self.__crakan = cRakan(size, districts)
 
     def __cinit__(self, int size = 10000, int districts = 100):
         self.__crakan = cRakan(size, districts)
@@ -95,6 +96,7 @@ cdef class PyRakan:
         return edges._tree
 
     # == API for myself ==
+
     @property
     def _unchecked_changes(self) -> list:
         return self.__crakan._unchecked_changes
