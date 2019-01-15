@@ -38,57 +38,69 @@ class Precinct extends Component {
 }
 
 class PrecinctMap extends Component {
+  // properties:
+    // rakanPort: 3001
   constructor(props) {
     super(props)
     this.state = {
       showConnectivity: false, // show the connectivity (lines + nodes)
       showPolygons: true, // show the precinct polygons
       edges: [], // node connection lines
-      precincts: [], // precincts
-      districts: [], // districts, where the index corresponds to an rid and the value is the district
-      lat: 0, // camera settings
-      lng: 0,
-      zoom: 1
+      precincts: [], // precinct vertexes
+      districts: [], // districts, where the index corresponds to an rid and the value is the district.
+      lat: 38.8796042, // camera settings default to United States overview
+      lng: -95.8315692,
+      zoom: 4,
+      rakanWebsocket: null, // the rakan websocket
+      iterations: 0, // number of iterations rakan has gone through so far
     }
+
+    this.connectRakan = this.connectRakan.bind(this);
   }
   componentDidMount() {
-    var map = L.map(div).setView([37, 95], 2);
-    geoJasonObj = L.geoJson().addTo(map);
+    // logic for loading the whole thing first
+    this.setState({precincts: [] })
 
-    var ws = new WebSocket("ws://127.0.0.1:3001");
-    ws.onmessage = function (event) {
-        feature = JSON.parse(event.data);
-        geoJasonObj.addData(feature);
-    };
+    this.connectRakan();
   }
-  create_precincts = () => {
-    let precincts = []
 
-    // Outer loop to create parent
-    for (let i = 0; i < 3; i++) {
-      let children = []
-      //Inner loop to create children
-      for (let j = 0; j < 5; j++) {
-        children.push(<td>{`Column ${j + 1}`}</td>)
-      }
-      //Create the parent and add the children
-      table.push(<tr>{children}</tr>)
+  // Loading Rakan
+  connectRakan() {
+    const rakanSocket = new WebSocket('ws://127.0.0.1:' + this.props.rakanPort);
+    // store socket in state. Might be used later?
+    this.setState({
+      rakanWebsocket: rakanSocket
+    })
+    // on message, (rakan sent an update) update the map
+    rakanSocket.onmessage = (event) => {
+      // read payload
+      let payload = JSON.parse(event.data);
+      console.log(payload)
+      // update precincts, districts and iterations
+      this.setState({
+        precincts: payload['precinct_vertexes'],
+        districts: payload['precint_districts'],
+        iterations: payload['iterations'],
+      })
+      // close the socket
+      rakanSocket.close()
     }
-    return precincts
+
   }
+
   render() {
     const position = [this.state.lat, this.state.lng] // this.state.precincts[0].nodeCoord()
     return (
       <Map center={position} zoom={this.state.zoom} id="mapid" style={{height: "50vh"}}>
         <TileLayer attribution="Shout out to the amazing folks @ <a href='https://openstreetmap.org'>OpenStreetMap</a>" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-        //{this.state.precincts}
-        {this.create_precincts()}
       </Map>
     );
   }
 }
 
 class Dashboard extends Component {
+  // properties:
+    // rakanPort: 3001
   constructor(props) {
     super(props)
     this.state = {
@@ -113,7 +125,7 @@ class Dashboard extends Component {
           <Nav.Link disabled={this.state.steps === 0}>Export {this.state.steps} Steps</Nav.Link>
         </Nav>
       </Navbar>
-      <PrecinctMap />
+      <PrecinctMap rakanPort={this.props.rakanPort} />
       </div>
     );
   }
