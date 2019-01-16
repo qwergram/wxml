@@ -71,3 +71,4 @@ if __name__ == "__main__":
     rakan = build_rakan("rakan/iowa.dnx")
     # import pdb; pdb.set_trace()
     rakan.walk()
+    print("Run complete.")
