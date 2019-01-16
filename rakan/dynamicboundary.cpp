@@ -68,6 +68,7 @@ namespace rakan {
     // If the two two nodes are marked as different-district precincts, they're marked as same-district precincts after this operation
     // Similarly, two nodes are marked as different-district precincts if they were originally different-district precincts.
     void DynamicBoundary::toggle_edge(int rid1, int rid2) {
+        std::cout << "Toggling edge between " << rid1 << " & " << rid2 << std::endl;
         false_node node = this->_tree[rid1];
         false_node node2 = this->_tree[rid2];
 
