@@ -242,7 +242,7 @@ namespace rakan {
         std::cout << "severs_neighbors passed" << std::endl;
         
         // update this->_districts
-        // this->_update_districts(rid, district);
+        this->_update_districts(rid, district);
 
         std::cout << "updating districts..." << std::endl;
 
