@@ -51,6 +51,7 @@ namespace rakan {
 
     // return the nth edge of this tree
     std::pair<int, int> DynamicBoundary::get_district_edge(int index) {
+        std::cout << " getting edge " << index << " ... ";
         if (index >= this->_d_edges || index < 0)
             throw std::out_of_range("invalid index: " + std::to_string(index));
         int rid = 0;
