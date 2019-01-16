@@ -194,7 +194,7 @@ namespace rakan {
                 }
             }
         }
-        std::cout << "Returning false" << std::endl;
+        std::cout << "Returning " << connected << std::endl;
         
         return connected;
     }
