@@ -129,7 +129,7 @@ namespace rakan {
 
         // track all possible paths
         std::cout << "building pool .. ";
-        std::vector<bool> * pool = new std::vector<bool>(this->_atlas.size());
+        std::vector<bool> pool = std::vector<bool>(this->_atlas.size());
         std::cout << "done. " << std::endl;
 
         // set up both queues
@@ -137,31 +137,31 @@ namespace rakan {
         std::cout << rid1;
         std::cout << " " << rid2;
         std::cout << std::endl;
-        std::list<int> * rid1queue = new std::list<int>();
-        std::list<int> * rid2queue = new std::list<int>();
+        std::list<int> rid1queue = std::list<int>();
+        std::list<int> rid2queue = std::list<int>();
         std::cout << " .. queues built ..";
-        rid1queue->push_back(rid1);
-        rid2queue->push_back(rid2);
+        rid1queue.push_back(rid1);
+        rid2queue.push_back(rid2);
 
         std::cout << " launch cursors ";
 
         int cursor1, cursor2;
 
         std::cout << " .. running: ";
-        while (!rid1queue->empty() || !rid2queue->empty()) {
+        while (!rid1queue.empty() || !rid2queue.empty()) {
             std::cout << "|";
             
-            if (!rid1queue->empty()) {
-                cursor1 = rid1queue->front();
-                rid1queue->pop_front();
+            if (!rid1queue.empty()) {
+                cursor1 = rid1queue.front();
+                rid1queue.pop_front();
             } else {
                 // If queue is empty, set to black_listed_rid to ignore it
                 cursor1 = black_listed_rid;
             }
 
-            if (!rid2queue->empty()) {
-                cursor2 = rid2queue->front();
-                rid2queue->pop_front();
+            if (!rid2queue.empty()) {
+                cursor2 = rid2queue.front();
+                rid2queue.pop_front();
             } else {
                 // If queue is empty, same thing
                 cursor2 = black_listed_rid;
@@ -169,37 +169,33 @@ namespace rakan {
             
 
             if (cursor1 != black_listed_rid) {
-                if ((*pool)[cursor1]) {
+                if (pool[cursor1]) {
                     connected = true;
                     break;
                 }
-                (*pool)[cursor1] = true;
+                pool[cursor1] = true;
 
                 for (Precinct * neighbor : this->_atlas[cursor1]->neighbors) {
                     if (neighbor->district == district)
-                        rid1queue->push_back(neighbor->rid);
+                        rid1queue.push_back(neighbor->rid);
                 }
             }
 
             if (cursor2 != black_listed_rid) {
-                if ((*pool)[cursor2]) {
+                if (pool[cursor2]) {
                     connected = true;
                     break;
                 }
-                (*pool)[cursor2] = true;
+                pool[cursor2] = true;
 
                 for (Precinct * neighbor : this->_atlas[cursor2]->neighbors) {
                     if (neighbor->district == district)
-                        rid2queue->push_back(neighbor->rid);
+                        rid2queue.push_back(neighbor->rid);
                 }
             }
         }
         std::cout << "Returning false" << std::endl;
         
-        delete rid1queue;
-        delete rid2queue;
-        delete pool;
-
         return connected;
     }
 
