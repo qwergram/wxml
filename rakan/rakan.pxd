@@ -7,12 +7,29 @@ from libcpp.list cimport list as clist
 from libcpp.vector cimport vector as cvector
 from libcpp.pair cimport pair as cpair
 
-cdef extern from "dynamicboundary.cpp": pass
+cdef extern from "dynamicboundary.cpp":
 cdef extern from "graph.cpp": pass
 cdef extern from "dynamicboundary.h" namespace "rakan": 
+    # THIS IS FOR DEBUGGING ONLY.
+    # DO NOT USE UNLESS IF YOU KNOW WHAT YOU'RE DOING
     cdef cppclass DynamicBoundary: 
         cvector[cpair[clist[int], clist[int]]] _tree
-        cpair[int, int] get_district_edge(int index)
+        cpair[int, int] get_district_edge(int index) except +
+        int _d_edges;
+        int _s_edges;
+        int _nodes;
+        
+        # Construction
+        void add_node(int) except +;
+        void add_edge(int, int, bool) except +;
+
+        cpair[int, int] get_random_district_edge() except +;
+        cpair[int, int] get_district_edge(int) except +;
+        void toggle_edge(int, int) except +;
+
+        int edge_count() except +;
+        int node_count() except +;
+
     
 
 cdef extern from "graph.h" namespace "rakan":
