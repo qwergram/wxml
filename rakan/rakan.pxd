@@ -7,8 +7,9 @@ from libcpp.list cimport list as clist
 from libcpp.vector cimport vector as cvector
 from libcpp.pair cimport pair as cpair
 
-cdef extern from "dynamicboundary.cpp":
+cdef extern from "dynamicboundary.cpp": pass
 cdef extern from "graph.cpp": pass
+
 cdef extern from "dynamicboundary.h" namespace "rakan": 
     # THIS IS FOR DEBUGGING ONLY.
     # DO NOT USE UNLESS IF YOU KNOW WHAT YOU'RE DOING
@@ -29,8 +30,6 @@ cdef extern from "dynamicboundary.h" namespace "rakan":
 
         int edge_count() except +;
         int node_count() except +;
-
-    
 
 cdef extern from "graph.h" namespace "rakan":
     cdef cppclass Precinct:
