@@ -150,10 +150,23 @@ namespace rakan {
         std::cout << " .. running: ";
         while (!rid1queue->empty() || !rid2queue->empty()) {
             std::cout << "|";
-            cursor1 = rid1queue->front();
-            cursor2 = rid2queue->front();
-            rid1queue->pop_front();
-            rid2queue->pop_front();
+            
+            if (!rid1queue->empty()) {
+                cursor1 = rid1queue->front();
+                rid1queue->pop_front();
+            } else {
+                // If queue is empty, set to black_listed_rid to ignore it
+                cursor1 = black_listed_rid;
+            }
+
+            if (!rid2queue->empty()) {
+                cursor2 = rid2queue->front();
+                rid2queue->pop_front();
+            } else {
+                // If queue is empty, same thing
+                cursor2 = black_listed_rid;
+            }
+            
 
             if (cursor1 != black_listed_rid) {
                 if ((*pool)[cursor1]) {
