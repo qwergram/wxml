@@ -337,9 +337,11 @@ namespace rakan {
 
     // update the dynamic boundary tree
     void Rakan::_update_district_boundary(int rid, int district) {
-        for (Precinct * neighbor : this->_atlas[rid]->neighbors)
-            if (neighbor->district == district || neighbor->district == this->_atlas[rid]->district)
+        for (Precinct * neighbor : this->_atlas[rid]->neighbors) {
+            if (neighbor->district == district || neighbor->district == this->_atlas[rid]->district) {
                 this->_edges.toggle_edge(rid, neighbor->rid);
+            }
+        }
     }
 
     // update the atlas

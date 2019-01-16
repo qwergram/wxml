@@ -17,8 +17,8 @@ class Rakan(BaseRakanWithServer):
         # Rakan is able to propose a random move in O(k)
         precinct, district = self.propose_random_move()
         # Completely random
-        if random.randint(0, max_value) == 1:
-            self.move_precinct(precinct, district)
+        # if random.randint(0, max_value) == 1:
+        self.move_precinct(precinct, district)
         
         self.iterations += 1
 
