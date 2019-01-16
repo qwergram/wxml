@@ -86,6 +86,7 @@ namespace rakan {
     // get the neighbors of the given rid
     // Returned as a map where {district: [rids], district: [rids], ..}
     std::map<int, std::list<int>> Rakan::get_neighbors(int rid) {
+        std::cout << "grabbing a list of district neighbors for precinct #" << rid << std::endl;
         if (rid > (int)this->_atlas.size() || rid < 0)
             throw std::out_of_range("Specified RID not found");
         std::map<int, std::list<int>> neighbors;
@@ -97,6 +98,7 @@ namespace rakan {
 
     // get the neighbors of different districts for the given rid
     std::map<int, std::list<int>> Rakan::get_diff_district_neighbors(int rid) {
+        std::cout << "grabbing a list of different district neighbors for precinct #" << rid << std::endl;
         if (rid > (int)this->_atlas.size() || rid < 0)
             throw std::out_of_range("Specified RID not found");
         std::map<int, std::list<int>> neighbors;
@@ -111,53 +113,81 @@ namespace rakan {
     // are the two precincts connected via the same district path?
     // Will not use the black_listed_rid as part of path
     bool Rakan::are_connected(int rid1, int rid2, int black_listed_rid = -1) {
+        std::cout << "Testing connection between " << rid1 << " & " << rid2 << " without " << black_listed_rid << std::endl;
         if (this->_atlas[rid1]->district != this->_atlas[rid2]->district)
             throw std::invalid_argument("Districts between selected precincts are different");
         else if (rid1 == black_listed_rid || rid2 == black_listed_rid)
             throw std::invalid_argument("Cannot blacklist the precinct that is undergoing the connectivitiy test");
-
+        
+        bool connected = false;
+        
+        std::cout << " areconnected tests passed .. ";
         // allowed district
+        std::cout << "updating atlas .. ";
         int district = this->_atlas[rid1]->district;
-        
+        std::cout << "done. ";
+
         // track all possible paths
-        std::vector<bool> pool = std::vector<bool>(this->_atlas.size());
-        
+        std::cout << "building pool .. ";
+        std::vector<bool> * pool = new std::vector<bool>(this->_atlas.size());
+        std::cout << "done. " << std::endl;
+
         // set up both queues
-        std::list<int> rid1queue = { rid1 };
-        std::list<int> rid2queue = { rid2 };
+        std::cout << "building queues with ";
+        std::cout << rid1;
+        std::cout << " " << rid2;
+        std::cout << std::endl;
+        std::list<int> * rid1queue = new std::list<int>();
+        std::list<int> * rid2queue = new std::list<int>();
+        std::cout << " .. queues built ..";
+        rid1queue->push_back(rid1);
+        rid2queue->push_back(rid2);
+
+        std::cout << " launch cursors ";
 
         int cursor1, cursor2;
 
-        while (!rid1queue.empty() || !rid2queue.empty()) {
-            cursor1 = rid1queue.front();
-            cursor2 = rid2queue.front();
-            rid1queue.pop_front();
-            rid2queue.pop_front();
+        std::cout << " .. running: ";
+        while (!rid1queue->empty() || !rid2queue->empty()) {
+            std::cout << "|";
+            cursor1 = rid1queue->front();
+            cursor2 = rid2queue->front();
+            rid1queue->pop_front();
+            rid2queue->pop_front();
 
             if (cursor1 != black_listed_rid) {
-                if (pool[cursor1])
-                    return true;
-                pool[cursor1] = true;
+                if ((*pool)[cursor1]) {
+                    connected = true;
+                    break;
+                }
+                (*pool)[cursor1] = true;
 
                 for (Precinct * neighbor : this->_atlas[cursor1]->neighbors) {
                     if (neighbor->district == district)
-                        rid1queue.push_back(neighbor->rid);
+                        rid1queue->push_back(neighbor->rid);
                 }
             }
 
             if (cursor2 != black_listed_rid) {
-                if (pool[cursor2])
-                    return true;
-                pool[cursor2] = true;
+                if ((*pool)[cursor2]) {
+                    connected = true;
+                    break;
+                }
+                (*pool)[cursor2] = true;
 
                 for (Precinct * neighbor : this->_atlas[cursor2]->neighbors) {
                     if (neighbor->district == district)
-                        rid2queue.push_back(neighbor->rid);
+                        rid2queue->push_back(neighbor->rid);
                 }
             }
         }
+        std::cout << "Returning false" << std::endl;
+        
+        delete rid1queue;
+        delete rid2queue;
+        delete pool;
 
-        return false;
+        return connected;
     }
 
     // is the graph still valid?
@@ -172,36 +202,57 @@ namespace rakan {
     // Move proposed as pair integers, where the first integer is the rid
     // and the second integer is the district number to convert it to.
     std::pair<int, int> Rakan::propose_random_move() {
+        std::cout << "Proposing Move ... " << std::endl;
+        std::cout << "Sanity check: " << &this->_edges << std::endl;
+        //try {
         std::pair<int, int> random_rids = this->_edges.get_random_district_edge();
+        std::cout << "Retrieved Random move: " << random_rids.first << " and " << random_rids.second << std::endl;
         return std::pair<int, int>(random_rids.first, this->_atlas[random_rids.second]->district);
+        // } catch (std::exception e) {
+        //     throw std::logic_error(e.what());
+        //     std::cout << e.what() << std::endl;
+        // }
     }
 
     // move the specified rid to the new district
     // if the move is illegal, exceptions will be thrown
     void Rakan::move_precinct(int rid, int district) {
+        std::cout << "Moving " << rid << " to district #" << district << std::endl;
         if (!this->is_valid())
             throw std::logic_error("Cannot make move when graph is invalid");
+        std::cout << "is_valid passed ... ";
         if (!this->_is_legal_new_district(rid, district))
             throw std::invalid_argument("Illegal Move (Reason: No neighbors have this district)");
+        std::cout << "is_legal_new_district passed ... ";
         if (this->_severs_neighbors(rid))
             throw std::invalid_argument("Illegal Move (Reason: Severs the neighboring district(s))");
+        std::cout << "severs_neighbors passed" << std::endl;
         
         // update this->_districts
-        this->_update_districts(rid, district);
+        // this->_update_districts(rid, district);
+
+        std::cout << "updating districts..." << std::endl;
 
         // update dynamic boundary
-        this->_update_district_boundary(rid, district);
+        // this->_update_district_boundary(rid, district);
+
+        std::cout << "updating district boundaries..." << std::endl;
 
         // update atlas
-        this->_update_atlas(rid, district);
+        // this->_update_atlas(rid, district);
+
+        std::cout << "updating atlas..." << std::endl;
 
         // add to checked changes
-        this->_checked_changes.push_back(rid);
+        // this->_checked_changes.push_back(rid);
+
+        std::cout << "adding to checked changes..." << std::endl;
     }
 
     // return a set of rid pairs that need are_connected checks given that the 
     // passed in rid is switching districts
     std::set<std::pair<int, int>> Rakan::_checks_required(int rid) {
+        std::cout << std::endl << "Creating checks required: " << std::endl;
         int first, second;
         std::set<std::pair<int, int>> to_check;
         std::map<int, std::list<int>> pool = this->get_neighbors(rid);
@@ -211,6 +262,7 @@ namespace rakan {
             first = *it2;
             for (it2++; it2 != it->second.end(); it2++) {
                 second = *it2;
+                std::cout << " Creating a check for: " << first << " & " << second << std::endl;
                 to_check.insert(std::pair<int, int>(first, second));
             }
         }
@@ -219,9 +271,11 @@ namespace rakan {
 
     // perform checks if there are unchecked changes
     bool Rakan::_is_valid() {
+        std::cout << "is_valid checks" << std::endl;
         while (!this->_unchecked_changes.empty()) {
             int rid = this->_unchecked_changes.front();
             this->_unchecked_changes.pop_front();
+            std::cout << "checking unchecked precinct #" << rid << std::endl;
             std::set<std::pair<int, int>> pool = this->_checks_required(rid);
             for (std::pair<int, int> item : pool) {
                 if (!this->are_connected(item.first, item.second)) {
@@ -252,10 +306,23 @@ namespace rakan {
 
     // Check all the neighbors are still connected one way or another.
     bool Rakan::_severs_neighbors(int rid) {
+        std::cout << "Check if rid severs neighbors: " << rid << std::endl;
         std::set<std::pair<int, int>> checks = this->_checks_required(rid);
-        for (std::pair<int, int> item : checks)
-            if (!this->are_connected(item.first, item.second, rid))
+        std::cout << "address of checks: " << &checks << std::endl;
+        for (std::pair<int, int> item : checks) {
+            std::cout << "Testing ";
+            std::cout << item.first;
+            std::cout << " and ";
+            std::cout << item.second;
+            std::cout << " with blacklist: ";
+            std::cout << rid;
+            std::cout << std::endl;
+            if (!this->are_connected(item.first, item.second, rid)) {
+                std::cout << "Returning true" << std::endl;
                 return true;
+            }
+        }
+        std::cout << "Returning false" << std::endl;
         return false;
     }
 

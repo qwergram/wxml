@@ -45,7 +45,11 @@ namespace rakan {
     // return a pair of rids of two neighboring precincts that are
     // are in two different districts
     std::pair<int, int> DynamicBoundary::get_random_district_edge() {
-        return this->get_district_edge(rand() % this->_d_edges);
+        std::cout << " -> Generating random number ... ";
+        std::cout << " (_d_edges: " << this->_d_edges << ") ";
+        int s = rand() % this->_d_edges;
+        std::cout << " (proposing edge #" << s << "/" << this->_d_edges << ") ";
+        return this->get_district_edge(s);
     }
 
     // return the nth edge of this tree

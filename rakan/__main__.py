@@ -1,6 +1,8 @@
 from base import BaseRakanWithServer, BaseRakan
 from progress.bar import IncrementalBar
 
+import faulthandler; faulthandler.enable()
+
 import random
 import networkx
 
@@ -19,7 +21,6 @@ class Rakan(BaseRakanWithServer):
             self.move_precinct(precinct, district)
         
         self.iterations += 1
-        print("Moving", precinct, "to district #", district)
 
     """
     An example walk.
@@ -30,10 +31,10 @@ class Rakan(BaseRakanWithServer):
     """
     def walk(self, *more_positional_stuff, **wow_we_got_key_words_up_here):
         # for instance:
-        for i in range(10):
+        for i in range(100):
             self.step(max_value=1)
         
-        for i in range(10):
+        for i in range(100):
             self.step(max_value=2)
 
 def build_rakan(nx_path):

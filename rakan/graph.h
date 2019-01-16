@@ -96,8 +96,6 @@ namespace rakan {
         void _update_district_boundary(int rid, int district); // update the dynamic boundary
         void _update_atlas(int rid, int district); // update the atlas
         void _update_districts(int rid, int district); // update district map
-
-
     };
 }
 
