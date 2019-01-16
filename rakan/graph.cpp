@@ -40,6 +40,9 @@ namespace rakan {
 
     // add a precinct with specified district
     int Rakan::add_precinct(int district, int population) {
+        if (district >= this->_districts.size())
+            throw std::invalid_argument("District is invalid");
+
         int new_rid = this->_atlas.size();
 
         // update atlas
@@ -227,6 +230,10 @@ namespace rakan {
     // if the move is illegal, exceptions will be thrown
     void Rakan::move_precinct(int rid, int district) {
         std::cout << "Moving " << rid << " to district #" << district << std::endl;
+        if (rid < 0 || rid >= (int)this->_atlas.size())
+            throw std::invalid_argument("Illegal Move (Reason: No such rid)");
+        if (district < 0 || district >= (int)this->_districts.size())
+            throw std::invalid_argument("Invalid Move (Reason: No such district)");
         if (!this->is_valid())
             throw std::logic_error("Cannot make move when graph is invalid");
         std::cout << "is_valid passed ... ";
@@ -248,7 +255,7 @@ namespace rakan {
         std::cout << "updating district boundaries..." << std::endl;
 
         // update atlas
-        // this->_update_atlas(rid, district);
+        this->_update_atlas(rid, district);
 
         std::cout << "updating atlas..." << std::endl;
 
