@@ -247,7 +247,7 @@ namespace rakan {
         std::cout << "updating districts..." << std::endl;
 
         // update dynamic boundary
-        // this->_update_district_boundary(rid, district);
+        this->_update_district_boundary(rid, district);
 
         std::cout << "updating district boundaries..." << std::endl;
 
