@@ -19,6 +19,7 @@ class Rakan(BaseRakanWithServer):
             self.move_precinct(precinct, district)
         
         self.iterations += 1
+        print("Moving", precinct, "to district #", district)
 
     """
     An example walk.
@@ -67,5 +68,5 @@ def build_rakan(nx_path):
 
 if __name__ == "__main__":
     rakan = build_rakan("rakan/iowa.dnx")
-    import pdb; pdb.set_trace()
-    # rakan.walk()
+    # import pdb; pdb.set_trace()
+    rakan.walk()

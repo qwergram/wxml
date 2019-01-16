@@ -84,6 +84,7 @@ namespace rakan {
     // == API FOR NERDS ==
     
     // get the neighbors of the given rid
+    // Returned as a map where {district: [rids], district: [rids], ..}
     std::map<int, std::list<int>> Rakan::get_neighbors(int rid) {
         if (rid > (int)this->_atlas.size() || rid < 0)
             throw std::out_of_range("Specified RID not found");
@@ -172,7 +173,6 @@ namespace rakan {
     // and the second integer is the district number to convert it to.
     std::pair<int, int> Rakan::propose_random_move() {
         std::pair<int, int> random_rids = this->_edges.get_random_district_edge();
-        std::cout << random_rids.first << ' ' << random_rids.second << std::endl;
         return std::pair<int, int>(random_rids.first, this->_atlas[random_rids.second]->district);
     }
 
@@ -208,12 +208,10 @@ namespace rakan {
 
         for (auto it = pool.begin(); it != pool.end(); ++it) {
             auto it2 = it->second.begin();
-            for (int i = 0; i < (int)it->second.size() - 1; i++) {
-                first = *it2;
-                std::advance(it2, 1);
+            first = *it2;
+            for (it2++; it2 != it->second.end(); it2++) {
                 second = *it2;
                 to_check.insert(std::pair<int, int>(first, second));
-                std::advance(it2, 1);
             }
         }
         return to_check;
