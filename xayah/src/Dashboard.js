@@ -38,7 +38,7 @@ class Precinct extends Component {
 }
 
 class PrecinctMap extends Component {
-  // properties: 
+  // properties:
     // rakanPort: 3001
   constructor(props) {
     super(props)
@@ -54,7 +54,7 @@ class PrecinctMap extends Component {
       rakanWebsocket: null, // the rakan websocket
       iterations: 0, // number of iterations rakan has gone through so far
     }
-    
+
     this.connectRakan = this.connectRakan.bind(this);
   }
   componentDidMount() {
@@ -72,7 +72,7 @@ class PrecinctMap extends Component {
       rakanWebsocket: rakanSocket
     })
     // on message, (rakan sent an update) update the map
-    rakanSocket.onmessage = (event) => {  
+    rakanSocket.onmessage = (event) => {
       // read payload
       let payload = JSON.parse(event.data);
       console.log(payload)
@@ -85,7 +85,7 @@ class PrecinctMap extends Component {
       // close the socket
       rakanSocket.close()
     }
-    
+
   }
 
   render() {
@@ -99,7 +99,7 @@ class PrecinctMap extends Component {
 }
 
 class Dashboard extends Component {
-  // properties: 
+  // properties:
     // rakanPort: 3001
   constructor(props) {
     super(props)
