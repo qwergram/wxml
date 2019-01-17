@@ -40,7 +40,7 @@ namespace rakan {
 
     // add a precinct with specified district
     int Rakan::add_precinct(int district, int population) {
-        if (district >= this->_districts.size())
+        if (district >= (int)this->_districts.size())
             throw std::invalid_argument("District is invalid");
 
         int new_rid = this->_atlas.size();
@@ -215,7 +215,7 @@ namespace rakan {
     // and the second integer is the district number to convert it to.
     std::pair<int, int> Rakan::propose_random_move() {
         std::cout << "Proposing Move ... " << std::endl;
-        std::cout << "Sanity check: " << &this->_edges << std::endl;
+        std::cout << "Sanity check: " << &this->_edges;
         //try {
         std::pair<int, int> random_rids = this->_edges.get_random_district_edge();
         std::cout << "Retrieved Random move: " << random_rids.first << " and " << random_rids.second << std::endl;
