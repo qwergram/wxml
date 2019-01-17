@@ -25,9 +25,17 @@ class BaseRakanWithServer(BaseRakan):
     Rakan with a websocket for communication with Xayah.
     """
     ws_port = 3001 # websocket port
-    update_speed = 100000 # number of seconds of how often rakan sends xayah an update
+    update_speed = 0.2 # number of seconds of how often rakan sends xayah an update
     iterations = 0 # iterations rakan has gone through
+    _move_history = []
 
+    @property
+    def move_history(self):
+        return self._move_history
+
+    def record_move(self, rid, district):
+        self._move_history.append((rid, district))
+    
     def __init__(self, *args, **kwargs):
         print("Rakan running with websocket server!")
         super().__init__(*args, **kwargs)
@@ -50,18 +58,15 @@ class BaseRakanWithServer(BaseRakan):
 
     def send_seed(self, websocket, path):
         print("New Xayah Client!")
-        for precinct in self.precincts:
-            yield from websocket.send(
-                json.dumps({
-                    "precinct_vertexes": [v[0] for k, v in self._vertexes.items()],
-                    "precint_districts": [_.district for _ in self.precincts],
-                    "iterations": self.iterations,
-                })
-            )
+        yield from websocket.send(json.dumps({
+            "precinct_vertexes": [v[0] for k, v in self._vertexes.items()],
+            "precint_districts": [_.district for _ in self.precincts],
+            "iterations": self.iterations,
+        }))
         while True:
-            yield from websocket.send(json.dumps({
-
-            }))
+            print("|", end="") 
+            yield from websocket.send(json.dumps(self._move_history))
+            self._move_history = []
             time.sleep(self.update_speed)
 
     # When connected, send xayah update every n seconds
