@@ -7,6 +7,7 @@ import random
 import networkx
 
 class Rakan(BaseRakanWithServer):
+
     """
     An example step
     Argument can be passed in.
@@ -18,6 +19,9 @@ class Rakan(BaseRakanWithServer):
         precinct, district = self.propose_random_move()
         # Completely random
         # if random.randint(0, max_value) == 1:
+        if hasattr(self, "record_move"):
+            self.record_move(precinct, district)
+
         self.move_precinct(precinct, district)
         
         self.iterations += 1
@@ -43,6 +47,10 @@ def build_rakan(nx_path):
     """
     graph = networkx.read_gpickle(nx_path)
     print("Properties:", graph.graph)
+    print("Adjust the Graph as you see fit. Results will be saved. Type 'c' to continue or'exit' to cancel.")
+    import pdb; pdb.set_trace()
+    networkx.write_gpickle(graph, nx_path)
+
     r = Rakan(len(graph.nodes), graph.graph['districts'])
     
     bar = IncrementalBar("Building Rakan (Step 1: Nodes)", max=len(graph.nodes))
