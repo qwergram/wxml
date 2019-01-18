@@ -49,7 +49,7 @@ namespace rakan {
         std::cout << " -> Generating random number ... " << this->_d_edges;
         if (this->_d_edges <= 0)
             throw std::logic_error("No district edges to select from");
-        std::pair<int, int> x = this->get_district_edge(0); // rand() % this->_d_edges);
+        std::pair<int, int> x = this->get_district_edge(rand() % this->_d_edges);
         std::cout << "proposed move: " << x.first << " " << x.second << std::endl;
         return x;
     }
